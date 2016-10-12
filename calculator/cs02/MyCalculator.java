@@ -29,7 +29,7 @@ public class MyCalculator implements Calculator {
 		saved = s + " = " + getResult();
 		if (counter == 0) {
 
-			A[counter] = saved;
+			A[counter] = s;
 			System.out.println(counter + "  "+ A[0]);
 			counter++;
 
@@ -39,7 +39,7 @@ public class MyCalculator implements Calculator {
 			{
 				A[i] = A[i-1];
 			}
-			A[0] = saved;
+			A[0] = s;
 			System.out.println(counter + "  "+ A[0]);
 			counter++;
 
@@ -48,7 +48,7 @@ public class MyCalculator implements Calculator {
 			for (int i = 4; i > 0; i--) {
 				A[i] = A[i-1];
 			}
-			A[0] = saved;
+			A[0] = s;
 
 		}
 
