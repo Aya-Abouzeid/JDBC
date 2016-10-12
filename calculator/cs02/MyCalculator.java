@@ -118,26 +118,19 @@ public class MyCalculator implements Calculator {
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
-//
-//		try {
-//			x = new Formatter("save.txt");
-//
-//			for (int i = 0; i < 5; i++) {
-//
-//				x.format("%s" + System.lineSeparator(), A[i]);
-//			}
-//		} catch (Exception e) {
-//			System.out.println("Error");
-//		}
-//      x.close();
 
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter("saving.txt", "UTF-8");
 
+		    writer.println(bounds);
+
 			for (int i = 0; i < 5; i++) {
+				if (A[i] != null) {
 			    writer.println(A[i]);
+				}
 			}
+			bounds = 0;
 			writer.close();
 
 	} catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -168,13 +161,15 @@ public class MyCalculator implements Calculator {
 		}
 		String line = null;
 		try {
-			while ((line = reader.readLine()) != null) {
+			line = reader.readLine();
+			bounds = Integer.parseInt(line);
 
 				for (int i = 0; i < 5; i++){
+					line = reader.readLine();
 
 					A[i] = line;
 				}
-			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

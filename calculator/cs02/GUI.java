@@ -389,6 +389,7 @@ public class GUI extends JFrame implements MouseListener {
 
 			}
 			if (e.getSource() == load) {
+				label.setText("");
 				cal.load();
 			}
 			if (e.getSource() == previous) {
