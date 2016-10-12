@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GUI extends JFrame implements MouseListener {
-	public JTextField label;
-    public JButton dot, zero, one, two, three, four, five, six, previous, next,
+	private JTextField label;
+    private JButton dot, zero, one, two, three, four, five, six, previous, next,
     seven, eight, nine, multiply, divide, minus, plus, equal, current,save, load;
     MyCalculator cal = new MyCalculator();
     	public GUI() {

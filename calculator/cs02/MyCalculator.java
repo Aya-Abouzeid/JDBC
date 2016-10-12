@@ -30,23 +30,20 @@ public class MyCalculator implements Calculator {
 		if (counter == 0) {
 
 			A[counter] = s;
-			System.out.println(counter + "  "+ A[0]);
 			counter++;
 
 		} else if (counter < 5 && counter > 0) {
 
-			for(int i =counter ; i>0 ; i--)
-			{
-				A[i] = A[i-1];
+			for (int i = counter; i > 0; i--) {
+				A[i] = A[i - 1];
 			}
 			A[0] = s;
-			System.out.println(counter + "  "+ A[0]);
 			counter++;
 
 		} else {
 
 			for (int i = 4; i > 0; i--) {
-				A[i] = A[i-1];
+				A[i] = A[i - 1];
 			}
 			A[0] = s;
 
@@ -81,6 +78,7 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 		return A[bounds];
+
 		}
 	}
 	/* Return the last operation in String format,
@@ -106,7 +104,7 @@ public class MyCalculator implements Calculator {
 		// TODO Auto-generated method stub
 
 
-		if ((bounds - 1) < 0 ) {
+		if ((bounds - 1) < 0) {
 			return null;
 		} else {
 			bounds--;
@@ -120,27 +118,67 @@ public class MyCalculator implements Calculator {
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
+//
+//		try {
+//			x = new Formatter("save.txt");
+//
+//			for (int i = 0; i < 5; i++) {
+//
+//				x.format("%s" + System.lineSeparator(), A[i]);
+//			}
+//		} catch (Exception e) {
+//			System.out.println("Error");
+//		}
+//      x.close();
 
+		PrintWriter writer;
 		try {
-			x = new Formatter("save.txt");
+			writer = new PrintWriter("saving.txt", "UTF-8");
 
 			for (int i = 0; i < 5; i++) {
-
-				x.format(A[i]);
+			    writer.println(A[i]);
 			}
-		} catch (Exception e) {
-			System.out.println("Error");
+			writer.close();
+
+	} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error saving");
 		}
-      x.close();
+
 
 	}
 
 	/* Load from file the saved 5 operations */
-
+	private Scanner y;
 	@Override
 	public void load() {
 		// TODO Auto-generated method stub
 
-	}
+//		try {
+//			y = new Scanner (new File("save.txt"));
+//		} catch(Exception e) {
+//			System.out.println("Error");
+//		}
+		BufferedReader reader = null;
+		try {
+	reader = new BufferedReader(new FileReader("saving.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
 
+				for (int i = 0; i < 5; i++){
+
+					A[i] = line;
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }
