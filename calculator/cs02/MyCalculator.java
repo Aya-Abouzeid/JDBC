@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.calculator.cs02;
 import eg.edu.alexu.csd.oop.calculator.Calculator;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.io.*;
 import javax.script.ScriptEngine;
 
 public class MyCalculator implements Calculator {
@@ -130,6 +131,27 @@ public class MyCalculator implements Calculator {
 	@Override
 	public void save() {
 		// TODO Auto-generated method stub
+//		try
+//		 {
+//		    File file = new File( save );
+//
+//		    // if file doesnt exists, then create it 
+//		    if ( ! file.exists( ) )
+//		    {
+//		        file.createNewFile( );
+//		    }
+//
+//		    FileWriter fw = new FileWriter( file.getAbsoluteFile( ) );
+//		    BufferedWriter bw = new BufferedWriter( fw );
+//		    bw.write( text );
+//		    bw.close( );
+//		    //System.out.println("Done writing to " + fileName); //For testing 
+//		 }
+//		 catch( IOException e )
+//		 {
+//		 System.out.println("Error: " + e);
+//		 e.printStackTrace( );
+//		 }
 
 	}
 	/* Load from file the saved 5 operations */
