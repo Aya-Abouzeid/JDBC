@@ -69,10 +69,8 @@ public class MyCalculator implements Calculator {
 		String str = "error";
 		// TODO Auto-generated method stub
 		try {
-			int tryy = bounds;
-			while (tryy >= 0) {
-			tryy--;
-			}Object answer = engine.eval(A[bounds]);
+
+			Object answer = engine.eval(A[bounds]);
 			double value = Double.parseDouble(answer.toString());
 			S = Double.toString(value);
 

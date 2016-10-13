@@ -416,12 +416,13 @@ public class GUI extends JFrame implements MouseListener {
 			if (e.getSource() == previous) {
 				String result = cal.prev();
 				label.setText(result);
-
+				noresult = true;
 
 			}
 			if (e.getSource() == next) {
 				String result = cal.next();
 				label.setText(result);
+				noresult = true;
 
 			}
 
