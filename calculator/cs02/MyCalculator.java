@@ -10,46 +10,57 @@ import java.util.*;
 import javax.script.ScriptEngine;
 
 public class MyCalculator implements Calculator {
-
+	/**.
+	 * Magic number :3
+	 */
 	final int five = 5;
-
+	/**.
+	 * Magic number :3
+	 */
 	final int four = 4;
 
 	   ScriptEngineManager manager = new ScriptEngineManager();
 
 	    ScriptEngine engine = manager.getEngineByName("JavaScript");
 
-	    String exp;
-
 	    int counter = 0;
+	    /**.
+	     * determine whether to add a new string to the array or not
+	     */
 	    boolean newinput = true;
+	    /**.
+	     * moves forward and backward along the array
+	     */
 	    int bounds = 0;
-	    String A[] = new String[5];
+	    /**.
+	     * used array
+	     */
+	    String a[] = new String[5];
 	@Override
 	public void input(String s) {
 		// TODO Auto-generated method stub
-		exp = s;
+
 		if (newinput) {
 			bounds = 0;
 		if (counter == 0) {
 
-			A[counter] = s;
+			a[counter] = s;
 			counter++;
 
 		} else if (counter < five && counter > 0) {
 
 			for (int i = counter; i > 0; i--) {
-				A[i] = A[i - 1];
+				a[i] = a[i - 1];
 			}
-			A[0] = s;
+			a[0] = s;
 			counter++;
 
 		} else {
 
 			for (int i = four; i > 0; i--) {
-				A[i] = A[i - 1];
+				a[i] = a[i - 1];
 			}
-			A[0] = s;
+			a[0] = s;
 
 		}
 		}
@@ -58,34 +69,31 @@ public class MyCalculator implements Calculator {
 	@Override
 	public String getResult() {
 		newinput = true;
-		String S = null;
+		String s = null;
 		String str = "error";
 		// TODO Auto-generated method stub
 		try {
 
-			Object answer = engine.eval(A[bounds]);
+			Object answer = engine.eval(a[bounds]);
 			double value = Double.parseDouble(answer.toString());
-			S = Double.toString(value);
+			s = Double.toString(value);
 
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
 				return str;
 		}
-		return S;
+		return s;
 	}
 
 	@Override
 	public String current() {
 
 		// TODO Auto-generated method stub
-		if (counter == 0) {
-			return null;
-		} else {
+
 			outofbounds = false;
 			newinput = false;
-		return A[bounds];
+		return a[bounds];
 
-		}
 	}
 
 
@@ -102,17 +110,20 @@ public class MyCalculator implements Calculator {
 				outofbounds = false;
 				newinput = false;
 
-				return A[bounds];
+				return a[bounds];
 			} else {
 
 			newinput = false;
 			bounds++;
 
-		return A[bounds];
+		return a[bounds];
 		}
 		}
 	}
-boolean outofbounds = false;
+	/**.
+	 * returned a null in a previous operation
+	 */
+	boolean outofbounds = false;
 	@Override
 	public String next() {
 		// TODO Auto-generated method stub
@@ -126,16 +137,15 @@ boolean outofbounds = false;
 				newinput = false;
 
 				outofbounds = false;
-				return A[bounds];
+				return a[bounds];
 			} else {
 			newinput = false;
 			bounds--;
 
-			return A[bounds];
+			return a[bounds];
 			}
 		}
 	}
-	private Formatter x;
 
 	@Override
 	public void save() {
@@ -148,8 +158,8 @@ boolean outofbounds = false;
 		    writer.println(bounds);
 
 			for (int i = 0; i < five; i++) {
-				if (A[i] != null) {
-			    writer.println(A[i]);
+				if (a[i] != null) {
+			    writer.println(a[i]);
 				}
 			}
 			newinput = true;
@@ -163,7 +173,6 @@ boolean outofbounds = false;
 
 	}
 
-	private Scanner y;
 	@Override
 	public void load() {
 		// TODO Auto-generated method stub
@@ -180,12 +189,14 @@ boolean outofbounds = false;
 			newinput = true;
 			line = reader.readLine();
 			bounds = Integer.parseInt(line);
-			
+
+
 				for (int i = 0; i < five; i++) {
 					line = reader.readLine();
 
-					A[i] = line;
+					a[i] = line;
 				}
+
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

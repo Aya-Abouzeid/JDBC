@@ -2,10 +2,15 @@ package eg.edu.alexu.csd.oop.calculator;
 
 public interface Calculator {
 
-	/* Take input mathematical expression from user */
+	/**.
+	 *Take input mathematical expression from user
+	 *@param s string
+	 **/
 	public void input(String s);
-	/* Return the result of the current operations
-	 *  or throws a runtime exception */
+	/**. Return the result of the current operations
+	 *  or throws a runtime exception 
+	 *  @return string
+	 *  */
 	public String getResult();
 	/* Return the current formula */
 	public String current ();
