@@ -36,9 +36,8 @@ public class MyCalculator implements Calculator {
 	public void input(String s) {
 		// TODO Auto-generated method stub
 		exp = s;
-		if(newinput==true)
-		{
-			bounds =0;
+		if (newinput) {
+			bounds = 0;
 		if (counter == 0) {
 
 			A[counter] = s;
@@ -65,20 +64,17 @@ public class MyCalculator implements Calculator {
 
 	@Override
 	public String getResult() {
-		newinput=true;
+		newinput = true;
 		String S = null;
 		String str = "error";
 		// TODO Auto-generated method stub
 		try {
-		System.out.println("current bounds in equal= " + bounds);
 			int tryy = bounds;
-			while(tryy>=0){
-			System.out.println(A[tryy]);
+			while (tryy >= 0) {
 			tryy--;
 			}Object answer = engine.eval(A[bounds]);
 			double value = Double.parseDouble(answer.toString());
 			S = Double.toString(value);
-			System.out.println(S);
 
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
@@ -94,8 +90,6 @@ public class MyCalculator implements Calculator {
 		if (counter == 0) {
 			return null;
 		} else {
-			System.out.println("current bounds in current= " + bounds);
-			System.out.println(A[bounds]);
 
 		return A[bounds];
 
@@ -110,12 +104,8 @@ public class MyCalculator implements Calculator {
 	if ((bounds + 1) >= counter || (bounds + 1) > four) {
 			return null;
 		} else {
-			newinput=false;
+			newinput = false;
 			bounds++;
-			System.out.println("counter = " + counter);
-
-			System.out.println("bounds = " + bounds);
-
 		order = A[bounds];
 		return order;
 		}
@@ -129,7 +119,7 @@ public class MyCalculator implements Calculator {
 		if ((bounds - 1) < 0) {
 			return null;
 		} else {
-			newinput=false;
+			newinput = false;
 			bounds--;
 			order = A[bounds];
 			return order;
