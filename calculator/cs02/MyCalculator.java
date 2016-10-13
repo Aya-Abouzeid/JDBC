@@ -89,11 +89,14 @@ public class MyCalculator implements Calculator {
 	public String current() {
 
 		// TODO Auto-generated method stub
-
+		if (counter == 0) {
+			return null;
+		} else {
 			outofbounds = false;
 			newinput = false;
 		return a[bounds];
 
+		}
 	}
 
 
@@ -155,6 +158,8 @@ public class MyCalculator implements Calculator {
 		try {
 			writer = new PrintWriter("saving.txt", "UTF-8");
 
+		    writer.println(counter);
+
 		    writer.println(bounds);
 
 			for (int i = 0; i < five; i++) {
@@ -188,14 +193,19 @@ public class MyCalculator implements Calculator {
 		try {
 			newinput = true;
 			line = reader.readLine();
+			counter = Integer.parseInt(line);
+			line = reader.readLine();
 			bounds = Integer.parseInt(line);
 
+			System.out.println(bounds);
 
 				for (int i = 0; i < five; i++) {
 					line = reader.readLine();
 
 					a[i] = line;
 				}
+				System.out.println(a[bounds]);
+				System.out.println(current());
 
 
 		} catch (IOException e) {
