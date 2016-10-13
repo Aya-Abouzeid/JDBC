@@ -397,6 +397,7 @@ public class GUI extends JFrame implements MouseListener {
 				}
 			}
 			if (e.getSource() == save) {
+				noresult = false;
 
 				cal.save();
 			}

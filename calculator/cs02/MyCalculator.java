@@ -88,7 +88,8 @@ public class MyCalculator implements Calculator {
 		if (counter == 0) {
 			return null;
 		} else {
-
+			outofbounds = false;
+			newinput = false;
 		return A[bounds];
 
 		}
@@ -105,6 +106,9 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 			if (outofbounds) {
+				outofbounds = false;
+				newinput = false;
+
 				return A[bounds];
 			} else {
 
@@ -129,10 +133,14 @@ boolean outofbounds = false;
 			return null;
 		} else {
 			if (outofbounds) {
+				newinput = false;
+
+				outofbounds = false;
 				return A[bounds];
 			} else {
 			newinput = false;
 			bounds--;
+
 
 			order = A[bounds];
 			return order;
