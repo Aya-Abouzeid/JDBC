@@ -27,7 +27,7 @@ public class MyCalculator implements Calculator {
 	    String exp;
 
 	    int counter = 0;
-
+	    boolean newinput = true;
 	    String order;
 
 	    int bounds = 0;
@@ -36,6 +36,9 @@ public class MyCalculator implements Calculator {
 	public void input(String s) {
 		// TODO Auto-generated method stub
 		exp = s;
+		if(newinput==true)
+		{
+			bounds =0;
 		if (counter == 0) {
 
 			A[counter] = s;
@@ -57,12 +60,12 @@ public class MyCalculator implements Calculator {
 			A[0] = s;
 
 		}
-
+		}
 	}
 
 	@Override
 	public String getResult() {
-		
+		newinput=true;
 		String S = null;
 		String str = "error";
 		// TODO Auto-generated method stub
@@ -107,6 +110,7 @@ public class MyCalculator implements Calculator {
 	if ((bounds + 1) >= counter || (bounds + 1) > four) {
 			return null;
 		} else {
+			newinput=false;
 			bounds++;
 			System.out.println("counter = " + counter);
 
@@ -125,6 +129,7 @@ public class MyCalculator implements Calculator {
 		if ((bounds - 1) < 0) {
 			return null;
 		} else {
+			newinput=false;
 			bounds--;
 			order = A[bounds];
 			return order;
