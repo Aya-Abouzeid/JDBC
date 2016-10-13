@@ -397,6 +397,7 @@ public class GUI extends JFrame implements MouseListener {
 				}
 			}
 			if (e.getSource() == save) {
+				
 				cal.save();
 			}
 			if (e.getSource() == current) {
@@ -408,20 +409,19 @@ public class GUI extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == load) {
 				noresult = true;
-				label.setText("");
 				cal.load();
+				String current = cal.current();
+				label.setText(current);
 			}
 			if (e.getSource() == previous) {
 				String result = cal.prev();
 				label.setText(result);
-				noresult = true;
 
 
 			}
 			if (e.getSource() == next) {
 				String result = cal.next();
 				label.setText(result);
-				noresult = true;
 
 			}
 
