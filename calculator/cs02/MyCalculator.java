@@ -1,6 +1,4 @@
-/**.
- * calculator package
- */
+
 package eg.edu.alexu.csd.oop.calculator.cs02;
 
 import eg.edu.alexu.csd.oop.calculator.Calculator;
@@ -11,9 +9,6 @@ import java.lang.*;
 import java.util.*;
 import javax.script.ScriptEngine;
 
-/**.
- * class for calculator
- */
 public class MyCalculator implements Calculator {
 
 	final int five = 5;
@@ -28,8 +23,6 @@ public class MyCalculator implements Calculator {
 
 	    int counter = 0;
 	    boolean newinput = true;
-	    String order;
-
 	    int bounds = 0;
 	    String A[] = new String[5];
 	@Override
@@ -115,10 +108,7 @@ public class MyCalculator implements Calculator {
 			newinput = false;
 			bounds++;
 
-
-
-		order = A[bounds];
-		return order;
+		return A[bounds];
 		}
 		}
 	}
@@ -141,9 +131,7 @@ boolean outofbounds = false;
 			newinput = false;
 			bounds--;
 
-
-			order = A[bounds];
-			return order;
+			return A[bounds];
 			}
 		}
 	}
@@ -164,7 +152,7 @@ boolean outofbounds = false;
 			    writer.println(A[i]);
 				}
 			}
-			newinput=true;
+			newinput = true;
 			writer.close();
 
 	} catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -189,9 +177,10 @@ boolean outofbounds = false;
 		}
 		String line = null;
 		try {
+			newinput = true;
 			line = reader.readLine();
 			bounds = Integer.parseInt(line);
-
+			
 				for (int i = 0; i < five; i++) {
 					line = reader.readLine();
 

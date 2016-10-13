@@ -155,87 +155,103 @@ public class GUI extends JFrame implements MouseListener {
     	divide.setVisible(true);
     	getContentPane().add(divide);
 
-    	plus = new JButton();
-    	plus.setText("+");
-        plus.setBackground(Color.white);
-        plus.setForeground(Color.black);
-    	plus.addMouseListener(this);
-    	plus.setVisible(true);
-    	plus.setBounds(350, 350, 90, 50);
-    	getContentPane().add(plus);
-
-    	minus = new JButton();
-    	minus.setText("-");
-    	minus.addMouseListener(this);
-        minus.setBackground(Color.white);
-        minus.setForeground(Color.black);
-    	minus.setVisible(true);
-    	minus.setBounds(350, 280, 90, 50);
-    	getContentPane().add(minus);
-
-    	equal = new JButton();
-    	equal.setText("=");
-        equal.setBackground(Color.white);
-    	equal.addMouseListener(this);
-    	equal.setVisible(true);
-        equal.setForeground(Color.black);
-    	equal.setBounds(240, 350, 90, 50);
-    	getContentPane().add(equal);
-
-    	save = new JButton();
-    	save.setText("SAVE");
-        save.setBackground(Color.white);
-    	save.setVisible(true);
-        save.setForeground(Color.black);
-    	save.setBounds(20, 420, 70, 50);
-    	save.addMouseListener(this);
-    	getContentPane().add(save);
-
-
-    	previous = new JButton();
-    	previous.setText("<");
-    	previous.setBackground(Color.white);
-    	previous.setVisible(true);
-    	previous.setForeground(Color.black);
-    	previous.setBounds(110, 420, 70, 50);
-    	previous.addMouseListener(this);
-    	getContentPane().add(previous);
-
-    	current = new JButton();
-    	current.setText("Current");
-    	current.setBackground(Color.white);
-        current.setVisible(true);
-        current.setForeground(Color.black);
-        current.setBounds(190, 420, 80, 50);
-        current.addMouseListener(this);
-    	getContentPane().add(current);
-
-    	next = new JButton();
-    	next.setText(">");
-    	next.setBackground(Color.white);
-        next.setVisible(true);
-        next.setForeground(Color.black);
-        next.setBounds(280, 420, 70, 50);
-        next.addMouseListener(this);
-    	getContentPane().add(next);
-
-
-    	load = new JButton();
-    	load.setText("LOAD");
-        load.setBackground(Color.white);
-    	load.setVisible(true);
-        load.setForeground(Color.black);
-    	load.setBounds(370, 420, 70, 50);
-    	load.addMouseListener(this);
-    	getContentPane().add(load);
-
-    	getContentPane().setBackground(Color.pink);
-    	getContentPane().setLayout(null);
+    	gui2();
 }
+/**.
+ *gui 2nd class
+ */
+    public void gui2() {
+
+        	plus = new JButton();
+        	plus.setText("+");
+            plus.setBackground(Color.white);
+            plus.setForeground(Color.black);
+        	plus.addMouseListener(this);
+        	plus.setVisible(true);
+        	plus.setBounds(350, 350, 90, 50);
+        	getContentPane().add(plus);
+
+        	minus = new JButton();
+        	minus.setText("-");
+        	minus.addMouseListener(this);
+            minus.setBackground(Color.white);
+            minus.setForeground(Color.black);
+        	minus.setVisible(true);
+        	minus.setBounds(350, 280, 90, 50);
+        	getContentPane().add(minus);
+
+        	equal = new JButton();
+        	equal.setText("=");
+            equal.setBackground(Color.white);
+        	equal.addMouseListener(this);
+        	equal.setVisible(true);
+            equal.setForeground(Color.black);
+        	equal.setBounds(240, 350, 90, 50);
+        	getContentPane().add(equal);
+
+        	save = new JButton();
+        	save.setText("SAVE");
+            save.setBackground(Color.white);
+        	save.setVisible(true);
+            save.setForeground(Color.black);
+        	save.setBounds(20, 420, 70, 50);
+        	save.addMouseListener(this);
+        	getContentPane().add(save);
+
+
+        	previous = new JButton();
+        	previous.setText("<");
+        	previous.setBackground(Color.white);
+        	previous.setVisible(true);
+        	previous.setForeground(Color.black);
+        	previous.setBounds(110, 420, 70, 50);
+        	previous.addMouseListener(this);
+        	getContentPane().add(previous);
+
+        	current = new JButton();
+        	current.setText("Current");
+        	current.setBackground(Color.white);
+            current.setVisible(true);
+            current.setForeground(Color.black);
+            current.setBounds(190, 420, 80, 50);
+            current.addMouseListener(this);
+        	getContentPane().add(current);
+
+        	next = new JButton();
+        	next.setText(">");
+        	next.setBackground(Color.white);
+            next.setVisible(true);
+            next.setForeground(Color.black);
+            next.setBounds(280, 420, 70, 50);
+            next.addMouseListener(this);
+        	getContentPane().add(next);
+
+
+        	load = new JButton();
+        	load.setText("LOAD");
+            load.setBackground(Color.white);
+        	load.setVisible(true);
+            load.setForeground(Color.black);
+        	load.setBounds(370, 420, 70, 50);
+        	load.addMouseListener(this);
+        	getContentPane().add(load);
+
+        	getContentPane().setBackground(Color.pink);
+        	getContentPane().setLayout(null);
+
+    	}
     	/**.
     	 * empty label boolean
     	 */
     	boolean noresult = true;
+    	/**.
+    	 *
+    	 */
+    	boolean prev = false;
+    	/**.
+   	 *
+   	 */
+    	boolean nextt = false;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -376,8 +392,7 @@ public class GUI extends JFrame implements MouseListener {
 }
 			}
 			if (e.getSource() == equal) {
-				if (noresult) {
-
+				if (noresult || prev || nextt) {
 				noresult = false;
 				cal.input(text);
 				String result = cal.getResult();
@@ -409,7 +424,7 @@ public class GUI extends JFrame implements MouseListener {
 
 			}
 			if (e.getSource() == load) {
-				noresult = true;
+				noresult = false;
 				cal.load();
 				String currentequ = cal.current();
 				label.setText(currentequ);
@@ -417,13 +432,13 @@ public class GUI extends JFrame implements MouseListener {
 			if (e.getSource() == previous) {
 				String result = cal.prev();
 				label.setText(result);
-				noresult = true;
+				prev = true;
 
 			}
 			if (e.getSource() == next) {
 				String result = cal.next();
 				label.setText(result);
-				noresult = true;
+				nextt = true;
 
 			}
 
