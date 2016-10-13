@@ -3,12 +3,28 @@ import javax.jws.soap.SOAPBinding.Style;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+/**
+ *
+ * @author aya_a_000
+ *
+ */
 public class GUI extends JFrame implements MouseListener {
+	/**.
+	 *label
+	 */
 	private JTextField label;
+	/**.
+	 *buttons
+	 */
     private JButton dot, zero, one, two, three, four, five, six, previous, next,
-    seven, eight, nine, multiply, divide, minus, plus, equal, current,save, load;
+  seven, eight, nine, multiply, divide, minus, plus, equal, current, save, load;
+    /**.
+     *calculator instance
+     */
     MyCalculator cal = new MyCalculator();
+    /**.
+     *gui constructor
+     */
     	public GUI() {
 
     		setVisible(true);
@@ -216,6 +232,9 @@ public class GUI extends JFrame implements MouseListener {
     	getContentPane().setBackground(Color.pink);
     	getContentPane().setLayout(null);
 }
+    	/**.
+    	 * empty label boolean
+    	 */
     	boolean noresult = true;
 
 		@Override
@@ -229,8 +248,7 @@ public class GUI extends JFrame implements MouseListener {
 				} else {
 					noresult = true;
 					label.setText("0");
-
-				}
+					}
 			}
 			if (e.getSource() == one) {
 				if (noresult) {
@@ -385,46 +403,50 @@ public class GUI extends JFrame implements MouseListener {
 
 				String result = cal.current();
 				label.setText(result);
-				noresult = false;
+				noresult = true;
 
 			}
 			if (e.getSource() == load) {
+				noresult = true;
 				label.setText("");
 				cal.load();
 			}
 			if (e.getSource() == previous) {
 				String result = cal.prev();
 				label.setText(result);
+				noresult = true;
+
 
 			}
 			if (e.getSource() == next) {
 				String result = cal.next();
 				label.setText(result);
+				noresult = true;
 
 			}
 
 		}
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
+		public void mouseEntered(final MouseEvent e) {
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void mouseExited(MouseEvent e) {
+		public void mouseExited(final MouseEvent e) {
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void mousePressed(final MouseEvent e) {
 			// TODO Auto-generated method stub
 
 		}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {
+		public void mouseReleased(final MouseEvent e) {
 			// TODO Auto-generated method stub
 
 		}

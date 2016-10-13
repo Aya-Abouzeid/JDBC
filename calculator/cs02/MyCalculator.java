@@ -1,3 +1,6 @@
+/**.
+ * calculator package
+ */
 package eg.edu.alexu.csd.oop.calculator.cs02;
 
 import eg.edu.alexu.csd.oop.calculator.Calculator;
@@ -8,31 +11,37 @@ import java.lang.*;
 import java.util.*;
 import javax.script.ScriptEngine;
 
+/**.
+ * class for calculator
+ */
 public class MyCalculator implements Calculator {
 
+	final int five = 5;
 
-	/* Take input mathematical expression from user */
+	final int four = 4;
+
 	   ScriptEngineManager manager = new ScriptEngineManager();
+
 	    ScriptEngine engine = manager.getEngineByName("JavaScript");
+
 	    String exp;
-	    String current;
+
 	    int counter = 0;
 
-	    String saved = null;
 	    String order;
-	    int bounds=0;
+
+	    int bounds = 0;
 	    String A[] = new String[5];
 	@Override
 	public void input(String s) {
 		// TODO Auto-generated method stub
-		exp =s;
-		saved = s + " = " + getResult();
+		exp = s;
 		if (counter == 0) {
 
 			A[counter] = s;
 			counter++;
 
-		} else if (counter < 5 && counter > 0) {
+		} else if (counter < five && counter > 0) {
 
 			for (int i = counter; i > 0; i--) {
 				A[i] = A[i - 1];
@@ -42,7 +51,7 @@ public class MyCalculator implements Calculator {
 
 		} else {
 
-			for (int i = 4; i > 0; i--) {
+			for (int i = four; i > 0; i--) {
 				A[i] = A[i - 1];
 			}
 			A[0] = s;
@@ -50,25 +59,30 @@ public class MyCalculator implements Calculator {
 		}
 
 	}
-	/* Return the result of the current operations
-	 * or throws a runtime exception */
 
 	@Override
 	public String getResult() {
+		
 		String S = null;
 		String str = "error";
 		// TODO Auto-generated method stub
 		try {
-			Object answer = engine.eval(exp);
+		System.out.println("current bounds in equal= " + bounds);
+			int tryy = bounds;
+			while(tryy>=0){
+			System.out.println(A[tryy]);
+			tryy--;
+			}Object answer = engine.eval(A[bounds]);
 			double value = Double.parseDouble(answer.toString());
 			S = Double.toString(value);
+			System.out.println(S);
+
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
 				return str;
 		}
 		return S;
 	}
-	/* Return the current formula */
 
 	@Override
 	public String current() {
@@ -77,27 +91,31 @@ public class MyCalculator implements Calculator {
 		if (counter == 0) {
 			return null;
 		} else {
+			System.out.println("current bounds in current= " + bounds);
+			System.out.println(A[bounds]);
+
 		return A[bounds];
 
 		}
 	}
-	/* Return the last operation in String format,
-	 * or Null if no more history available */
+
 
 	@Override
 
 	public String prev() {
 		// TODO Auto-generated method stub
-	if ((bounds + 1) > counter || (bounds + 1) > 4) {
+	if ((bounds + 1) >= counter || (bounds + 1) > four) {
 			return null;
 		} else {
 			bounds++;
+			System.out.println("counter = " + counter);
+
+			System.out.println("bounds = " + bounds);
+
 		order = A[bounds];
 		return order;
 		}
 	}
-	/* Return the next operation in String format,
-	 *  or Null if no more history available */
 
 	@Override
 	public String next() {
@@ -112,7 +130,6 @@ public class MyCalculator implements Calculator {
 			return order;
 		}
 	}
-	/* Save the last 5 done Operations in a file*/
 	private Formatter x;
 
 	@Override
@@ -125,7 +142,7 @@ public class MyCalculator implements Calculator {
 
 		    writer.println(bounds);
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < five; i++) {
 				if (A[i] != null) {
 			    writer.println(A[i]);
 				}
@@ -141,17 +158,11 @@ public class MyCalculator implements Calculator {
 
 	}
 
-	/* Load from file the saved 5 operations */
 	private Scanner y;
 	@Override
 	public void load() {
 		// TODO Auto-generated method stub
 
-//		try {
-//			y = new Scanner (new File("save.txt"));
-//		} catch(Exception e) {
-//			System.out.println("Error");
-//		}
 		BufferedReader reader = null;
 		try {
 	reader = new BufferedReader(new FileReader("saving.txt"));
@@ -164,7 +175,7 @@ public class MyCalculator implements Calculator {
 			line = reader.readLine();
 			bounds = Integer.parseInt(line);
 
-				for (int i = 0; i < 5; i++){
+				for (int i = 0; i < five; i++) {
 					line = reader.readLine();
 
 					A[i] = line;
