@@ -102,27 +102,45 @@ public class MyCalculator implements Calculator {
 	public String prev() {
 		// TODO Auto-generated method stub
 	if ((bounds + 1) >= counter || (bounds + 1) > four) {
+		outofbounds = true;
+
 			return null;
 		} else {
+			if (outofbounds) {
+				return A[bounds];
+			} else {
+			System.out.println(counter);
+
 			newinput = false;
 			bounds++;
+
+			System.out.println(bounds);
+
 		order = A[bounds];
 		return order;
 		}
+		}
 	}
-
+boolean outofbounds = false;
 	@Override
 	public String next() {
 		// TODO Auto-generated method stub
 
 
 		if ((bounds - 1) < 0) {
+			outofbounds = true;
 			return null;
 		} else {
+			if (outofbounds) {
+				return A[bounds];
+			} else {
 			newinput = false;
 			bounds--;
+			System.out.println(bounds);
+
 			order = A[bounds];
 			return order;
+			}
 		}
 	}
 	private Formatter x;
