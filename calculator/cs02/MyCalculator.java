@@ -109,12 +109,11 @@ public class MyCalculator implements Calculator {
 			if (outofbounds) {
 				return A[bounds];
 			} else {
-			System.out.println(counter);
 
 			newinput = false;
 			bounds++;
 
-			System.out.println(bounds);
+
 
 		order = A[bounds];
 		return order;
@@ -136,7 +135,6 @@ boolean outofbounds = false;
 			} else {
 			newinput = false;
 			bounds--;
-			System.out.println(bounds);
 
 			order = A[bounds];
 			return order;
