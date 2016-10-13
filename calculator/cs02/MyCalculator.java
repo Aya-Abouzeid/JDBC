@@ -164,7 +164,7 @@ boolean outofbounds = false;
 			    writer.println(A[i]);
 				}
 			}
-			bounds = 0;
+			
 			writer.close();
 
 	} catch (FileNotFoundException | UnsupportedEncodingException e) {
