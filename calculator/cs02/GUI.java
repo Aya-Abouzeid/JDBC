@@ -424,7 +424,7 @@ public class GUI extends JFrame implements MouseListener {
 
 			}
 			if (e.getSource() == load) {
-				noresult = false;
+				noresult = true;
 				cal.load();
 				String currentequ = cal.current();
 				label.setText(currentequ);
