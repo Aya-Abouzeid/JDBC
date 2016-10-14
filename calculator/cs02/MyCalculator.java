@@ -27,6 +27,7 @@ public class MyCalculator implements Calculator {
 	    /**.
 	     * determine whether to add a new string to the array or not
 	     */
+	    boolean newinput = true;
 	    /**.
 	     * moves forward and backward along the array
 	     */
@@ -39,7 +40,8 @@ public class MyCalculator implements Calculator {
 	public void input(String s) {
 		// TODO Auto-generated method stub
 
-		
+		if (newinput) {
+			bounds = 0;
 		if (counter == 0) {
 
 			a[counter] = s;
@@ -61,11 +63,12 @@ public class MyCalculator implements Calculator {
 			a[0] = s;
 
 		}
-		
+		}
 	}
 
 	@Override
 	public String getResult() {
+		newinput = true;
 		String s = null;
 		String str = "error";
 		// TODO Auto-generated method stub
@@ -89,6 +92,7 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 			outofbounds = false;
+			newinput = true;
 		return a[bounds];
 
 		}
@@ -106,10 +110,12 @@ public class MyCalculator implements Calculator {
 		} else {
 			if (outofbounds) {
 				outofbounds = false;
+				newinput = false;
 
 				return a[bounds];
 			} else {
 
+			newinput = false;
 			bounds++;
 
 		return a[bounds];
@@ -130,10 +136,12 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 			if (outofbounds) {
+				newinput = false;
 
 				outofbounds = false;
 				return a[bounds];
 			} else {
+			newinput = false;
 			bounds--;
 
 			return a[bounds];
@@ -158,6 +166,7 @@ public class MyCalculator implements Calculator {
 			    writer.println(a[i]);
 				}
 			}
+			newinput = true;
 			writer.close();
 
 	} catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -181,6 +190,7 @@ public class MyCalculator implements Calculator {
 		}
 		String line = null;
 		try {
+			newinput = true;
 			
 			line = reader.readLine();
 			counter = Integer.parseInt(line);

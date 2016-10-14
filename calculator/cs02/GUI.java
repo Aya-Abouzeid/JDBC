@@ -257,6 +257,7 @@ public class GUI extends JFrame implements MouseListener {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			String text = label.getText();
+
 			if (e.getSource() == zero) {
 				if (noresult) {
 					text = text + "0";
