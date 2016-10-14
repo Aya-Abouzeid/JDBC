@@ -199,8 +199,7 @@ public class MyCalculator implements Calculator {
 					a[i] = line;
 				}
 			
-
-
+current();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
