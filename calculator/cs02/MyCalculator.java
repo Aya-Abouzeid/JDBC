@@ -116,6 +116,8 @@ public class MyCalculator implements Calculator {
 			} else {
 
 			bounds++;
+			current();
+
 		return a[bounds];
 		}
 		}
@@ -141,6 +143,7 @@ public class MyCalculator implements Calculator {
 				return a[bounds];
 			} else {
 			bounds--;
+			current();
 
 			return a[bounds];
 			}
