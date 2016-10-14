@@ -107,16 +107,9 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 
-			if (outofbounds) {
-				outofbounds = false;
-				current();
-
-				return a[bounds];
-			} else {
 
 			bounds++;
 		return a[bounds];
-		}
 		}
 	}
 	/**.
@@ -133,16 +126,11 @@ public class MyCalculator implements Calculator {
 			current();
 			return null;
 		} else {
-			if (outofbounds) {
-				current();
-
-				outofbounds = false;
-				return a[bounds];
-			} else {
+			
 			bounds--;
 
 			return a[bounds];
-			}
+			
 		}
 	}
 
