@@ -12,10 +12,14 @@ public class Main {
 	 *
 	 *@param args
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		// TODO Auto-generated method stub
 
-		 //GUI mygui = new GUI();
-	    
+		 GUI mygui = new GUI();
+	       MyCalculator test = new MyCalculator();
+
+	     
+
+
 	}
 }

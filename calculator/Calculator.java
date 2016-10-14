@@ -8,12 +8,14 @@ public interface Calculator {
 	 **/
 	public void input(String s);
 	/**. Return the result of the current operations
-	 *  or throws a runtime exception 
+	 *  or throws a runtime exception
 	 *  @return string
 	 *  */
 	public String getResult();
-	/* Return the current formula */
-	public String current ();
+	/**.
+	 *@return string
+	 * Return the current formula */
+	public String current();
 	/* Return the last operation in String format,
 	 *  or Null if no more history available */
 	public String prev();

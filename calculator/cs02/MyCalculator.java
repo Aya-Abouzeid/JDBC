@@ -22,7 +22,7 @@ public class MyCalculator implements Calculator {
 	   ScriptEngineManager manager = new ScriptEngineManager();
 
 	    ScriptEngine engine = manager.getEngineByName("JavaScript");
-
+	    
 	    int counter = 0;
 	    /**.
 	     * determine whether to add a new string to the array or not
@@ -34,7 +34,7 @@ public class MyCalculator implements Calculator {
 	    /**.
 	     * used array
 	     */
-	    String a[] = new String[5];
+	    String a[] = new String[five];
 	@Override
 	public void input(String s) {
 		// TODO Auto-generated method stub
@@ -107,7 +107,6 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 
-
 			if (outofbounds) {
 				outofbounds = false;
 				current();
@@ -116,8 +115,6 @@ public class MyCalculator implements Calculator {
 			} else {
 
 			bounds++;
-			current();
-
 		return a[bounds];
 		}
 		}
@@ -143,7 +140,6 @@ public class MyCalculator implements Calculator {
 				return a[bounds];
 			} else {
 			bounds--;
-			current();
 
 			return a[bounds];
 			}
