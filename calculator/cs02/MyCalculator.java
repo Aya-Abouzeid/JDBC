@@ -110,6 +110,7 @@ public class MyCalculator implements Calculator {
 
 			if (outofbounds) {
 				outofbounds = false;
+				current();
 
 				return a[bounds];
 			} else {
@@ -134,6 +135,7 @@ public class MyCalculator implements Calculator {
 			return null;
 		} else {
 			if (outofbounds) {
+				current();
 
 				outofbounds = false;
 				return a[bounds];
@@ -198,8 +200,8 @@ public class MyCalculator implements Calculator {
 
 					a[i] = line;
 				}
-			
-current();
+
+				current();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
