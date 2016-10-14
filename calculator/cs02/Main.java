@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		 GUI mygui = new GUI();
+		 //GUI mygui = new GUI();
 	       MyCalculator cvc = new MyCalculator();
 
 	       cvc.input("1+2");
