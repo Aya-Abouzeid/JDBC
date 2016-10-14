@@ -103,7 +103,7 @@ public class MyCalculator implements Calculator {
 		// TODO Auto-generated method stub
 	if ((bounds + 1) >= counter || (bounds + 1) > four) {
 		outofbounds = true;
-
+		current();
 			return null;
 		} else {
 
@@ -130,6 +130,7 @@ public class MyCalculator implements Calculator {
 
 		if ((bounds - 1) < 0) {
 			outofbounds = true;
+			current();
 			return null;
 		} else {
 			if (outofbounds) {
@@ -184,10 +185,10 @@ public class MyCalculator implements Calculator {
 		}
 		String line = null;
 		try {
-			
+
 			line = reader.readLine();
 			counter = Integer.parseInt(line);
-			
+
 			line = reader.readLine();
 			bounds = Integer.parseInt(line);
 
