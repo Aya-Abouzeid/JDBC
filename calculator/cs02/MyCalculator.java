@@ -159,12 +159,12 @@ public class MyCalculator implements Calculator {
 			line = reader.readLine();
 			index = Integer.parseInt(line);
 
-			index = 0;
+//			index = 0;
 				for (int i = 0; i < counter; i++) {
 					line = reader.readLine();
 					a[i] = line;
 				}
-
+				reader.close();
 				//current(); msh 3rfa leha lzma wala la2
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
