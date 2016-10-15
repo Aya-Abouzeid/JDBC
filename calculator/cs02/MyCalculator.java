@@ -27,11 +27,11 @@ public class MyCalculator implements Calculator {
 	/**.
 	 * engine
 	 */
-	   ScriptEngineManager manager = new ScriptEngineManager();
+	 private ScriptEngineManager manager = new ScriptEngineManager();
 /**.
  * engine
  */
-	    ScriptEngine engine = manager.getEngineByName("JavaScript");
+	   private ScriptEngine engine = manager.getEngineByName("JavaScript");
 	    /**.
 	     * counter
 	     */
@@ -44,7 +44,7 @@ public class MyCalculator implements Calculator {
 	    /**.
 	     * used array
 	     */
-	    String[] a = new String[five];
+	  private String[] a = new String[five];
 	@Override
 	public void input(final String s) {
 		// TODO Auto-generated method stub
@@ -112,7 +112,7 @@ public class MyCalculator implements Calculator {
 	/**.
 	 * returned a null in a previous operation
 	 */
-	boolean outofindex = false;
+	private boolean outofindex = false;
 	@Override
 	public String next() {
 		// TODO Auto-generated method stub
