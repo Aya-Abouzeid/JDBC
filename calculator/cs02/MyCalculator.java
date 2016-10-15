@@ -22,15 +22,13 @@ public class MyCalculator implements Calculator {
 	   ScriptEngineManager manager = new ScriptEngineManager();
 
 	    ScriptEngine engine = manager.getEngineByName("JavaScript");
-	    
+
 	    int counter = 0;
-	    /**.
-	     * determine whether to add a new string to the array or not
-	     */
+
 	    /**.
 	     * moves forward and backward along the array
 	     */
-	    int bounds = 0;
+	    int index = 0;
 	    /**.
 	     * used array
 	     */
@@ -40,13 +38,8 @@ public class MyCalculator implements Calculator {
 		// TODO Auto-generated method stub
 
 
-			bounds = 0;
-		if (counter == 0) {
-
-			a[counter] = s;
-			counter++;
-
-		} else if (counter < five && counter > 0) {
+			index = 0;
+		if (counter < five) {
 
 			for (int i = counter; i > 0; i--) {
 				a[i] = a[i - 1];
@@ -55,15 +48,11 @@ public class MyCalculator implements Calculator {
 			counter++;
 
 		} else {
-
 			for (int i = four; i > 0; i--) {
 				a[i] = a[i - 1];
 			}
 			a[0] = s;
-
 		}
-		current();
-
 	}
 
 	@Override
@@ -72,7 +61,7 @@ public class MyCalculator implements Calculator {
 		String str = "error";
 		// TODO Auto-generated method stub
 		try {
-			Object answer = engine.eval(a[bounds]);
+			Object answer = engine.eval(a[index]);
 			double value = Double.parseDouble(answer.toString());
 			s = Double.toString(value);
 
@@ -90,8 +79,8 @@ public class MyCalculator implements Calculator {
 		if (counter == 0) {
 			return null;
 		} else {
-			outofbounds = false;
-		return a[bounds];
+			outofindex = false;
+		return a[index];
 
 		}
 	}
@@ -101,36 +90,27 @@ public class MyCalculator implements Calculator {
 
 	public String prev() {
 		// TODO Auto-generated method stub
-	if ((bounds + 1) >= counter || (bounds + 1) > four) {
-		outofbounds = true;
-		current();
+	if ((index + 1) >= counter) {
 			return null;
 		} else {
-
-
-			bounds++;
-		return a[bounds];
+			index++;
+			return a[index];
 		}
 	}
 	/**.
 	 * returned a null in a previous operation
 	 */
-	boolean outofbounds = false;
+	boolean outofindex = false;
 	@Override
 	public String next() {
 		// TODO Auto-generated method stub
 
 
-		if ((bounds - 1) < 0) {
-			outofbounds = true;
-			current();
+		if ((index - 1) < 0) {
 			return null;
 		} else {
-			
-			bounds--;
-
-			return a[bounds];
-			
+			index--;
+			return a[index];
 		}
 	}
 
@@ -144,12 +124,10 @@ public class MyCalculator implements Calculator {
 
 		    writer.println(counter);
 
-		    writer.println(bounds);
+		    writer.println(index);
 
-			for (int i = 0; i < five; i++) {
-				if (a[i] != null) {
+			for (int i = 0; i < counter; i++) {
 			    writer.println(a[i]);
-				}
 			}
 			writer.close();
 
@@ -179,16 +157,15 @@ public class MyCalculator implements Calculator {
 			counter = Integer.parseInt(line);
 
 			line = reader.readLine();
-			bounds = Integer.parseInt(line);
+			index = Integer.parseInt(line);
 
-
-				for (int i = 0; i < five; i++) {
+			index = 0;
+				for (int i = 0; i < counter; i++) {
 					line = reader.readLine();
-
 					a[i] = line;
 				}
 
-				current();
+				//current(); msh 3rfa leha lzma wala la2
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
