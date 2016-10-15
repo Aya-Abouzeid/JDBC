@@ -27,19 +27,19 @@ public class GUI extends JFrame implements MouseListener {
     /**.
      *calculator instance
      */
-    MyCalculator cal = new MyCalculator();
+    private MyCalculator cal = new MyCalculator();
     /**.
 	 * Magic number :3
 	 */
-    final int fourtwozero = 420;
+    private final int fourtwozero = 420;
     /**.
 	 * Magic number
 	 */
-    final int threesevenzero = 370;
+    private final int threesevenzero = 370;
     /**.
 	 * Magic number
 	 */
-    final int fifty = 50;
+    private final int fifty = 50;
     /**.
 	 * Magic number
 	 */
