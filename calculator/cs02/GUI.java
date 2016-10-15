@@ -1,5 +1,4 @@
 package eg.edu.alexu.csd.oop.calculator.cs02;
-import javax.jws.soap.SOAPBinding.Style;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,9 +27,93 @@ public class GUI extends JFrame implements MouseListener {
 	 */
     final int fourtwozero = 420;
     /**.
-	 * Magic number :3
+	 * Magic number
 	 */
     final int threesevenzero = 370;
+    /**.
+	 * Magic number
+	 */
+    final int fifty = 50;
+    /**.
+	 * Magic number
+	 */
+    final int  twenty = 20;
+    /**.
+	 * Magic number
+	 */
+    final int thirty = 30;
+    /**.
+	 * Magic number
+	 */
+    final int fourteenhundred = 1400;
+    /**.
+	 * Magic number
+	 */
+    final int twohundred = 200;
+    /**.
+	 * Magic number
+	 */
+    final int foursixty = 460;
+    /**.
+	 * Magic number
+	 */
+    final int sixhundred = 600;
+    /**.
+	 * Magic number
+	 */
+    final int threefifty = 350;
+    /**.
+	 * Magic number
+	 */
+    final int oneten = 110;
+    /**.
+	 * Magic number
+	 */
+    final int fourninety = 490;
+    /**.
+	 * Magic number
+	 */
+    final int twoninety = 290;
+    /**.
+	 * Magic number
+	 */
+    final int ninety = 90;
+    /**.
+	 * Magic number
+	 */
+    final int twoeighty = 280;
+    /**.
+	 * Magic number
+	 */
+    final int twofourty = 240;
+    /**.
+	 * Magic number
+	 */
+    final int twoten = 210;
+    /**.
+	 * Magic number
+	 */
+    final int onethirty = 130;
+    /**.
+	 * Magic number
+	 */
+    final int oneeighty = 180;
+    /**.
+	 * Magic number
+	 */
+    final int oneninety = 190;
+    /**.
+	 * Magic number
+	 */
+    final int seventy = 70;
+    /**.
+	 * Magic number
+	 */
+    final int eighty = 80;
+    /**.
+	 * Magic number
+	 */
+    final int onefourty = 140;
     /**.
      *gui constructor
      */
@@ -38,13 +121,13 @@ public class GUI extends JFrame implements MouseListener {
 
     		setVisible(true);
     	setTitle("Calculator");
-    	setLocation(1400, 200);
-    	setSize(460, 600);
+    	setLocation(fourteenhundred, twohundred);
+    	setSize(foursixty, sixhundred);
     	setResizable(false);
     	label = new JTextField(null);
     	label.setBackground(Color.white);
     	label.setEditable(false);
-    	label.setBounds(20, 30, fourtwozero, 90);
+    	label.setBounds(twenty, thirty, fourtwozero, ninety);
     	getContentPane().add(label);
 
     	dot = new JButton();
@@ -52,7 +135,7 @@ public class GUI extends JFrame implements MouseListener {
     	dot.setVisible(true);
         dot.setBackground(Color.white);
         dot.setForeground(Color.black);
-    	dot.setBounds(20, 350, 90, 50);
+    	dot.setBounds(twenty, threefifty, ninety, fifty);
     	dot.addMouseListener(this);
     	getContentPane().add(dot);
 
@@ -62,7 +145,7 @@ public class GUI extends JFrame implements MouseListener {
         one.setBackground(Color.white);
         one.setForeground(Color.black);
     	one.addMouseListener(this);
-    	one.setBounds(20, 280, 90, 50);
+    	one.setBounds(twenty, twoeighty, ninety, fifty);
     	getContentPane().add(one);
 
     	two = new JButton();
@@ -70,7 +153,7 @@ public class GUI extends JFrame implements MouseListener {
     	two.setVisible(true);
         two.setBackground(Color.white);
         two.setForeground(Color.black);
-    	two.setBounds(130, 280, 90, 50);
+    	two.setBounds(onethirty, twoeighty, ninety, fifty);
     	two.addMouseListener(this);
     	getContentPane().add(two);
 
@@ -80,7 +163,7 @@ public class GUI extends JFrame implements MouseListener {
         three.setBackground(Color.white);
     	three.addMouseListener(this);
         three.setForeground(Color.black);
-    	three.setBounds(240, 280, 90, 50);
+    	three.setBounds(twofourty, twoeighty, ninety, fifty);
     	getContentPane().add(three);
 
     	four = new JButton();
@@ -89,7 +172,7 @@ public class GUI extends JFrame implements MouseListener {
         four.setBackground(Color.white);
     	four.addMouseListener(this);
         four.setForeground(Color.black);
-    	four.setBounds(20, 210, 90, 50);
+    	four.setBounds(twenty, twoten, ninety, fifty);
     	getContentPane().add(four);
 
     	five = new JButton();
@@ -98,7 +181,7 @@ public class GUI extends JFrame implements MouseListener {
     	five.addMouseListener(this);
         five.setBackground(Color.white);
         five.setForeground(Color.black);
-    	five.setBounds(130, 210, 90, 50);
+    	five.setBounds(onethirty, twoten, ninety, fifty);
     	getContentPane().add(five);
 
 
@@ -109,7 +192,7 @@ public class GUI extends JFrame implements MouseListener {
         six.setBackground(Color.white);
         six.setForeground(Color.black);
     	six.addMouseListener(this);
-    	six.setBounds(240, 210, 90, 50);
+    	six.setBounds(twofourty, twoten, ninety, fifty);
     	getContentPane().add(six);
 
     	seven = new JButton();
@@ -118,14 +201,14 @@ public class GUI extends JFrame implements MouseListener {
         seven.setForeground(Color.black);
     	seven.setVisible(true);
     	seven.addMouseListener(this);
-    	seven.setBounds(20, 140, 90, 50);
+    	seven.setBounds(twenty, onefourty, ninety, fifty);
     	getContentPane().add(seven);
 
     	eight = new JButton();
     	eight.setText("8");
         eight.setBackground(Color.white);
         eight.setForeground(Color.black);
-    	eight.setBounds(130, 140, 90, 50);
+    	eight.setBounds(onethirty, onefourty, ninety, fifty);
     	eight.addMouseListener(this);
     	eight.setVisible(true);
     	getContentPane().add(eight);
@@ -135,7 +218,7 @@ public class GUI extends JFrame implements MouseListener {
     	nine.addMouseListener(this);
         nine.setBackground(Color.white);
         nine.setForeground(Color.black);
-    	nine.setBounds(240, 140, 90, 50);
+    	nine.setBounds(twofourty, onefourty, ninety, fifty);
     	nine.setVisible(true);
     	getContentPane().add(nine);
 
@@ -144,7 +227,7 @@ public class GUI extends JFrame implements MouseListener {
         zero.setBackground(Color.white);
     	zero.setVisible(true);
         zero.setForeground(Color.black);
-    	zero.setBounds(130, 350, 90, 50);
+    	zero.setBounds(onethirty, threefifty, ninety, fifty);
     	zero.addMouseListener(this);
     	getContentPane().add(zero);
 
@@ -154,7 +237,7 @@ public class GUI extends JFrame implements MouseListener {
     	multiply.setVisible(true);
         multiply.setForeground(Color.black);
     	multiply.addMouseListener(this);
-    	multiply.setBounds(350, 210, 90, 50);
+    	multiply.setBounds(threefifty, twoten, ninety, fifty);
     	getContentPane().add(multiply);
 
     	divide = new JButton();
@@ -162,7 +245,7 @@ public class GUI extends JFrame implements MouseListener {
         divide.setBackground(Color.white);
         divide.setForeground(Color.black);
     	divide.addMouseListener(this);
-    	divide.setBounds(350, 140, 90, 50);
+    	divide.setBounds(threefifty, onefourty, ninety, fifty);
     	divide.setVisible(true);
     	getContentPane().add(divide);
 
@@ -178,7 +261,7 @@ public class GUI extends JFrame implements MouseListener {
     	clear.addMouseListener(this);
     	clear.setBackground(Color.white);
     	clear.setForeground(Color.black);
-        clear.setBounds(190, fourtwozero, 80, 50);
+        clear.setBounds(oneninety, fourtwozero, eighty, fifty);
     	getContentPane().add(clear);
 
     	open = new JButton();
@@ -187,7 +270,7 @@ public class GUI extends JFrame implements MouseListener {
     	open.addMouseListener(this);
     	open.setBackground(Color.white);
     	open.setForeground(Color.black);
-    	open.setBounds(110, fourtwozero, 70, 50);
+    	open.setBounds(oneten, fourtwozero, seventy, fifty);
     	getContentPane().add(open);
 
     	close = new JButton();
@@ -196,7 +279,7 @@ public class GUI extends JFrame implements MouseListener {
     	close.addMouseListener(this);
     	close.setBackground(Color.white);
     	close.setForeground(Color.black);
-        close.setBounds(280, fourtwozero, 70, 50);
+        close.setBounds(twoeighty, fourtwozero, seventy, fifty);
     	getContentPane().add(close);
 
         	plus = new JButton();
@@ -205,7 +288,7 @@ public class GUI extends JFrame implements MouseListener {
             plus.setForeground(Color.black);
         	plus.addMouseListener(this);
         	plus.setVisible(true);
-        	plus.setBounds(350, 350, 90, 50);
+        	plus.setBounds(threefifty, threefifty, ninety, fifty);
         	getContentPane().add(plus);
 
         	minus = new JButton();
@@ -214,7 +297,7 @@ public class GUI extends JFrame implements MouseListener {
             minus.setBackground(Color.white);
             minus.setForeground(Color.black);
         	minus.setVisible(true);
-        	minus.setBounds(350, 280, 90, 50);
+        	minus.setBounds(threefifty, twoeighty, ninety, fifty);
         	getContentPane().add(minus);
 
         	equal = new JButton();
@@ -223,7 +306,7 @@ public class GUI extends JFrame implements MouseListener {
         	equal.addMouseListener(this);
         	equal.setVisible(true);
             equal.setForeground(Color.black);
-        	equal.setBounds(240, 350, 90, 50);
+        	equal.setBounds(twofourty, threefifty, ninety, fifty);
         	getContentPane().add(equal);
 
         	save = new JButton();
@@ -231,7 +314,7 @@ public class GUI extends JFrame implements MouseListener {
             save.setBackground(Color.white);
         	save.setVisible(true);
             save.setForeground(Color.black);
-        	save.setBounds(20, fourtwozero, 70, 50);
+        	save.setBounds(twenty, fourtwozero, seventy, fifty);
         	save.addMouseListener(this);
         	getContentPane().add(save);
 
@@ -241,7 +324,7 @@ public class GUI extends JFrame implements MouseListener {
         	previous.setBackground(Color.white);
         	previous.setVisible(true);
         	previous.setForeground(Color.black);
-        	previous.setBounds(70, 490, 90, 50);
+        	previous.setBounds(seventy, fourninety, ninety, fifty);
         	previous.addMouseListener(this);
         	getContentPane().add(previous);
 
@@ -249,7 +332,7 @@ public class GUI extends JFrame implements MouseListener {
         	current.setText("Current");
         	current.setBackground(Color.white);
             current.setVisible(true);
-        	current.setBounds(180, 490, 90, 50);
+        	current.setBounds(oneeighty, fourninety, ninety, fifty);
             current.setForeground(Color.black);
             current.addMouseListener(this);
         	getContentPane().add(current);
@@ -259,7 +342,7 @@ public class GUI extends JFrame implements MouseListener {
         	next.setBackground(Color.white);
             next.setVisible(true);
             next.setForeground(Color.black);
-            next.setBounds(290, 490, 90, 50);
+            next.setBounds(twoninety, fourninety, ninety, fifty);
             next.addMouseListener(this);
         	getContentPane().add(next);
 
@@ -269,7 +352,7 @@ public class GUI extends JFrame implements MouseListener {
             load.setBackground(Color.white);
         	load.setVisible(true);
             load.setForeground(Color.black);
-        	load.setBounds(threesevenzero, fourtwozero, 70, 50);
+        	load.setBounds(threesevenzero, fourtwozero, seventy, fifty);
         	load.addMouseListener(this);
         	getContentPane().add(load);
 
@@ -291,7 +374,7 @@ public class GUI extends JFrame implements MouseListener {
     	boolean nextt = false;
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseClicked(final MouseEvent e) {
 			// TODO Auto-generated method stub
 			String text = label.getText();
 

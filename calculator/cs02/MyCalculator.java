@@ -8,7 +8,9 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 import javax.script.ScriptEngine;
-
+/**.
+ * calculator class
+ */
 public class MyCalculator implements Calculator {
 	/**.
 	 * Magic number :3
@@ -18,11 +20,17 @@ public class MyCalculator implements Calculator {
 	 * Magic number :3
 	 */
 	final int four = 4;
-
+	/**.
+	 * engine
+	 */
 	   ScriptEngineManager manager = new ScriptEngineManager();
-
+/**.
+ * engine
+ */
 	    ScriptEngine engine = manager.getEngineByName("JavaScript");
-
+	    /**.
+	     * counter
+	     */
 	    int counter = 0;
 
 	    /**.
