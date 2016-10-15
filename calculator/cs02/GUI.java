@@ -43,83 +43,83 @@ public class GUI extends JFrame implements MouseListener {
     /**.
 	 * Magic number
 	 */
-    final int  twenty = 20;
+    private final int  twenty = 20;
     /**.
 	 * Magic number
 	 */
-    final int thirty = 30;
+    private final int thirty = 30;
     /**.
 	 * Magic number
 	 */
-    final int fourteenhundred = 1400;
+    private final int fourteenhundred = 1400;
     /**.
 	 * Magic number
 	 */
-    final int twohundred = 200;
+    private final int twohundred = 200;
     /**.
 	 * Magic number
 	 */
-    final int foursixty = 460;
+    private final int foursixty = 460;
     /**.
 	 * Magic number
 	 */
-    final int sixhundred = 600;
+    private final int sixhundred = 600;
     /**.
 	 * Magic number
 	 */
-    final int threefifty = 350;
+    private final int threefifty = 350;
     /**.
 	 * Magic number
 	 */
-    final int oneten = 110;
+    private final int oneten = 110;
     /**.
 	 * Magic number
 	 */
-    final int fourninety = 490;
+    private final int fourninety = 490;
     /**.
 	 * Magic number
 	 */
-    final int twoninety = 290;
+    private final int twoninety = 290;
     /**.
 	 * Magic number
 	 */
-    final int ninety = 90;
+    private final int ninety = 90;
     /**.
 	 * Magic number
 	 */
-    final int twoeighty = 280;
+    private final int twoeighty = 280;
     /**.
 	 * Magic number
 	 */
-    final int twofourty = 240;
+    private final int twofourty = 240;
     /**.
 	 * Magic number
 	 */
-    final int twoten = 210;
+    private final int twoten = 210;
     /**.
 	 * Magic number
 	 */
-    final int onethirty = 130;
+    private final int onethirty = 130;
     /**.
 	 * Magic number
 	 */
-    final int oneeighty = 180;
+    private final int oneeighty = 180;
     /**.
 	 * Magic number
 	 */
-    final int oneninety = 190;
+    private final int oneninety = 190;
     /**.
 	 * Magic number
 	 */
-    final int seventy = 70;
+    private final int seventy = 70;
     /**.
 	 * Magic number
 	 */
-    final int eighty = 80;
+    private final int eighty = 80;
     /**.
 	 * Magic number
 	 */
-    final int onefourty = 140;
+    private final int onefourty = 140;
     /**.
      *gui constructor
      */
