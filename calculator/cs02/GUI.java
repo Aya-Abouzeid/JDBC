@@ -369,21 +369,20 @@ public class GUI extends JFrame implements MouseListener {
     	/**.
     	 * empty label boolean
     	 */
-    	boolean noresult = true;
+    	private boolean noresult = true;
     	/**.
     	 *
     	 */
-    	boolean prev = false;
+    	private boolean prev = false;
     	/**.
    	 *
    	 */
-    	boolean nextt = false;
+    	private boolean nextt = false;
 
 		@Override
 		public void mouseClicked(final MouseEvent e) {
 			// TODO Auto-generated method stub
 			String text = label.getText();
-
 			if (e.getSource() == zero) {
 				if (noresult) {
 					text = text + "0";
