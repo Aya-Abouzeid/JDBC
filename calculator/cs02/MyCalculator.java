@@ -40,9 +40,9 @@ public class MyCalculator implements Calculator {
 	    /**.
 	     * used array
 	     */
-	    String a[] = new String[five];
+	    String[] a = new String[five];
 	@Override
-	public void input(String s) {
+	public void input(final String s) {
 		// TODO Auto-generated method stub
 
 
