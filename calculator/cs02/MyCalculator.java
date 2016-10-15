@@ -19,11 +19,11 @@ public class MyCalculator implements Calculator {
 	/**.
 	 * Magic number :3
 	 */
-	final int five = 5;
+	private final int five = 5;
 	/**.
 	 * Magic number :3
 	 */
-	final int four = 4;
+	private final int four = 4;
 	/**.
 	 * engine
 	 */
@@ -35,12 +35,12 @@ public class MyCalculator implements Calculator {
 	    /**.
 	     * counter
 	     */
-	    int counter = 0;
+	   private int counter = 0;
 
 	    /**.
 	     * moves forward and backward along the array
 	     */
-	    int index = 0;
+	  private int index = 0;
 	    /**.
 	     * used array
 	     */
