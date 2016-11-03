@@ -541,6 +541,9 @@ public class GUI extends JFrame implements MouseListener {
 				}
 			}
 			if (e.getSource() == plus) {
+			       System.out.println(e.getSource());
+			   	System.out.println(e.getSource() == plus);
+
 				if (noresult) {
 					text = text + " + ";
 				label.setText(text);
