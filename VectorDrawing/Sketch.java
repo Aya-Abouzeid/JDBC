@@ -33,16 +33,45 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  
 import java.awt.color.*;
 public class Sketch extends JComponent {
-	   int counter;
+	/**
+	   *
+	   */
+	   protected int counter;
+	   /**
+	   *
+	   */
        private boolean mouseClicked = false;
+       /**
+	   *
+	   */
           private Image image;
-          public Graphics2D graphic;
-          int firstPointX, firstPointY, secondPointX, secondPointY, PageIndex = -1, topLeftX,
+          /**
+   	   *
+   	   */
+          protected Graphics2D graphic;
+          /**
+   	   *
+   	   */
+          int firstPointX, firstPointY, secondPointX,
+          secondPointY, PageIndex = -1, topLeftX,
                   topLeftY, selectX, selectY;
-          private int FirstX, FirstY, SecondX, SecondY, ThirdX, ThirdY;
+          /**
+   	   *
+   	   */
+          private int FirstX, FirstY, SecondX,
+          SecondY, ThirdX, ThirdY;
+          /**
+   	   *
+   	   */
           ArrayList<Shape> ShapeAdded = new ArrayList<Shape>();
+          /**
+   	   *
+   	   */
           ArrayList<ArrayList> pageLookLike = new ArrayList<ArrayList>();
-     boolean lineClicked = false, freeClicked = true, squareClicked = false,
+          /**
+   	   *
+   	   */
+    protected  boolean lineClicked = false, freeClicked = true, squareClicked = false,
     rectangleClicked = false, triangleClicked = false, circleClicked = false,
           resizeClicked = false, deleteClicked = false,
           moveClicked = false, fillClicked = false, shapeSelected = false,
@@ -52,8 +81,17 @@ public class Sketch extends JComponent {
               secondPoint = false, threePoint = false, clearSelected = false,
               selectClicked = false, inShape = false, undoClicked = false,
               redoClicked;
+    /**
+	   *
+	   */
      LoaderOfClasses clas = new LoaderOfClasses();
+     /**
+	   *
+	   */
         final static float dash1[] = {10.0f};
+        /**
+ 	   *
+ 	   */
         final static BasicStroke dashed =
                 new BasicStroke(2f,
                                 BasicStroke.CAP_BUTT,
