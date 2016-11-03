@@ -29,31 +29,98 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 	   *
 	   */
 	 private static final long serialVersionUID = 1L;
+	 /**
+	   *
+	   */
 	 JButton clearBtn,lineBtn, save, load;
+	 /**
+	   *
+	   */
 	static JButton square;
+	/**
+	   *
+	   */
 	JButton undo;
+	/**
+	   *
+	   */
 	JButton redo;
+	/**
+	   *
+	   */
 	JButton select;
+	/**
+	   *
+	   */
 	JButton move;
+	/**
+	   *
+	   */
 	JButton resize;
+	/**
+	   *
+	   */
 	JButton fill;
+	/**
+	   *
+	   */
 	JButton delete;
+	/**
+	   *
+	   */
 	JButton rectangle;
+	/**
+	   *
+	   */
 	JButton triangle;
+	/**
+	   *
+	   */
 	JButton ellipse;
+	/**
+	   *
+	   */
 	JButton circle;
+	/**
+	   *
+	   */
 	JButton colors;
+	/**
+	   *
+	   */
 	 JFrame paint = new JFrame("Paint");
+	 /**
+	   *
+	   */
 	 JPanel controls = new JPanel();
+	 /**
+	   *
+	   */
 	 JPanel controls2 = new JPanel();
+	 /**
+	   *
+	   */
 	 JFileChooser fileChooser = new JFileChooser();
 
-	 
+	 /**
+	   *
+	   */
 	 private int OldX, OldY, CurrentX, CurrentY;
-
+	 /**
+	   *
+	   */
 	 MouseEvent mouse;
+	 /**
+	   *
+	   */
 	 Sketch sketch = new Sketch();
+	 /**
+	   *
+	   */
 	 Container content = paint.getContentPane();
+	 /**
+	   *
+	   */
 	 ActionListener action = new ActionListener() {
 
 	   public void actionPerformed(ActionEvent e) {
@@ -66,34 +133,33 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		         sketch.clearSelected = true;
 		         sketch.setshapeSelected(false);
 		       } else if (e.getSource() == colors) {
-		           
+
 		           sketch.booleanSetter2(false, false, false, false);
 		           sketch.changecolor();
 		      	 sketch.emptySelected();
 		           sketch.setshapeSelected(false);
-		 
-		 
+
 		       } else if (e.getSource() == select) {
 		           sketch.setshapeSelected(false);
 		           sketch.booleanSetter2(false, false, false, false);
 		           sketch.emptySelected();
-		  sketch.booleanSetter(false, false, false, false, false, false, false, false, false);
+		  sketch.booleanSetter(false, false, false,
+				  false, false, false, false, false, false);
 		  sketch.setCounter(0);
 		 sketch.setselectSelected(true);
 		     }
 		       else if (e.getSource() == resize) {
-		             sketch.booleanSetter(false, false, false, false, false, false, false, false, false);
-		 
+   sketch.booleanSetter(false, false, false, false,
+		   false, false, false, false, false);
+
 		           sketch.booleanSetter2(false, false, false, true);
-		 
-		              }
-		       
-		       else if (e.getSource() == move) {
-		   
+
+		              } else if (e.getSource() == move) {
+
 		           sketch.booleanSetter2(true, false, false, false);
-		         sketch.booleanSetter(false, false, false, false, false, false, false, false, false);
-		 
-		           
+		         sketch.booleanSetter(false, false,
+		        false, false, false, false, false, false, false);
+
 		           sketch.setMove(true);
 		   } else if (e.getSource() == lineBtn) {
 		    		 sketch.emptySelected();
@@ -102,8 +168,9 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		           sketch.booleanSetter2(false, false, false, false);
 		  	  	 sketch.setselectSelected(false);
 
-		           sketch.booleanSetter(false, true, false, false, false, false, false, false, false);
-		 
+		           sketch.booleanSetter(false, true, false,
+		   false, false, false, false, false, false);
+
 		       } else if (e.getSource() == triangle) {
 		    		 sketch.emptySelected();
 
@@ -111,8 +178,9 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		           sketch.booleanSetter2(false, false, false, false);
 		  	  	 sketch.setselectSelected(false);
 
-		           sketch.booleanSetter(false, false, true, false, false, false, false,false, false);
-		 
+		           sketch.booleanSetter(false, false, true,
+		   false, false, false, false, false, false);
+
 		    } else if (e.getSource() == square) {
 		   	 sketch.emptySelected();
 
@@ -120,9 +188,9 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		        sketch.booleanSetter2(false, false, false, false);
 			  	 sketch.setselectSelected(false);
 
-		        sketch.booleanSetter(false, false, false, true, false, false, false, false, false);
-		 
-		 
+		        sketch.booleanSetter(false, false, false,
+		   	true, false, false, false, false, false);
+
 		    } else if (e.getSource() == rectangle) {
 		   	 sketch.emptySelected();
 
@@ -130,18 +198,20 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		        sketch.booleanSetter2(false, false, false, false);
 			  	 sketch.setselectSelected(false);
 
-		        sketch.booleanSetter(false, false, false, false, true, false, false,false, false);
-		 
+		        sketch.booleanSetter(false, false, false,
+		        		false, true, false, false, false, false);
+
 		     } else if (e.getSource() == circle) {
 		    	 sketch.emptySelected();
 
 		         sketch.setshapeSelected(false);
 		         sketch.booleanSetter2(false, false, false, false);
-		 
+
 			  	 sketch.setselectSelected(false);
 
-		         sketch.booleanSetter(false, false, false, false, false, true, false, false, false);
-		 
+		         sketch.booleanSetter(false, false, false,
+		    false, false, true, false, false, false);
+
 		     } else if (e.getSource() == ellipse) {
 		    	 sketch.emptySelected();
 
@@ -149,75 +219,79 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		         sketch.booleanSetter2(false, false, false, false);
 			  	 sketch.setselectSelected(false);
 
-		         sketch.booleanSetter(false, false, false, false, false, false, true, false, false);
-		 
+		         sketch.booleanSetter(false, false, false,
+			 false, false, false, true, false, false);
+
 		          }
 		     else if (e.getSource() == delete) {
-		         sketch.booleanSetter(false, false, false, false, false, false, false, false, false);
-		 
+		         sketch.booleanSetter(false, false, false, false,
+		        		 false, false, false, false, false);
+
 		         sketch.booleanSetter2(false, false, true, false);
-		 
-		 
+
 		sketch.deleteSelected();
 		          }else if (e.getSource() == fill) {
-		             sketch.booleanSetter(false, false, false, false, false, false, false,false, false);
-		 
+sketch.booleanSetter(false, false, false, false,
+		false, false, false,false, false);
+
 		              sketch.booleanSetter2(false, true, false, false);
-		 
+
 		sketch.fillColor();
 		              } else if (e.getSource() == undo) {
 		            		 sketch.emptySelected();
 
 		                     sketch.setshapeSelected(false);
-		 
-		                       sketch.booleanSetter2(false, false, false, false);
-		 
-		 
-		                     sketch.booleanSetter(false, false, false, false, false, false, false, true, false);
+
+     sketch.booleanSetter2(false, false, false, false);
+
+	  sketch.booleanSetter(false, false, false,
+			  false, false, false, false, true, false);
 		            	  	 sketch.setselectSelected(false);
 
-		 
+
 		              sketch.undo();
-		 
+
 		         } else if (e.getSource() == redo) {
 		        	 sketch.emptySelected();
 
 		             sketch.setshapeSelected(false);
-		 
+
 		             sketch.booleanSetter2(false, false, false, false);
-		 
+
 		    	  	 sketch.setselectSelected(false);
 
-		             sketch.booleanSetter(false, false, false, false, false, false, false, false, true);
-		 
+		             sketch.booleanSetter(false, false, false,
+		     false, false, false, false, false, true);
+
 		             sketch.redo();
 		             }
 		         else if (e.getSource() == save) {
-		             FileNameExtensionFilter filter = new FileNameExtensionFilter(".json & .xml files", "json", "xml");
+		 FileNameExtensionFilter filter =
+	 new FileNameExtensionFilter(".json & .xml files", "json", "xml");
 		             fileChooser.setFileFilter(filter);
 
-		             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+ if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 
 		                 File file = fileChooser.getSelectedFile();
 		                 String name = file.getPath();
 		                 int index = name.indexOf('.');
 		                 try {
 		                     if (index == -1) {
-		                    	 JOptionPane.showMessageDialog(null , "Error",
+ 	 JOptionPane.showMessageDialog(null , "Error",
 		                                 "Wrong Format",
-		                                 JOptionPane.ERROR_MESSAGE);	 
-		                     
-		                     } else if (name.substring(index + 1).equals("xml")) {
-		                         sketch.saveXml(sketch.ShapeAdded, file.getPath());
-		                     } else if (name.substring(index + 1).equals("json")) {
-		                         sketch.saveJson(sketch.ShapeAdded, file.getPath());
+		              JOptionPane.ERROR_MESSAGE);
+
+	 } else if (name.substring(index + 1).equals("xml")) {
+	       sketch.saveXml(sketch.ShapeAdded, file.getPath());
+		     } else if (name.substring(index + 1).equals("json")) {
+		      sketch.saveJson(sketch.ShapeAdded, file.getPath());
 		                     } else {
-		                         JOptionPane.showMessageDialog(null , "Error",
+	     JOptionPane.showMessageDialog(null , "Error",
 		                                 "Wrong Format",
 		                                 JOptionPane.ERROR_MESSAGE);
 		                     }
 		                 } catch (Exception e1) {
-		                     JOptionPane.showMessageDialog(null , "Error",
+		        JOptionPane.showMessageDialog(null , "Error",
 		                             "File Error, please recheck.",
 		                             JOptionPane.ERROR_MESSAGE);
 		                 }
@@ -227,33 +301,35 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 		         }
 
 		         else if (e.getSource() == load) {
-		             FileNameExtensionFilter filter = new FileNameExtensionFilter(".json & .xml & .jar files", "json", "xml" , "jar");
+		             FileNameExtensionFilter filter =
+ new FileNameExtensionFilter(".json & .xml & .jar files",
+		 "json", "xml", "jar");
 		             fileChooser.setFileFilter(filter);
 
-		             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+ if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 
 		                 File file = fileChooser.getSelectedFile();
 		                 if (file.getName().lastIndexOf(".") == -1){
-		                     JOptionPane.showMessageDialog(null , "Error",
+		    JOptionPane.showMessageDialog(null , "Error",
 		                             "Wrong Format",
 		                             JOptionPane.ERROR_MESSAGE);
-		                	 
+
 		                 }
 		                 else{
-		                 String extension = file.getName().substring(file.getName().lastIndexOf("."),
-		                         file.getName().length() );
+	  String extension =
+		 file.getName().substring(file.getName().lastIndexOf("."),
+		                         file.getName().length());
 		                 System.out.println(extension);
 		                 try {
 		                     if (extension.equals(".xml")) {
 		                         sketch.load(0, file.getPath());
-		                     } else if(extension.equals(".json")){
+		                     } else if (extension.equals(".json")){
 		                         sketch.load(1, file.getPath());
-		                     }
-		                     else if(extension.equals(".jar")){
+		                     } else if (extension.equals(".jar")){
 		                         LoaderOfClasses.load(file.getPath());
 		                     }
 		                     else{
-		                         JOptionPane.showMessageDialog(null , "Error",
+		          JOptionPane.showMessageDialog(null, "Error",
 		                                 "Wrong Format",
 		                                 JOptionPane.ERROR_MESSAGE);
 		                     }
@@ -269,75 +345,83 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 	   }
 	 };
 
-	 
+	 /**.
+	   *main
+	   */
 	 public static void main(String[] args) {
 
 	  new GUI().show();
 
 	 }
+	 /**
+	   *
+	   */
 	private void makeBtn(JButton btn){
-		
+
 		btn.setVisible(true);
 		btn.addActionListener(action);
 		   btn.setBackground(Color.white);
 		   btn.setForeground(Color.black);
 		   getContentPane().add(btn);
 		   if (btn == undo || btn == redo || btn == select
-				   || btn == delete || btn == resize || btn == move
-				   || btn == fill)
+		 || btn == delete || btn == resize || btn == move
+				   || btn == fill) {
 			   controls2.add(btn);
-		   else
+		   }
+		   else {
 		   controls.add(btn);
+		   }
 
-
-	}
+	}/**
+	   *
+	   */
 	 public void show() {
 	   paint.setLayout(new BorderLayout());
 	   content.add(sketch, BorderLayout.SOUTH);
 	   content.setLayout(new BorderLayout());
 	   content.add(sketch, BorderLayout.CENTER);
+
 	   JButton BlackBtn = new JButton();
 	   BlackBtn.setBackground(Color.black);
 	   BlackBtn.addActionListener(action);
 
-	clearBtn = new JButton(new ImageIcon(getClass().getResource("CLEAR.png")));
+clearBtn = new JButton(new ImageIcon(getClass().getResource("CLEAR.png")));
 		   makeBtn(clearBtn);
-		 save = new JButton(new ImageIcon(getClass().getResource("save.png")));
+ save = new JButton(new ImageIcon(getClass().getResource("save.png")));
 		   makeBtn(save);
-		load = new JButton(new ImageIcon(getClass().getResource("load.png")));
+load = new JButton(new ImageIcon(getClass().getResource("load.png")));
 		   makeBtn(load);
-	square = new JButton(new ImageIcon(getClass().getResource("square2.png")));
+square = new JButton(new ImageIcon(getClass().getResource("square2.png")));
 		   makeBtn(square);
 		   square.setVisible(false);
-	rectangle = new JButton(new ImageIcon(getClass().getResource("rectangle.png")));
+rectangle = new JButton(new ImageIcon(getClass().getResource("rectangle.png")));
 		   makeBtn(rectangle);
-	ellipse = new JButton(new ImageIcon(getClass().getResource("ellipse.png")));
+ellipse = new JButton(new ImageIcon(getClass().getResource("ellipse.png")));
 		   makeBtn(ellipse);
-	triangle = new JButton(new ImageIcon(getClass().getResource("triangle.png")));
+triangle = new JButton(new ImageIcon(getClass().getResource("triangle.png")));
 		   makeBtn(triangle);
-	 lineBtn = new JButton(new ImageIcon(getClass().getResource("line.png")));
+lineBtn = new JButton(new ImageIcon(getClass().getResource("line.png")));
 		   makeBtn(lineBtn);
-	 circle = new JButton(new ImageIcon(getClass().getResource("circle.png")));
+ circle = new JButton(new ImageIcon(getClass().getResource("circle.png")));
 		   makeBtn(circle);
-	colors = new JButton(new ImageIcon(getClass().getResource("colors.png")));
+colors = new JButton(new ImageIcon(getClass().getResource("colors.png")));
 		   makeBtn(colors);
-		undo = new JButton(new ImageIcon(getClass().getResource("undo.png")));
+undo = new JButton(new ImageIcon(getClass().getResource("undo.png")));
 		   makeBtn(undo);
-		   
-		   delete = new JButton(new ImageIcon(getClass().getResource("delete.png")));
+
+delete = new JButton(new ImageIcon(getClass().getResource("delete.png")));
 		   makeBtn(delete);
-		   resize = new JButton(new ImageIcon(getClass().getResource("resize.png")));
+  resize = new JButton(new ImageIcon(getClass().getResource("resize.png")));
 		   makeBtn(resize);
-		   select = new JButton(new ImageIcon(getClass().getResource("select.png")));
+ select = new JButton(new ImageIcon(getClass().getResource("select.png")));
 		   makeBtn(select);
-		   move = new JButton(new ImageIcon(getClass().getResource("move.png")));
+  move = new JButton(new ImageIcon(getClass().getResource("move.png")));
 		   makeBtn(move);
-		   fill = new JButton(new ImageIcon(getClass().getResource("fill.png")));
+   fill = new JButton(new ImageIcon(getClass().getResource("fill.png")));
 		   makeBtn(fill);
-		   redo = new JButton(new ImageIcon(getClass().getResource("redo.png")));
+ redo = new JButton(new ImageIcon(getClass().getResource("redo.png")));
 		   makeBtn(redo);
-	 
-		  
+
 
 
 
@@ -350,44 +434,46 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 	   paint.setSize(1300, 900);
 	   paint.setVisible(true);
 	 }
-
+	 /**
+	   *
+	   */
 	 public static void clasLoaded (boolean classLoaded){
 		 square.setVisible(true);
 	 }
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mouseMoved(MouseEvent e) {
+	public void mouseMoved(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	}
