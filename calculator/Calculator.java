@@ -1,7 +1,5 @@
 package eg.edu.alexu.csd.oop.calculator;
-/**.
- * interface
- */
+
 public interface Calculator {
 
 	/**.

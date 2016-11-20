@@ -590,21 +590,20 @@ public void addNewShape(Shape shape){
                         }
                         undoAlreadyClicked = false;
                     }
- 
+
                     JColorChooser colors = new JColorChooser();
            filled = colors.showDialog(null, "SELECT A COLOR", Color.red);
            if(filled == null){
                filled = new Color(255,255,255,0);
- 
+
            }
- 
+
            fillClicked = false;
            selectClicked = false;
            for(int i = 0 ; i <counter ; i++){
- 
-               variableForIndex =i;
- 
- 
+
+               variableForIndex = i;
+
              Shape selected=  selectedShapes.get(i).newShape(selectedShapes.get(i).firstPointX, selectedShapes.get(i).firstPointY, selectedShapes.get(i).secondPointX,
                         selectedShapes.get(i).secondPointY,selectedShapes.get(i).thirdPointX,selectedShapes.get(i).thirdPointY, selectedShapes.get(i).c, filled, selectedShapes.get(i).stroke);
              selected.fill(graphic);
@@ -612,8 +611,7 @@ public void addNewShape(Shape shape){
              addNewShape(selected);
 }
            }
-           
-           
+
                pageLookLike.add(new ArrayList<Shape>(ShapeAdded));
                  PageIndex++;
  
@@ -756,9 +754,7 @@ public void addNewShape(Shape shape){
               writer.print(xmlData);
               writer.close();
           }
-         
-         
-         
+
          
           public  ArrayList loadXml(  String filepath) throws Exception {
              

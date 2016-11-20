@@ -36,7 +36,7 @@ public class GUI extends JFrame implements MouseListener, MouseMotionListener {
 	 /**
 	   *
 	   */
-	static JButton square;
+	 JButton square;
 	/**
 	   *
 	   */
@@ -437,7 +437,7 @@ delete = new JButton(new ImageIcon(getClass().getResource("delete.png")));
 	 /**
 	   *
 	   */
-	 public static void clasLoaded (boolean classLoaded){
+	 public void clasLoaded (boolean classLoaded){
 		 square.setVisible(true);
 	 }
 	@Override
