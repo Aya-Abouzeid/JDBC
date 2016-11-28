@@ -21,9 +21,13 @@ public class Parser {
         if (!command.equals("")) {
             Sql = command.toLowerCase();
             Sql = TrimCommand(Sql);
+
             Sql = Trim_end(Sql);
-            Sql = RemoveSC(command);
+
+            Sql = RemoveSC(Sql);
+
             Sql = Trim_end(Sql);
+
             FirstWord = GetFirstWord(Sql);
                   ChooseQuery(FirstWord);
         } else
@@ -45,8 +49,8 @@ public class Parser {
         }
         int i = 0;
         String Editedsql = command;
-        while (i != command.length() && command.charAt(i) == ' ') {
- 
+        while (i != command.length() && Character.isWhitespace(command.charAt(i))) {
+
             if (i + 1 != command.length()) {
                 i++;
                 Editedsql = command.substring(i);
@@ -54,6 +58,7 @@ public class Parser {
             } else
                 break;
         }
+
         return (Editedsql);
  
     }
@@ -68,7 +73,7 @@ public class Parser {
  
         int i = command.length() - 1;
         String Editedsql = command;
-        while (i != -1 && command.charAt(i) == ' ') {
+        while (i != -1 && Character.isWhitespace(command.charAt(i))) {
  
             Editedsql = command.substring(0, i);
  
@@ -84,7 +89,7 @@ public class Parser {
         }
         String GetFirstWord = new String();
         int i = 0;
-        while (i != sql.length() && sql.charAt(i) != ' ' && sql.charAt(i) != '*') {
+        while (i != sql.length() && !Character.isWhitespace(sql.charAt(i)) && sql.charAt(i) != '*') {
             GetFirstWord = GetFirstWord + sql.charAt(i);
             i++;
         }
