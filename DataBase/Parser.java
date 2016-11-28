@@ -25,7 +25,7 @@ public class Parser {
             Sql = RemoveSC(command);
             Sql = Trim_end(Sql);
             FirstWord = GetFirstWord(Sql);
-            ChooseQuery(FirstWord);
+                  ChooseQuery(FirstWord);
         } else
             System.out.println("Enter SQL Statement");
     }
@@ -124,13 +124,29 @@ public class Parser {
         case "select":
             SelectObject.Select(DBfound, CurrentlyUsedDB, GetRest);
             break;
+        case "ls":
+            List();
+            break;
         default:
             System.out.println("Invalid Command.");
         }
     }
  
     
-    
+    private void List(){
+    	String Name = GetRest;
+    	 
+       if(GetRest.equals("tables")){
+        	 if(DBfound)
+        	Query.ListTables(CurrentlyUsedDB);
+        	 else
+        	     System.out.println("Select Valid DataBase.");
+
+        }
+        else {
+            System.out.println("Invalid Command.");
+        }
+    }
     private void Use() {
         String Name = GetRest;
  

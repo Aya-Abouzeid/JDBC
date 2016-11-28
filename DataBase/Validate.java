@@ -2,11 +2,12 @@ package eg.edu.alexu.csd.oop.DataBase;
 
 import java.util.ArrayList;
 
-public class Validate {
+public class Validate  {
 	Queries Query = new Queries();
 	protected String FirstWord;
 	protected String GetRest = new String();
 	protected boolean decide = false;
+	protected boolean differ=false;
 	protected boolean d = false;
 	protected int space = 0;
 	protected boolean del = false;
@@ -249,7 +250,7 @@ public class Validate {
 		return true;
 	}
 
-	   protected void reform2(String[][] updated_fields2) {
+	 protected boolean reform2(String[][] updated_fields2) {
 	        int i = 0;
 	        int j=0;
 	        while (i < updated_fields2.length) {
@@ -267,21 +268,22 @@ public class Validate {
 	               
 	                if(!check_quotes(updateStatment[j + 2])){
 	                	 System.out.println("Invalid Command.");
-	                     break;
+	                     return false;
 	                }
 	                if (!space(updated_fields2[i][0]) || !CheckName(updated_fields2[i][0])|| !check_validname(updated_fields2[i][0])) {
 	                    System.out.println("Invalid Command.");
-	                    break;
+	                    return false;
 	                } 
 	                updateStatment[j + 2]=remove_quotes(updateStatment[j + 2]);
 	                if( updateStatment[i + 2].contains("\'")){
 	                	 System.out.println("Invalid Command.");
-	                     break;
+	                	 return false;
 	                }
 	            }
 	            i++;
 	            j=j+3;
 	            }
+	        return true;
 	        }
 	 
 	protected void check_select() {
@@ -313,6 +315,10 @@ public class Validate {
 
 	protected boolean check_where_state(String g) {
 		String g1 = g;
+		if(differ==true){
+		String g2=g;
+		g=g2.substring(0, g2.indexOf("where"))+" "+g2.substring( g2.indexOf("where"));
+		}
 		String before = GetFirstWord(g);
 		before_where = new String();
 		if (before == null) {
@@ -332,7 +338,6 @@ public class Validate {
 		before_where = Trim_end(before_where);
 		return (check_equation(GetRest));
 	}
-
 	protected boolean check_equation(String getRest2) {
 		condition = new String[3];
 		if (getRest2 == null) {

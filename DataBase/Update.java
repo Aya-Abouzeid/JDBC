@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Update extends Validate {
 	protected void Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence) {
+		differ=true;
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
 		 CurrentlyUsedDB = CurrentUsedDB;
@@ -18,7 +19,7 @@ public class Update extends Validate {
                         System.out.println("Invalid Command.");
                     } else {Rest = GetRest;
                         if (Rest!=null&&Rest.contains("where") && !check_where_state(Rest)) {
-                            System.out.println("Invalid Command.");
+                            System.out.println("1Invalid Command.");
                         } else if (Rest!=null&&!Rest.contains("where")) {
                         	update_withoutwhere(Rest,tablename);                        	                     
                         } else {
@@ -56,8 +57,9 @@ public class Update extends Validate {
 	     for (int i = 0; i < updated_fields2.length; i++) {
 	         updated_fields2[i][0] = updated_fields1.get(i);
 	     }
-	     reform2(updated_fields2);
-	     Query.updateWhitoutWhere(CurrentlyUsedDB, tablename, updateStatment);	 
+	    if( reform2(updated_fields2)){
+	     Query.updateWhitoutWhere(CurrentlyUsedDB, tablename, updateStatment);
+	     }	 
 	 }
 	 private void update_withwhere(String tablename){
 		 before_where = TrimCommand(before_where);
@@ -78,9 +80,10 @@ public class Update extends Validate {
 	     for (int i = 0; i < updated_fields2.length; i++) {
 	         updated_fields2[i][0] = updated_fields1.get(i);
 	     }
-	     reform2(updated_fields2);
-	     // Query.updateWhitWhere(CurrentlyUsedDB,
-	     // tablename, updateStatment,condition);
+	    if( reform2(updated_fields2)){
+	     
+	     Query.update(CurrentlyUsedDB, tablename, condition, updateStatment);
+	     }
 	 }
 	    
 }

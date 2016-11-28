@@ -5,6 +5,7 @@ public class Delete extends Validate{
 	 protected void Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ) {
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
+		 differ=false;
 		 CurrentlyUsedDB = CurrentUsedDB;
 	    	if(DBfound){
 	        del = true;
@@ -28,14 +29,13 @@ public class Delete extends Validate{
 	                    System.out.println("Invalid Command.");
 	                }
 	                else {
-	                	if(withwhere){
-//	                      Query.deleteTable(CurrentlyUsedDB, current_table1,condition);
-	                		Query.deleteSubTable(CurrentUsedDB, current_table1, condition);
+	                	if(withwhere){	                		Query.deleteSubTable(CurrentUsedDB, current_table1, condition);
+	            			System.out.println("Done.");
 
 	                	}
 	                	else{
-	                		Query.deleterow(CurrentUsedDB, current_table1);
-//	                   Query.deleteTable(CurrentlyUsedDB, current_table1);
+	                		Query.deleteTable(CurrentUsedDB, current_table1);
+	            			System.out.println("Table is Deleted");
 	                		}
 	                }
 	            }

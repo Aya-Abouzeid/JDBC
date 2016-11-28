@@ -26,6 +26,7 @@ public class Drop extends Validate {
 	            }
 	            else
 	            { DBfound2 = false;
+	            System.out.println("gadgas");
 	            	Query.dropDatabase(Rest);
 	            }
 	        } else {
@@ -43,7 +44,10 @@ public class Drop extends Validate {
 	            else if (!Query.DetectTable(CurrentlyUsedDB, Rest)) {
 	                System.out.println("Invalid Command. Table was not found.");
 	            } else
+	            {
 	                Query.dropTable(CurrentlyUsedDB, Rest);
+	    			System.out.println("Table is Dropped");
+	            }
 	        } else {
 	            System.out.println("Invalid Command.");
 	        }

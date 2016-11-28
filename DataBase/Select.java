@@ -12,7 +12,7 @@ public class Select extends Validate {
 	int MaxValueLength = -1;
 
 	protected void Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence) {
-
+        differ=false;
 		DBfound = IsDBFound;
 		GetRest = GetRestSentence;
 		CurrentlyUsedDB = CurrentUsedDB;
@@ -46,21 +46,26 @@ public class Select extends Validate {
 			System.out.println("Invalid Command.");
 		} else {
 			if (withwhere) {
-				String[] x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
+				String[][] x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
 				if(x != null){
-				EditArray(x);
-//				 Print(x);
-//				FillTable(x);
-//				tryy(x);
-				FillTableAllWithCondition(x);
+					Print2D(x);
+
+				}
+				else{
+					System.out.println("Invalid Condition.");
+
 				}
 
 			} else {
-				String[] x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
-				if(x !=null){
-				EditArray(x);
-				FillTable(x);
-				}
+				String[][] x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
+				if(x !=null)
+					Print2D(x);
+					
+					else
+						System.out.println("Invalid Condition.");
+
+
+				
 			}
 		}
 
@@ -125,36 +130,24 @@ rows.add(Sublist);
 				if (withwhere) {
 					String[][] x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,
 							condition);
+					if(x != null){
 					Print2D(x);
+					}
+					else
+						System.out.println("Invalid Condition.");
+
 
 				} else {
 					String[][] x = Query.selectColumns(CurrentlyUsedDB, current_table1, selected_fields);
-				Print2D(x);
+				if(x != null)
+					Print2D(x);
+				else
+					System.out.println("Invalid Condition.");
+
 				}
 			}}}
 
-	private String RemoveNewLines(String x) {
-		String y = new String();
-		for (int i = 0; i < x.length(); i++) {
-			if (x.charAt(i) != '\n') {
-				y = y + x.charAt(i);
-			}
-		}
-		return y;
-	}
-	private void EditArray(String[] x) {
-		table = new ArrayList<>();
-		for (int i = 0; i < x.length; i++) {
-			x[i] = TrimCommand(x[i]);
-			x[i] = Trim_end(x[i]);
-			x[i] = RemoveNewLines(x[i]);
-			String[] y = x[i].split("   ");
-
-			table.add(y);
-
-		}
-
-	}
+	
 
 		private void Print2D(String[][] x){
 			List<String> headersList = Arrays.asList();
@@ -186,38 +179,6 @@ rows.add(Sublist);
 						 System.out.println("No Results found");
 			
 		}
-	private void FillTable(String[] x) {
-		List<String> headersList = Arrays.asList();
-		List<String> header = new ArrayList<>();
-		List<List<String>> rows = new ArrayList<>();
-		List<List<String>> rowsList = Arrays.asList();
-		for (int i = 0; i < table.size(); i++) {
-			List<String> Sublist = new ArrayList<>();
-			for (int j = 0; j < table.get(i).length; j = j + 1) {
-				if (i == 0 && !(table.get(i)[j].contains("\n"))) {
-					header.add(table.get(i)[j]);
-				} else if (i != 0 && !(table.get(i)[j].contains("\n"))) {
-					Sublist.add(table.get(i)[j]);
-				}
-				if (i != 0 && j == 1) {
-					Sublist.remove(0);
-				}
-			}
-			rows.add(Sublist);
-		}
-		rowsList = rows;
-
-		if(rowsList.size() >=1 ){
-		headersList = header;
-		headersList.remove(0);
-		rowsList.remove(0);
-		Board board = new Board(75);
-		String tableString = board.setInitialBlock(new Table(board, 75, headersList, rowsList).tableToBlocks()).build()
-				.getPreview();
-		System.out.println(tableString);
-		}
-		else
-			 System.out.println("No Results found");
-	}
+	
 
 }

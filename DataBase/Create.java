@@ -66,7 +66,8 @@ public class Create extends Validate {
 	 
 	                        if (reform(fields2)) {
 	                            Query.creatTable(CurrentlyUsedDB, TableName, fields3);
-	 
+	                			System.out.println("Table is Created");
+
 	                        }
 	 
 	                    } else {

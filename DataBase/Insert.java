@@ -31,7 +31,12 @@ public class Insert extends Validate{
 	        FinalColumns[i] = Columns.get(i);
 	        FinalValues[i] = Values.get(i);
 	    }
+	    if(Query.DetectTable(CurrentlyUsedDB, TableName)){
 	    Query.insertSub(CurrentlyUsedDB, TableName, FinalColumns, FinalValues);
+	    System.out.println("Inserted.");
+	    } else
+    	    System.out.println("Invalid Table Name.");
+
 	}
 	    private void InsertWithColumns() {
 	        String TableName = getf_rest(GetRest);
@@ -67,7 +72,15 @@ public class Insert extends Validate{
 	                for (int i = 0; i < Values.size(); i++) {
 	                    FinalValues[i] = Values.get(i);
 	                }
+	                if(Query.DetectTable(CurrentlyUsedDB, TableName)){
 	                Query.insertRow(CurrentlyUsedDB, TableName, FinalValues);
+	        	    System.out.println("Inserted.");
+	                }
+	                else{
+		        	    System.out.println("Invalid Table Name.");
+
+	                }
+
 	            } else
 	                System.out.println("Invalid Command");
 	        } else
