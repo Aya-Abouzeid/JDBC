@@ -14,7 +14,6 @@ public class Main {
 		 Parser p = new Parser();
 		 Scanner scan = new Scanner(System.in);
 		Runtime rt = Runtime.getRuntime();
-		
 //			Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.home") + File.separator +"RUN2.bat");
 
 		while (true) {
