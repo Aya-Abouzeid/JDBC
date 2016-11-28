@@ -55,8 +55,7 @@ public class Insert extends Validate{
 	                    CallInsertMethod(TableName);
 	                } else
 	                    System.out.println("Invalid Command");
-	            } else {
-	                System.out.println("Invalid Command.");
+	            } else {	                System.out.println("Invalid Command.");
 	            }} }
 	 
 	    private void InsertWithoutColumns() {
@@ -74,17 +73,11 @@ public class Insert extends Validate{
 	                }
 	                if(Query.DetectTable(CurrentlyUsedDB, TableName)){
 	                Query.insertRow(CurrentlyUsedDB, TableName, FinalValues);
-	        	    System.out.println("Inserted.");
-	                }
+	        	    System.out.println("Inserted."); }
 	                else{
-		        	    System.out.println("Invalid Table Name.");
-
-	                }
-
+		        	    System.out.println("Invalid Table Name.");	                }
 	            } else
-	                System.out.println("Invalid Command");
-	        } else
-	            System.out.println("Invalid Command");
-	    }
+	                System.out.println("Invalid Command"); } else
+	            System.out.println("Invalid Command");    }
 	 
 }

@@ -41,35 +41,22 @@ public class Select extends Validate {
 		if (Rest.contains("where")) {
 			withwhere = true;
 			s2 = check_where_state(Rest);
-		}
-		if (s1 == false || s2 == false) {
+		}if (s1 == false || s2 == false) {
 			System.out.println("Invalid Command.");
 		} else {
 			if (withwhere) {
 				String[][] x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
 				if(x != null){
-					Print2D(x);
-
-				}
+					Print2D(x);	}
 				else{
 					System.out.println("Invalid Condition.");
-
-				}
-
-			} else {
+				}	} else {
 				String[][] x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
 				if(x !=null)
-					Print2D(x);
-					
+					Print2D(x);		
 					else
-						System.out.println("Invalid Condition.");
-
-
-				
-			}
-		}
-
-	}
+						System.out.println("Invalid Condition.");	}
+		}	}
 
 	private void FillTableAllWithCondition(String[] x) {
 		List<String> headersList = Arrays.asList();

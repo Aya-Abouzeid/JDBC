@@ -92,11 +92,9 @@ public class Validate  {
 			GetFirstWord = GetFirstWord + sql.charAt(i);
 			i++;
 		}
-
 		if (i == sql.length()) {
 			GetRest = null;
 		} else {
-
 			GetRest = TrimCommand(sql.substring(i));
 			GetRest = Trim_end(GetRest);
 		}
@@ -251,40 +249,29 @@ public class Validate  {
 	}
 
 	 protected boolean reform2(String[][] updated_fields2) {
-	        int i = 0;
-	        int j=0;
-	        while (i < updated_fields2.length) {
-	            if (!updated_fields2[i][0].contains("=")) {
+	        int i = 0 , j=0;
+	        while (i < updated_fields2.length) {   if (!updated_fields2[i][0].contains("=")) {
 	                System.out.println("Invalid Command.");
-	                break;
-	            } else {
-	                String h = updated_fields2[i][0];
+	                break;  } else {     String h = updated_fields2[i][0];
 	                String o = updated_fields2[i][0];
 	                updated_fields2[i][1] =TrimCommand(o.substring(o.indexOf("=") + 1));
 	                updated_fields2[i][0] = Trim_end(h.substring(0, h.indexOf("=")));
 	                updateStatment[j] = updated_fields2[i][0];
 	                updateStatment[j +1] = "=";
 	                updateStatment[j +2] = updated_fields2[i][1];
-	               
 	                if(!check_quotes(updateStatment[j + 2])){
 	                	 System.out.println("Invalid Command.");
 	                     return false;
-	                }
-	                if (!space(updated_fields2[i][0]) || !CheckName(updated_fields2[i][0])|| !check_validname(updated_fields2[i][0])) {
+	                }if (!space(updated_fields2[i][0]) || !CheckName(updated_fields2[i][0])|| !check_validname(updated_fields2[i][0])) {
 	                    System.out.println("Invalid Command.");
 	                    return false;
-	                } 
-	                updateStatment[j + 2]=remove_quotes(updateStatment[j + 2]);
+	                }  updateStatment[j + 2]=remove_quotes(updateStatment[j + 2]);
 	                if( updateStatment[i + 2].contains("\'")){
 	                	 System.out.println("Invalid Command.");
-	                	 return false;
-	                }
-	            }
+	                	 return false; }}
 	            i++;
 	            j=j+3;
-	            }
-	        return true;
-	        }
+	            }      return true;     }
 	 
 	protected void check_select() {
 		int i2 = 0;
@@ -297,47 +284,35 @@ public class Validate  {
 				selected_fields1.add(iterator1);
 				selected_fields = new String[selected_fields1.size()];
 				for (int i1 = 0; i1 < selected_fields.length; i1++) {
-					selected_fields[i1] = selected_fields1.get(i1);
-
-				}
+					selected_fields[i1] = selected_fields1.get(i1);	}
 				if (!space(selected_fields[i2]) || !CheckName(selected_fields[i2])
 						|| !check_validname(selected_fields[i2])) {
 					System.out.println("Invalid Command.");
-					break;
-				}
+					break;	}
 				i2++;
-				l = new String();
-			} else {
-				l = l + before_from.charAt(i);
-			}
-		}
-	}
+				l = new String();} else {
+				l = l + before_from.charAt(i);}	}}
 
 	protected boolean check_where_state(String g) {
 		String g1 = g;
 		if(differ==true){
 		String g2=g;
-		g=g2.substring(0, g2.indexOf("where"))+" "+g2.substring( g2.indexOf("where"));
-		}
+		g=g2.substring(0, g2.indexOf("where"))+" "+g2.substring( g2.indexOf("where"));}
 		String before = GetFirstWord(g);
 		before_where = new String();
 		if (before == null) {
-			return false;
-		}
+			return false;}
 		while (!before.equals("where")) {
 			before_where = before_where + before;
 			g = GetRest;
 			before = GetRest;
-
 			if (g == null) {
-				return false;
-			}
-			before = GetFirstWord(before);
-		}
+				return false;	}
+			before = GetFirstWord(before);	}
 		before_where = g1.substring(0, g1.indexOf("where"));
 		before_where = Trim_end(before_where);
-		return (check_equation(GetRest));
-	}
+		return (check_equation(GetRest));}
+	
 	protected boolean check_equation(String getRest2) {
 		condition = new String[3];
 		if (getRest2 == null) {
@@ -394,9 +369,7 @@ public class Validate  {
 				return true;
 			} catch (NumberFormatException e) {
 				return false;
-			}
-
-		}
+			}		}
 		d = false;
 		return true;
 	}

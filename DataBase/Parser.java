@@ -100,37 +100,26 @@ public class Parser {
     }
  
     private void ChooseQuery(String FirstWord) {
-        switch (FirstWord) {
-        case "create":
-            CreateObject.Create(DBfound, CurrentlyUsedDB, GetRest);
-            break;
+        switch (FirstWord) {   case "create":
+            CreateObject.Create(DBfound, CurrentlyUsedDB, GetRest); break;
         case "drop":{
             DropObject.Drop(DBfound, CurrentlyUsedDB, GetRest);
-            DBfound = DropObject.NewDpFound();
-        }
-            break;
+            DBfound = DropObject.NewDpFound();  }     break;
         case "insert":
-            InsertObject.Insert(DBfound, CurrentlyUsedDB, GetRest);
-            break;
+            InsertObject.Insert(DBfound, CurrentlyUsedDB, GetRest); break;
         case "delete":
-            DeleteObject.Delete(DBfound, CurrentlyUsedDB, GetRest);
-            break;
+            DeleteObject.Delete(DBfound, CurrentlyUsedDB, GetRest);  break;
         case "use":
-            Use();
-            break;
+            Use();  break;
         case "update":
-            UpdateObject.Update(DBfound, CurrentlyUsedDB, GetRest);
-            break;
+            UpdateObject.Update(DBfound, CurrentlyUsedDB, GetRest); break;
         case "select":
-            SelectObject.Select(DBfound, CurrentlyUsedDB, GetRest);
-            break;
+            SelectObject.Select(DBfound, CurrentlyUsedDB, GetRest);  break;
         case "ls":
-            List();
-            break;
+            List();     break;
         default:
             System.out.println("Invalid Command.");
-        }
-    }
+        }    }
  
     
     private void List(){

@@ -44,8 +44,7 @@ public class Test1 {
     String[][] selected =  {{"name", "grade"},{"aya fouad", "10"}, {"salma mohamed", "20"},
    		{"aya aly", "30"} , {"mona alaa", "40"}};
     String[] SelectedColumns = {"name","grade"};
-    System.out.println(Query.selectColumns("test","table1",SelectedColumns)[0]);
-    System.out.println(Query.selectColumns("test","table1",SelectedColumns)[1]);
+   
 
     Assert.assertArrayEquals(selected , Query.selectColumns("test","table1",SelectedColumns));	
     
@@ -85,19 +84,9 @@ public class Test1 {
     
     String[][] test3 =  {{"name", "grade","id"},{"aya fouad", "10","1"}, {"salma mohamed", "20","2"},
     			{"mona alaa", "40","4"}};
-System.out.println(Query.selectAllColumns("test","table1")[0][0]);
-System.out.println(Query.selectAllColumns("test","table1")[1][0]);
-
-System.out.println(Query.selectAllColumns("test","table1")[2][0]);
-System.out.println(Query.selectAllColumns("test","table1")[3][0]);
 
     Assert.assertArrayEquals(test3 , Query.selectAllColumns("test","table1"));
-    for(int i = 0 ;i<Query.selectAllColumns("test","table1").length ; i++){
-    	for(int j =0 ; j<Query.selectAllColumns("test","table1")[0].length ; j++){
-    		System.out.print(Query.selectAllColumns("test","table1")[i][j]);
-    	}
-    	System.out.println("");
-    }
+   
 String []condition7 ={"name",">","aya aly"};
 
 
