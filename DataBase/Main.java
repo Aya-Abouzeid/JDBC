@@ -14,12 +14,9 @@ public class Main {
 		 Parser p = new Parser();
 		 Scanner scan = new Scanner(System.in);
 		Runtime rt = Runtime.getRuntime();
-//		try {
+		
 //			Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.home") + File.separator +"RUN2.bat");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 		while (true) {
 			String command = scan.nextLine();
 			p.ChangeToLowerCase(command);

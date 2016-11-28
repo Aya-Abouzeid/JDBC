@@ -406,11 +406,9 @@ protected void loopInsertRow(String[]columnsValuesSplited,String[]types,String[]
 	   	 if (fileMinimizeBolean(tables,databaseName,tableName)){
 			 return;
 		 }
-	       // boolean out=false;
 	         try {
 	         Element root = document.getDocumentElement();
 	         NodeList childNodes = root.getElementsByTagName(tableName);
-	         //ArrayList<Integer> itemsCounterDeleted = new ArrayList<Integer>();
 	         root.removeChild(childNodes.item(childNodes.getLength()));
 	         transform(document, databaseName, tableName);
 	        } catch (Exception e) {
@@ -745,7 +743,6 @@ protected void loopInsertRow(String[]columnsValuesSplited,String[]types,String[]
 		for (int i = 0; i < columntitles.length; i++) {
 			output.add(columntitles[i]);
 			}
-		//String[][] Outputcolumns = new String[index][columntitles.length];
 		
 			
 			

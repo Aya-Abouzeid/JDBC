@@ -130,7 +130,7 @@ public class Parser {
     private void List(){
     	String Name = GetRest;
     	 
-       if(GetRest.equals("tables")){
+       if(GetRest == null){
         	 if(DBfound)
         	Query.ListTables(CurrentlyUsedDB);
         	 else
