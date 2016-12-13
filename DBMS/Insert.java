@@ -9,9 +9,11 @@ public class Insert extends Validate {
 		return Executed;
 	}
 
-	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query) {
+	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) {
 		this.Query = query;
 		Executed = false;
+		this.Detect = Detect;
+
 		int UpdateCount = 0;
 		DBfound = IsDBFound;
 		GetRest = GetRestSentence;
@@ -40,7 +42,9 @@ public class Insert extends Validate {
 			FinalColumns[i] = Columns.get(i);
 			FinalValues[i] = Values.get(i);
 		}
+	
 		if (Detect.DetectTable(CurrentlyUsedDB, TableName)) {
+			
 			UpdateCount = Query.insertSub(CurrentlyUsedDB, TableName, FinalColumns, FinalValues);
 			Executed = true;
 		} else

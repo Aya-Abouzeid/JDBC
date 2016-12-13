@@ -14,6 +14,10 @@ public class EngineUpdate {
 		 ArrayList<String> update= new ArrayList<String>();
 		out= test.inspectColumCondition(headers, condition[0],ArrayOfTypes);
 		if (!out) {
+			counter=-1;
+			return tableData;
+		}
+		if (tableData.size()== 1) {
 			counter=0;
 			return tableData;
 		}
@@ -22,22 +26,22 @@ public class EngineUpdate {
 		out= test.inspectType(columType, condition[2]);
 		
 		if (!out) {
-			counter=0;
+			counter=-1;
 			return tableData;
 		}
 		for (int i = 0; i < updateStatment.length; i=i+3) {
 			out= test.inspectColumCondition(headers, updateStatment[i],ArrayOfTypes);
 			if (!updateStatment[i+1].equals("=")) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
 			if (!out) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
 			out= test.inspectType(test.getType(), updateStatment[i+2]);
 			if (!out) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
 			itemsCounterUpdate.add(test.getlocation());
@@ -45,7 +49,7 @@ public class EngineUpdate {
 		}
 		out= test.inspectType(columType, condition[2]);
 		if (!out) {
-			counter=0;
+			counter=-1;
 			return tableData;
 		}
 		for (int i = 1; i < tableData.size(); i++) {
@@ -96,22 +100,25 @@ public class EngineUpdate {
 	  boolean out = false;
 	  ArrayList<Integer> itemsCounterUpdate= new ArrayList<Integer>();
 	  ArrayList<String> update= new ArrayList<String>();
+	  if (tableData.size()== 1) {
+			counter=0;
+			return tableData;
+		}
 		for (int i = 0; i < updateStatment.length; i=i+3) {
 			out= test.inspectColumCondition(headers, updateStatment[i],ArrayOfTypes);
 			if (!updateStatment[i+1].equals("=")) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
 			if (!out) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
 			out= test.inspectType(test.getType(), updateStatment[i+2]);
 			if (!out) {
-				counter=0;
+				counter=-1;
 				return tableData;
 			}
-			System.out.println("lo"+test.getlocation());
 			itemsCounterUpdate.add(test.getlocation());
 			update.add(updateStatment[i+2]);
 		}

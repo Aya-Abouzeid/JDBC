@@ -1,6 +1,8 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EngineDistinct {
 	 private int counter =0;
@@ -23,16 +25,17 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 		}
 	}
 	System.out.println("si"+tableData.size());
+	Set distinct =new HashSet<String>();
 	for (int i = 0; i <tableData.size(); i++) {
 			ArrayList<String>newRow =new ArrayList<String>();
 			for (int k = 0; k < location.size(); k++) {
 				newRow.add(tableData.get(i).get(location.get(k)));
 			   System.out.println("8888888"+tableData.get(i).get(location.get(k)));
 			}
-		output.add(newRow);
+		distinct.add(newRow);
 		
 	}
-	ArrayList<Integer> delete =new ArrayList<Integer>();
+	/*ArrayList<Integer> delete =new ArrayList<Integer>();
 	int check=0;
 	for (int i = 0; i < output.size(); i++) {
 		ArrayList<String>newRow =new ArrayList<String>();
@@ -54,10 +57,15 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 			
 	
 		}
-	}
-	System.out.println("sgaswgs"+delete.size());
-	ArrayList<ArrayList<String>> reslut = new ArrayList<ArrayList<String>>();
-	int loop=0;
+	}*/
+	//System.out.println("sgaswgs"+delete.size());
+	ArrayList<ArrayList<String>> reslut = new ArrayList<ArrayList<String>>(distinct);
+	/*for (int i = 0; i < distinct.size(); i++) {
+		ArrayList<String>newRow =new ArrayList<String>();
+		newRow = (ArrayList<String>) distinct.iterator();
+		reslut.add(newRow);
+	}*/
+	/*int loop=0;
 	for (int i = 0; i < output.size() && loop <delete.size(); i++) {
 	
 			if (i != delete.get(loop)) {

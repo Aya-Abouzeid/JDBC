@@ -4,7 +4,6 @@ import java.util.ArrayList;
  
 public class Parser  {
 
-	XmlValidation Detect = new XmlValidation();
 	
 	   private String Sql = new String();
     protected String FirstWord;
@@ -17,8 +16,14 @@ public class Parser  {
    public Boolean GetDBfound(){
 	   return DBfound;
    }
+   public void SetDBfound(boolean isfound){
+	    DBfound = isfound;
+   }
    public String GetGetRest(){
 	   return GetRest;
+   }
+   public void SetCurrentlyUsed(String name){
+	   CurrentlyUsedDB = name;
    }
     public String Parse(String command) {
         if (!command.equals("")) {
@@ -115,20 +120,7 @@ public class Parser  {
     	DBfound = setter;
     }
   
-    public void Use() {
-        String Name = GetRest;
- 
-        if (Detect.DetectDataBase(Name)) {
-        	
-            CurrentlyUsedDB = Name;
-            DBfound = true;
-            System.out.println("database found");
-        } else {
-            System.out.println("Invalid DataBase Name.");
-            DBfound = false;
-        }
- 
-    }
+    
    
  
     

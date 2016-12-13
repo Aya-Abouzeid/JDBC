@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import eg.edu.alexu.csd.oop.DBMS.XmlValidation;
 
 public class Validate  {
-	XmlValidation Detect = new XmlValidation();
 	protected String FirstWord;
 	Queries Query;
 	protected String GetRest = new String();
@@ -13,6 +12,7 @@ public class Validate  {
 	protected boolean differ=false;
 	protected boolean d = false;
 	protected int space = 0;
+	XmlValidation Detect ;
 	protected boolean del = false;
 	protected ArrayList<String> Values = new ArrayList<String>();
 	protected ArrayList<String> Columns = new ArrayList<String>();

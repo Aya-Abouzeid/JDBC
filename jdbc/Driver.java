@@ -3,6 +3,8 @@ package eg.edu.alexu.csd.oop.jdbc;
 
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
+import java.util.Enumeration;
+
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -23,7 +25,7 @@ public class Driver implements java.sql.Driver {
          this.WriterType="xmldb";
 	     return true;
           }	
-         if(url.equals("jdbc:jsondb://localhost")){
+         if(url.equals("jdbc:altdb://localhost")){
         this.WriterType="jsondb";
 	    return true;
             }
@@ -36,9 +38,9 @@ protected String getpath(){
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
 		if(acceptsURL(url)){
-		
-		 path=info.getProperty("path");
- 
+//		path = info.g
+			
+				path =  info.get("path").toString();
 		return new Connection(this , WriterType); 
 		}
 		else

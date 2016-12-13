@@ -17,13 +17,21 @@ import org.w3c.dom.NodeList;
 public class XmlTable implements ITable {
 	 protected String[] ArrayOfTypes;
 	 protected String[] headers;
+	 /*protected  DocumentBuilderFactory documentBuilderFactory;
+	 protected DocumentBuilder documentBuilder;
+	 protected Document document;
+	 protected BufferedWriter fileWriter;
+	 protected int indexOfTable = 0;*/
 	 private Titles titles= new Titles();
-	
+	 private xml xmlObject;
 	 private String path;
 	  public  XmlTable(String path) {
+
 		this.path = path;
+		xmlObject= new xml(this.path); 
+
 	}
-	 private xml xmlObject = new xml(path); 
+	  
 	 private DtdFile dtdObject = new DtdFile(path);
 	 private EngineDelete  deleteObject = new EngineDelete();
 	 private EngineInsert  insetObject = new EngineInsert();
@@ -141,7 +149,6 @@ public class XmlTable implements ITable {
 			xmlObject.transform(xmlObject.document, databaseName, tableName);
 			dtdObject.CreateDtDFile(databaseName, tableName,dtd,ArrayOfTypes);	
 			tableData=new  ArrayList<ArrayList<String>>();
-			System.out.println("3");
 			
  }
 	
@@ -167,11 +174,7 @@ public class XmlTable implements ITable {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertSub(working,columSend, properties, ArrayOfTypes,headers);
-		/*for (int i = 0; i < tableData.size(); i++) {
-			for (int j = 0; j < tableData.get(0).size(); j++) {
-				System.out.println(tableData.get(i).get(j));
-			}
-		}*/
+	
         writeFile(databaseName, tableName,tableData);
 		
 		return insetObject.getCounter();
@@ -181,9 +184,10 @@ public class XmlTable implements ITable {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
-		tableData= deleteObject.deleteTable(tableData,headers);
+		tableData= deleteObject.deleteTable(working,headers);
+		
 		 writeFile(databaseName, tableName,tableData);
-		return 0;
+		return deleteObject.getCounter();
 	}
 	@Override
 	public int deleteSubTable(String databaseName, String tableName, String[] condition) {

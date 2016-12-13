@@ -22,9 +22,12 @@ public class Connection implements java.sql.Connection {
 	Parser parse;
 	boolean closed = false;
 	Queries query ;
+	XmlValidation Detect;
 	public Connection(Driver driver ,String WriterType) {
 		// TODO Auto-generated constructor stub
-
+	
+		this.Detect = new XmlValidation(driver.getpath());
+	
 		this.query = new Queries(driver.getpath(), WriterType);
 		this.parse = new Parser();
 	}
@@ -60,6 +63,8 @@ public class Connection implements java.sql.Connection {
 		if (!closed) {
 			this.closed = true;
 			this.parse = null;
+			this.query = null;
+			this.Detect = null;
 		}
 	}
 
@@ -106,7 +111,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Statement createStatement() throws SQLException {
 
-		return new Statement(this, parse,query);
+		return new Statement(this, parse,query , Detect);
 	}
 
 	@Override

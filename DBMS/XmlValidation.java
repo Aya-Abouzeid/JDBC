@@ -12,19 +12,24 @@ public class XmlValidation {
 	public  XmlValidation(String path ) {
 		this.path = path;
 	}
-	protected boolean DetectDataBase(String name) {
+	public String getpath() {
+		return path;
+	}
+
+	public boolean DetectDataBase(String name) {
 		File file = new File(path + File.separator + name);
 		if (file.exists()){
 			return true;
 			}
 		return false;
 	}
-	protected boolean DetectTable(String databaseName, String tableName) {
+	public boolean DetectTable(String databaseName, String tableName) {
 		File tableFile = new File(
 				path + File.separator + databaseName + File.separator + tableName + ".txt");
 		if (tableFile.exists()){
 			return true;
 			}
+
 		return false;
 	}
 

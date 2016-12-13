@@ -7,9 +7,11 @@ public class Create extends Validate {
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query) {
+	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
 			this.Query = query;
 		 int UpdateCount = 0;
+		 this.Detect = Detect;
+
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
 		 CurrentlyUsedDB = CurrentUsedDB;
@@ -79,11 +81,11 @@ public class Create extends Validate {
 	                    fields3 = new String[fields1.size()];
 	                    if (!GetRest.equals("()") && GetRest.indexOf(")") == GetRest.length() - 1) {
 	 
+	                    	
 	                        if (reform(fields2) && !Detect.DetectTable(CurrentlyUsedDB, TableName)) {
 	                            Query.creatTable(CurrentlyUsedDB, TableName, fields3);
 	                            Executed = true;
 	                			System.out.println("Table is Created");
-
 	                        }
 	 
 	                    } else {

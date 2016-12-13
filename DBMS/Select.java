@@ -13,8 +13,9 @@ public class Select extends Validate {
 	int MaxValueLength = -1;
 	boolean Executed;
 
-	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query) {
+	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) {
 		this.Query = query;
+		this.Detect = Detect;
 
 		String[][] x = null;
         differ=false;
@@ -41,8 +42,8 @@ public class Select extends Validate {
 				}
 			} else
 				System.out.println("Invalid Command.");
-		
-		return x;
+
+			return x;
 	}
 
 	private String[][] selectDistinct(String getRest) {
@@ -68,7 +69,7 @@ public class Select extends Validate {
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
 				 Executed = true;
 				if(x != null){
-					Print2D(x);	}
+					x = Print2D(x);	}
 				else{
 					System.out.println("Invalid Condition.");
 				}	} else {
@@ -76,7 +77,7 @@ public class Select extends Validate {
 				 Executed = true;
 
 				if(x !=null)
-					Print2D(x);		
+				x=	Print2D(x);		
 					else
 						System.out.println("Invalid Condition.");	}
 		}	
@@ -104,19 +105,19 @@ public boolean GetExecuted(){
 			} else if (s1 == true && s2 == true) {
 				check_select();
 				if (withwhere) {
-					if(distinct){
-						///////////////////x=call here
-						 Executed = true;
-
-					}
-					else{
+//					if(distinct){
+//						///////////////////x=call here
+//						 Executed = true;
+//
+//					}
+//					else{
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,
 							condition);
 					 Executed = true;
 
-					}
+				//	}
 					if(x != null){
-					Print2D(x);
+					x=Print2D(x);
 					}
 					else
 						System.out.println("Invalid Condition.");
@@ -124,7 +125,7 @@ public boolean GetExecuted(){
 
 				} else {
 					if(distinct){
-						///////////////////x=call here
+						x = Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
 						 Executed = true;
 
 					}
@@ -134,7 +135,7 @@ public boolean GetExecuted(){
 
 					}
 				if(x != null)
-					Print2D(x);
+					x= Print2D(x);
 				else
 					System.out.println("Invalid Condition.");
 
@@ -145,7 +146,7 @@ public boolean GetExecuted(){
 
 	
 
-		private void Print2D(String[][] x){
+		private String[][] Print2D(String[][] x){
 			List<String> headersList = Arrays.asList();
 			List<String> header = new ArrayList<>();
 			List<List<String>> rows = new ArrayList<>();
@@ -171,9 +172,12 @@ public boolean GetExecuted(){
 							.getPreview();
 					System.out.println(tableString);
 					}
-					else
+					else{
 						 System.out.println("No Results found");
+					x= null;	 
+					}
 			
+				return x;
 		}
 	
 

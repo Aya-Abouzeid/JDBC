@@ -7,9 +7,9 @@ public class Drop extends Validate {
 	}
 
 	protected Boolean DBfound2 = DBfound;
-	 public int Drop(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query) {
+	 public int Drop(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query ,  XmlValidation Detect) {
 			this.Query = query;
-
+this.Detect = Detect;
 		 Executed = false;
 		 int UpdateCount = 0;
 		 DBfound = IsDBFound;

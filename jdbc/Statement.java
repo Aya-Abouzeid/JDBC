@@ -16,6 +16,7 @@ public class Statement implements java.sql.Statement {
 	Select SelectObject = new Select();
 	Update UpdateObject = new Update();
 	Alter AlterObject = new Alter();
+	XmlValidation DetectObject;
 	private boolean counted = false;
 	private boolean RsetFound = false;
 	private boolean OperationNotExecuted = false;
@@ -27,7 +28,7 @@ public class Statement implements java.sql.Statement {
 	private ResultSet Rset = null;
 	private Parser parse;
 	Queries query ;
-	public Statement(Connection connection, Parser parse , Queries query) {
+	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
@@ -39,6 +40,7 @@ public class Statement implements java.sql.Statement {
 		this.SelectNotExecuted = false;
 		this.UpdateCount = -1;
 		this.query = query;
+		this.DetectObject = Detect;
 	}
 
 	@Override
@@ -99,6 +101,8 @@ public class Statement implements java.sql.Statement {
 			this.RsetFound = false;
 			this.counted = false;
 			this.SelectNotExecuted = false;
+			this.query = null;
+			this.DetectObject = null;
 		}
 	}
 
@@ -115,6 +119,7 @@ public class Statement implements java.sql.Statement {
 		if (!this.IsClosed) {
 
 			String FirstWord = parse.Parse(sql);
+			
 			if (sql != null)
 				ChooseQuery(FirstWord);
 
@@ -127,57 +132,79 @@ public class Statement implements java.sql.Statement {
 
 	}
 
-	private void CaseInsert() {
+	private void CaseInsert() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;
-			UpdateCount = InsertObject.Insert(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query);
+			UpdateCount = InsertObject.Insert(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
 
-			if (InsertObject.GetExecuted() == false)
+			if (InsertObject.GetExecuted() == false || (UpdateCount == 0 && InsertObject.GetExecuted() == true)){
 				OperationNotExecuted = true;
+				throw new SQLException();
+
+			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
 	}
 
-	private void CaseDelete() {
+	private void CaseDelete() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;
-			UpdateCount = DeleteObject.Delete(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query);
-			if (DeleteObject.GetExecuted() == false)
+			UpdateCount = DeleteObject.Delete(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject);
+			System.out.println(UpdateCount);
+			if (DeleteObject.GetExecuted() == false|| (UpdateCount == 0 && DeleteObject.GetExecuted() == true)) {
 				OperationNotExecuted = true;
+				throw new SQLException();
+	
+			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
 	}
 
-	private void CaseUpdate() {
+	private void CaseUpdate() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;
-			UpdateCount = UpdateObject.Update(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query);
-			if (UpdateObject.GetExecuted() == false)
+			UpdateCount = UpdateObject.Update(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject);
+			if (UpdateObject.GetExecuted() == false  || (UpdateCount == -1 && UpdateObject.GetExecuted() == true)) {
 				OperationNotExecuted = true;
+				throw new SQLException();
+	
+			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
 	}
 
-	private void CaseSelect() {
+	private void CaseSelect() throws SQLException {
 		if (parse.GetDBfound()) { 
 			RsetFound = true;
-			Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query));
-			if (SelectObject.GetExecuted() == false)
+			if(SelectObject.Select(parse.GetDBfound(),
+					parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject) == null)
+				Rset = null;
+			else
+			Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(),
+					parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject));
+
+			if (SelectObject.GetExecuted() == false ){
 				SelectNotExecuted = true;
+				throw new SQLException();
+	
+			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
 	}
 
-	private void CaseAlter() {
+	private void CaseAlter() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;
-			UpdateCount = AlterObject.Alter(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() ,query);
-			if (AlterObject.GetExecuted() == false)
+			UpdateCount = AlterObject.Alter(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() ,query,DetectObject);
+			if (AlterObject.GetExecuted() == false ){
 				OperationNotExecuted = true;
+				throw new SQLException();
+	
+			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
@@ -194,7 +221,7 @@ public class Statement implements java.sql.Statement {
 		switch (FirstWord.toLowerCase()) {
 		case "create": {
 			counted = true;
-			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query);
+			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
 			if (CreateObject.GetExecuted() == false) {
 				OperationNotExecuted = true;
 				throw new SQLException();
@@ -203,7 +230,7 @@ public class Statement implements java.sql.Statement {
 		}
 		case "drop": {
 			counted = true;
-			UpdateCount = DropObject.Drop(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query);
+			UpdateCount = DropObject.Drop(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
 			parse.SetDBFound(DropObject.NewDpFound());
 			if (DropObject.GetExecuted() == false) {
 				OperationNotExecuted = true;
@@ -218,20 +245,38 @@ public class Statement implements java.sql.Statement {
 			CaseDelete();
 			break;
 		case "use":
-			parse.Use();
+			CaseUse();
 			break;
 		case "update":
 			CaseUpdate();
 			break;
 		case "select":
+			CaseSelect();
 			break;
 		case "alter":
+			CaseAlter();
 			break;
 		default: {
 			System.out.println("Invalid Command.");
 		}
 		}
 	}
+	public void CaseUse() throws SQLException {
+        String Name = parse.GetGetRest();
+ 
+if(DetectObject.DetectDataBase(Name)){
+        
+            parse.SetCurrentlyUsed(Name);
+            parse.SetDBFound(true);
+            System.out.println("database found");
+        } else {
+            System.out.println("Invalid DataBase Name.");
+            parse.SetDBFound(false);
+
+            throw new SQLException();
+        }
+ 
+    }
 
 	@Override
 	public boolean execute(String sql, int autoGeneratedKeys) throws SQLException {
@@ -280,6 +325,7 @@ public class Statement implements java.sql.Statement {
 		if (!IsClosed) {
 
 				execute(sql);
+				
 			if (RsetFound && !SelectNotExecuted)
 				return Rset;
 			else
@@ -296,7 +342,6 @@ public class Statement implements java.sql.Statement {
 		if (!IsClosed) {
 
 			execute(sql);
-			
 			if (counted)
 				return UpdateCount;
 			else

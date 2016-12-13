@@ -8,10 +8,14 @@ public class EngineDelete {
 	private compare comparing = new compare();
 	public ArrayList<ArrayList<String>> deleteTable(ArrayList<ArrayList<String>> tableData,String []headers){
 		ArrayList<String>newRow= new ArrayList<>();
+		counter= tableData.size()-1;
+
 		for (int i = 0; i < headers.length; i++) {
 			newRow.add(headers[i]);
 		}
 		tableData.add(newRow);
+//		counter = headers.length;
+		System.out.println("deleteengine="+counter);
 		return tableData;
 	}
 	public ArrayList<ArrayList<String>> deleteSubTable(ArrayList<ArrayList<String>> tableData,String[]condition,

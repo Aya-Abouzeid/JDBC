@@ -5,8 +5,9 @@ public class Delete extends Validate{
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	 public int Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query) {
+	 public int Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
 			this.Query = query;
+			this.Detect = Detect;
 
 		 Executed = false;
 		 int UpdateCount = 0;

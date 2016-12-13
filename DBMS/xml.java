@@ -29,6 +29,8 @@ public class xml {
 	 
 	  public  xml(String path) {
 		this.path = path;
+
+
 	}
 	  private XmlValidation obXmlValidation=new XmlValidation(path);
 	 public boolean fileMinimizeBoolean( String databaseName,String tableName) {

@@ -1,14 +1,16 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 public class Alter extends Validate{
 	boolean Executed;
 	String tablename=null;
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	public int Alter(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence , Queries query) {
+	public int Alter(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence , Queries query , XmlValidation Detect) {
 		this.Query = query;
-
+this.Detect = Detect;
 		Executed = false;
 		int UpdateCount = 0;
 		DBfound = IsDBFound;
@@ -30,18 +32,18 @@ public class Alter extends Validate{
 					}
 					else
 					{
-						System.out.println("Invalid Command.");		
+						System.out.println("11111Invalid Command.");		
 					}
 					}
 					else{
-					System.out.println("Invalid Command.");		
+					System.out.println("2222Invalid Command.");		
 					}
 					
 				} else {
-					System.out.println("Invalid Command.");	
+					System.out.println("3333Invalid Command.");	
 				}
 			} else{
-				System.out.println("Invalid Command.");
+				System.out.println("4444Invalid Command.");
 		}
 			
 			
@@ -56,19 +58,19 @@ public class Alter extends Validate{
                 && CheckName(tablename) && check_validname(tablename)){
 			if(GetFirstWord(GetRest).equalsIgnoreCase("drop")){
 				if(GetRest==null){
-			    System.out.println("Invalid Command.");	
+			    System.out.println("135131Invalid Command.");	
 				}
 				else{
 					UpdateCount = checkColumn("drop");
 				}
 			}
 			else{
-	   System.out.println("Invalid Command.");		
+	   System.out.println("513513Invalid Command.");		
 			}	
 		}
 		else
 		{
-		System.out.println("Invalid Command.");	
+		System.out.println("13513Invalid Command.");	
 		}
 		return UpdateCount;
 	}
@@ -77,19 +79,21 @@ public class Alter extends Validate{
 		int UpdateCount =  0;
      if(g.equalsIgnoreCase("add")){
    String columnName= GetFirstWord(GetRest);
-   if(GetRest==null||!(GetRest.equalsIgnoreCase("int")||GetRest.equalsIgnoreCase("varchar")||
-		   GetRest.equalsIgnoreCase("float")||GetRest.equalsIgnoreCase("date"))){
-	   System.out.println("Invalid Command.");	  
+   if(GetRest==null||!(GetRest.equalsIgnoreCase("int")||!GetRest.equalsIgnoreCase("varchar")||
+		   !GetRest.equalsIgnoreCase("float")||!GetRest.equalsIgnoreCase("date"))){
+	   System.out.println("3251331Invalid Command.");	  
    }
    else{
 	   if(!check_validname(tablename)||!space(tablename) ||! CheckName(tablename)||
 			   !check_validname(columnName)||!space(columnName) ||! CheckName(columnName) ){
-			 System.out.println("Invalid Command.");		 
+			 System.out.println("afafahInvalid Command.");		 
 		 }
 		 else
 		 { 	String DataType = GetFirstWord(GetRest);
 		 if(GetRest == null){
+
 			 // UpdateCount =call Queries.alterdrop(tablename,columnName,GetRest);
+			 UpdateCount = Query.addAlter(CurrentlyUsedDB, tablename, DataType, columnName);
 			 Executed = true;
 		 }
 		 else
@@ -101,7 +105,7 @@ public class Alter extends Validate{
     	 if(GetFirstWord(GetRest).equalsIgnoreCase("column")&&GetRest!=null){
     		 if(!check_validname(tablename)||!space(tablename) ||
     				 ! CheckName(tablename)||!check_validname(GetRest)||!space(GetRest) ||! CheckName(GetRest) ){
-    			 System.out.println("Invalid Command.");		 
+    			 System.out.println("qw4624Invalid Command.");		 
     		 }
     		 else
     		 {
@@ -109,15 +113,16 @@ public class Alter extends Validate{
     				 if(GetRest == null){
 
     			 //  UpdateCount = call Queries.alterdrop(tablename,ColumnName);
+    					 UpdateCount= Query.deleteAlter(CurrentlyUsedDB, tablename, ColumnName);
     				 Executed= true;
     				 }
     				 else
-    					 System.out.println("Invalid Command.");
+    					 System.out.println("236243Invalid Command.");
     		 }
     		 
     	 }
     	 else {
-    	System.out.println("Invalid Command.");		 
+    	System.out.println("3131Invalid Command.");		 
     	 }
      }
 		
@@ -145,19 +150,19 @@ public class Alter extends Validate{
                 && CheckName(tablename) && check_validname(tablename)){
 			if(GetFirstWord(GetRest).equalsIgnoreCase("add")){
 				if(GetRest==null){
-			    System.out.println("Invalid Command.");	
+			    System.out.println("51251Invalid Command.");	
 				}
 				else{
 					UpdateCount = checkColumn("add");
 				}
 			}
 			else{
-	   System.out.println("Invalid Command.");		
+	   System.out.println("35131Invalid Command.");		
 			}
 		}
 		else
 		{
-		System.out.println("Invalid Command.");	
+		System.out.println("1212Invalid Command.");	
 		}
         return  UpdateCount;
 	}
