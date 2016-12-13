@@ -142,7 +142,7 @@ public class XmlTable implements ITable {
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertRow(working, properties, ArrayOfTypes,headers);
          writeFile(databaseName, tableName,tableData);
-		
+
 		return insetObject.getCounter();
 	}
 	@Override
@@ -156,7 +156,7 @@ public class XmlTable implements ITable {
 			}
 		}*/
         writeFile(databaseName, tableName,tableData);
-		
+
 		return insetObject.getCounter();
 	}
 	@Override

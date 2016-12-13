@@ -57,7 +57,7 @@ public class Condition extends Titles {
 	}*/
 	 public boolean inspectColum(String[]headers, String colum) {
 			for (int j = 0; j < headers.length; j++) {
-				if (colum.equals(headers[j])){
+				if (colum.equalsIgnoreCase(headers[j])){
 					location=j;
 					return true;
 					}

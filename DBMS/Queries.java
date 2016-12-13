@@ -127,6 +127,7 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
+
 		return currentDataBase.insertSub(databaseName, tableName, columSend, properties);
 		
 	}

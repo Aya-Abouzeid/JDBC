@@ -41,7 +41,7 @@ public class Insert extends Validate {
 			FinalValues[i] = Values.get(i);
 		}
 		if (Detect.DetectTable(CurrentlyUsedDB, TableName)) {
-			Query.insertSub(CurrentlyUsedDB, TableName, FinalColumns, FinalValues);
+			UpdateCount = Query.insertSub(CurrentlyUsedDB, TableName, FinalColumns, FinalValues);
 			Executed = true;
 		} else
 			System.out.println("Invalid Table Name.");
@@ -90,7 +90,7 @@ public class Insert extends Validate {
 					FinalValues[i] = Values.get(i);
 				}
 				if (Detect.DetectTable(CurrentlyUsedDB, TableName)) {
-					Query.insertRow(CurrentlyUsedDB, TableName, FinalValues);
+					UpdateCount=Query.insertRow(CurrentlyUsedDB, TableName, FinalValues);
 					Executed = true;
 					System.out.println("Inserted.");
 				} else {

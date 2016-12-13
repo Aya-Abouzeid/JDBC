@@ -82,7 +82,12 @@ public class SmokeTest {
 
 		{
 			Statement statement = connection.createStatement();
+			try{
 			statement.execute("DROP DATABASE SaMpLe");
+			}
+			catch(Throwable e){
+				
+			}
 			statement.execute("CREATE DATABASE SaMpLe");
 			statement.execute("USE SaMpLe");
 			String files[] = dbDir.list();
@@ -514,89 +519,5 @@ public class SmokeTest {
 		connection.close();
 	}
 
-	@Test
-	public void testUnion() throws SQLException {
-		Connection connection = createUseDatabase("TestDB_Create");
-		try {
-			Statement statement = connection.createStatement();
-			statement
-					.execute("CREATE TABLE table_name13(column_name1 varchar, column_name2 int, column_name3 varchar)");
-			int count1 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_NAME1, COLUMN_name3, column_name2) VALUES ('value1', 'value3', 4)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count1);
-			boolean result1 = statement.execute(
-					"INSERT INTO table_name13(column_NAME1, column_name2, COLUMN_name3) VALUES ('value1', 4, 'value5')");
-			Assert.assertTrue("Wrong return for insert record", result1);
-			int count3 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_name1, COLUMN_NAME3, column_NAME2) VALUES ('value2', 'value4', 5)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count3);
-			int count4 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_name1, COLUMN_NAME3, column_NAME2) VALUES ('value5', 'value6', 6)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count4);
-
-			boolean result3 = statement.execute(
-					"SELECT * FROM table_name13 WHERE coluMN_NAME2 = 4 UNION SELECT * FROM table_name13 WHERE coluMN_NAME3 < 'value6'");
-			Assert.assertTrue("Wrong return for select UNION existing records", result3);
-			ResultSet res2 = statement.getResultSet();
-			int rows2 = 0;
-			while (res2.next())
-				rows2++;
-			Assert.assertEquals("Wrong number of rows", 3, rows2);
-
-			statement.close();
-		} catch (Throwable e) {
-			TestRunner.fail("Failed to test SELECT from table UNION", e);
-		}
-		connection.close();
-	}
-
-	@Test
-	public void testOrderBy() throws SQLException {
-		Connection connection = createUseDatabase("TestDB_Create");
-		try {
-			Statement statement = connection.createStatement();
-			statement
-					.execute("CREATE TABLE table_name13(column_name1 varchar, column_name2 int, column_name3 varchar)");
-			int count1 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_NAME1, COLUMN_name3, column_name2) VALUES ('value1', 'value3', 4)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count1);
-			boolean result1 = statement.execute(
-					"INSERT INTO table_name13(column_NAME1, column_name2, COLUMN_name3) VALUES ('value1', 4, 'value5')");
-			Assert.assertTrue("Wrong return for insert record", result1);
-			int count3 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_name1, COLUMN_NAME3, column_NAME2) VALUES ('value2', 'value4', 5)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count3);
-			int count4 = statement.executeUpdate(
-					"INSERT INTO table_name13(column_name1, COLUMN_NAME3, column_NAME2) VALUES ('value5', 'value6', 6)");
-			Assert.assertNotEquals("Insert returned zero rows", 0, count4);
-
-			boolean result3 = statement
-					.execute("SELECT * FROM table_name13 ORDER BY column_name2 ASC, COLUMN_name3 DESC");
-			Assert.assertTrue("Wrong return for select UNION existing records", result3);
-			ResultSet res2 = statement.getResultSet();
-			int rows2 = 0;
-			while (res2.next())
-				rows2++;
-			Assert.assertEquals("Wrong number of rows", 4, rows2);
-
-			while (res2.previous())
-				;
-
-			res2.next();
-			Assert.assertEquals("Wrong order of rows", 4, res2.getInt("column_name2"));
-			Assert.assertEquals("Wrong order of rows", "value5", res2.getString("column_name3"));
-
-			res2.next();
-			Assert.assertEquals("Wrong order of rows", 4, res2.getInt("column_name2"));
-			Assert.assertEquals("Wrong order of rows", "value3", res2.getString("column_name3"));
-
-			res2.next();
-			Assert.assertEquals("Wrong order of rows", 5, res2.getInt("column_name2"));
-
-			statement.close();
-		} catch (Throwable e) {
-			TestRunner.fail("Failed to test ORDER By", e);
-		}
-		connection.close();
-	}
+	
 }

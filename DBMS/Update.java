@@ -67,7 +67,7 @@ public class Update extends Validate {
 	         updated_fields2[i][0] = updated_fields1.get(i);
 	     }
 	    if( reform2(updated_fields2)){
-	     Query.updateWhitoutWhere(CurrentlyUsedDB, tablename, updateStatment);
+	    	UpdateCount=  Query.updateWhitoutWhere(CurrentlyUsedDB, tablename, updateStatment);
 	     System.out.println("updated");
 	 	 Executed = true;
 
@@ -97,7 +97,7 @@ public class Update extends Validate {
 	    if( reform2(updated_fields2)){
 		     System.out.println("updated");
 
-	     Query.update(CurrentlyUsedDB, tablename, condition, updateStatment);
+		     UpdateCount= Query.update(CurrentlyUsedDB, tablename, condition, updateStatment);
 	     Executed = true;
 	     }
 	    return UpdateCount;

@@ -131,6 +131,7 @@ public class Statement implements java.sql.Statement {
 		if (parse.GetDBfound()) {
 			counted = true;
 			UpdateCount = InsertObject.Insert(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query);
+
 			if (InsertObject.GetExecuted() == false)
 				OperationNotExecuted = true;
 		} else

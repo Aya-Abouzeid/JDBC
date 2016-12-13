@@ -37,13 +37,13 @@ public class Delete extends Validate{
 	                }
 	                else {
 	                	if(withwhere){	   
-	                		Query.deleteSubTable(CurrentUsedDB, current_table1, condition);
+	                		UpdateCount=	Query.deleteSubTable(CurrentUsedDB, current_table1, condition);
 	                		Executed = true;
 	            			System.out.println("Deleted.");
 
 	                	}
 	                	else{
-	                		Query.deleteTable(CurrentUsedDB, current_table1);
+	                		UpdateCount=Query.deleteTable(CurrentUsedDB, current_table1);
 	                		Executed = true;
 	            			System.out.println("Table is Deleted");
 	                		}

@@ -65,6 +65,7 @@ public class DataBase {
 
 	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
+
 		return writer.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
