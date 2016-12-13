@@ -9,7 +9,6 @@ public class Create extends Validate {
 	}
 	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query) {
 			this.Query = query;
-
 		 int UpdateCount = 0;
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
@@ -34,11 +33,12 @@ public class Create extends Validate {
 	        return UpdateCount;
 	    }
 	 private int CreateDataBase(String Rest) {
+		 
 		 int UpdateCount = 0;
 	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest)) {
 	            System.out.println("Invalid Name.");
 	 
-	        } else if (GetFirstWord(GetRest).equals(Rest) && !Detect.DetectDataBase(Rest)) {
+	        } else if (GetFirstWord(GetRest).equals(Rest) ) {
 
 	            Query.createDatabase(Rest);
 	            Executed = true;
@@ -79,7 +79,7 @@ public class Create extends Validate {
 	                    fields3 = new String[fields1.size()];
 	                    if (!GetRest.equals("()") && GetRest.indexOf(")") == GetRest.length() - 1) {
 	 
-	                        if (reform(fields2)) {
+	                        if (reform(fields2) && !Detect.DetectTable(CurrentlyUsedDB, TableName)) {
 	                            Query.creatTable(CurrentlyUsedDB, TableName, fields3);
 	                            Executed = true;
 	                			System.out.println("Table is Created");
