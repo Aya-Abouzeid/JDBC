@@ -24,13 +24,11 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 			return tableData;
 		}
 	}
-	System.out.println("si"+tableData.size());
 	Set distinct =new HashSet<String>();
 	for (int i = 0; i <tableData.size(); i++) {
 			ArrayList<String>newRow =new ArrayList<String>();
 			for (int k = 0; k < location.size(); k++) {
 				newRow.add(tableData.get(i).get(location.get(k)));
-			   System.out.println("8888888"+tableData.get(i).get(location.get(k)));
 			}
 		distinct.add(newRow);
 		
