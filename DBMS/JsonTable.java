@@ -16,13 +16,15 @@ public class JsonTable implements ITable{
 	 protected String[] ArrayOfTypes;
 	 protected String[] headers;
 	 private Titles titles= new Titles();
-	 
+	  private DtdFile dtdObject;
+		 private xml xmlObject; 
+
 	 private String path;
 	  public  JsonTable(String path) {
 		this.path = path;
+		this.dtdObject = new DtdFile(path);
+		this.xmlObject = new xml(path);
 	}
-	  private DtdFile dtdObject = new DtdFile(path);
-	 private xml xmlObject = new xml(path); 
 	 private EngineDelete  deleteObject = new EngineDelete();
 	 private EngineInsert  insetObject = new EngineInsert();
 	 private EngineSelect  SelectObject =new EngineSelect();
@@ -35,6 +37,8 @@ public class JsonTable implements ITable{
 	@Override
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub
+		System.out.println("jsontable"+path);
+
 		File jsonFile  = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		try {
 			if (jsonFile.createNewFile()){

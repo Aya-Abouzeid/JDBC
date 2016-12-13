@@ -23,7 +23,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -44,7 +43,7 @@ public class Queries  implements DataBaseInterface  {
 	String writerType;
 	public  Queries( String path,String writerType) {
 		this.path=path;
-
+System.out.println("query"+path);
 		this.writerType= writerType;
 	}
 	
@@ -54,8 +53,9 @@ public class Queries  implements DataBaseInterface  {
 
 
     private String databasepath = "";
+    
 	@Override
-	public void createDatabase(String databaseName ) {
+    public void createDatabase(String databaseName ) {
 		// TODO Auto-generated method stub
 		currentDataBase = new DataBase(path,writerType);
 		
@@ -66,11 +66,10 @@ public class Queries  implements DataBaseInterface  {
 				dataBaseDirectory.mkdirs();
 			}
 		} else {
-			try {
-				FileUtils.cleanDirectory(dataBaseDirectory);
-			} catch (IOException e) {
-				System.out.println("Invalid Database.");
-			}
+			for(File file: dataBaseDirectory.listFiles()) 
+			    if (!file.isDirectory()) {
+			        file.delete();
+			        }
 		}
 		System.out.println("Data Base Created successfully");
 		
@@ -81,17 +80,16 @@ public class Queries  implements DataBaseInterface  {
 	public void dropDatabase(String databaseName) {
 		// TODO Auto-generated method stub
 		File file = new File(path+ File.separator + databaseName);
-		try {
-			FileUtils.deleteDirectory(file);
+		
+			for(File file1: file.listFiles()) 
+			    if (!file1.isDirectory()) 
+			        file1.delete();
+			 file.delete();
 			System.out.println("Data Base Dropped successfully");
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
-
 	@Override
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   

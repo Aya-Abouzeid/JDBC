@@ -6,7 +6,6 @@ import java.lang.reflect.Constructor;
 
 import javax.crypto.CipherInputStream;
 
-import org.apache.commons.io.FileUtils;
 
 public class DataBase {
 	private String path = "";
