@@ -10,13 +10,13 @@ public class EngineAlter {
 			String columName) {
 		int out = 0;
 		counter =0;
-		if (type.equals("int")) {
+		if (type.equalsIgnoreCase("int")) {
 			out++;
-		}else if (type.equals("varchar")) {
+		}else if (type.equalsIgnoreCase("varchar")) {
 			out++;
-		}else if (type.equals("float")) {
+		}else if (type.equalsIgnoreCase("float")) {
 			out++;
-		}else if (type.equals("date")) {
+		}else if (type.equalsIgnoreCase("date")) {
 			out++;
 		}
 		if (out==0) {
@@ -59,7 +59,7 @@ public class EngineAlter {
 		counter =0;
 		int location = 0;
 		for (int i = 0; i < headers.length; i++) {
-			if (columName.equals(headers[i])) {
+			if (columName.equalsIgnoreCase(headers[i])) {
 				out++;
 				location = i;
 			}

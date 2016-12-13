@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.DBMS;
 import java.util.ArrayList;
  
 public class Parser  {
-	protected String JDBCdir;
 
 	XmlValidation Detect = new XmlValidation();
 	

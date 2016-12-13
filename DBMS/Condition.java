@@ -16,7 +16,7 @@ public class Condition extends Titles {
         return true;
 	}
 	protected boolean checkValueBoolean(String[]types,String[] proberties,int y){
-		if(types[y].equals("int") ){
+		if(types[y].equalsIgnoreCase("int") ){
 			if(!isNumeric(proberties[y])){
 				System.out.println("invalid value for int");
 				return true;
@@ -45,16 +45,7 @@ public class Condition extends Titles {
 			return false;
 		}
 		return true ;
-	}                                  /////////////////////////////////////aya date
-	 /*public boolean  isDate( String str) {
-		 try {
-			 float d = Date.parse(str); 
-		} catch (Exception e) {
-			// TODO: handle exception
-			return false;
-		}
-		return true ;
-	}*/
+	}                 
 	 public boolean inspectColum(String[]headers, String colum) {
 			for (int j = 0; j < headers.length; j++) {
 				if (colum.equalsIgnoreCase(headers[j])){
@@ -69,7 +60,7 @@ public class Condition extends Titles {
 	 public boolean inspectColumCondition(String[]headers, String colum,String[]ArrayOfTypes) {
 			
 			for (int j = 0; j < headers.length; j++) {
-				if (colum.equals(headers[j])){
+				if (colum.equalsIgnoreCase(headers[j])){
 					location=j;
 					type= ArrayOfTypes[j];
 					return true;
@@ -86,13 +77,13 @@ public class Condition extends Titles {
 		
 	}
 		public boolean  inspectType(String type , String value) {
-			if (type.equals("int")) {
+			if (type.equalsIgnoreCase("int")) {
 			  return isNumeric(value);
 			
-			}else if(type.equals("float")) {
+			}else if(type.equalsIgnoreCase("float")) {
 				return isFloat(value);
 				
-			}else if(type.equals("date")) {
+			}else if(type.equalsIgnoreCase("date")) {
 				//return test.isNumeric(value);                                 check date
 				
 				

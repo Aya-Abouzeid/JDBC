@@ -38,32 +38,63 @@ import org.xml.sax.SAXParseException;
 //import paintProject.Circle;
 
 public class Queries  implements DataBaseInterface  {
-    private int i = 0;
+	
+    //protected DataBase  currentDataBase= new DataBase("kdfojanfj", "kjlkajewijf");
 	String path;
-	String WriterType;
-//	public Queries(){
-//		
-//	}
-	public Queries (String Path , String Writer){
-
-		this.path = path;
-		this.WriterType = Writer;		
-
-
+	String writerType;
+	public  Queries( String path,String writerType) {
+		this.path=path;
+		this.writerType= writerType;
 	}
 	
 	protected DataBase  currentDataBase;
 	protected DataBase  openDataBase;
-    protected DtdFile dtdObject = new DtdFile();
+    protected DtdFile dtdObject = new DtdFile(path);
+    /*protected Table tableObject = new Table();
+    protected XmlInsert xmlInsertObject = new XmlInsert();
+    protected XmlSelect xmlSelectObject = new XmlSelect();
+    protected XmlDelete xmlDeleteObject = new XmlDelete();
+    protected XmlUpdate xmlUpdateObject = new XmlUpdate();
+    protecte d DtdFile dtdObject = new DtdFile();*/
+  /*public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    	 //Queries salma = new Queries();
+    	 salma.createDatabase("toka","xmldb");
+    	 String[]properties ={"varchar name","int id"};
+    	 salma.creatTable("toka", "select1", properties);
+    	 String[]value={"nkjo[o","55"};
+    	 String[]columSend ={"id"};
+    	 String[]condition={"id",">","0"};
+    	 String[] values={"55"};
+    	 String[]columsName={"id","name"};
+    	 String[]updateStatment={"id","=","88","name","=","karima"};
+    	 salma.insertRow("toka", "select1", value);
+    	 salma.insertRow("toka", "select1", value);
+    	 salma.insertSub("toka", "select1", columSend, values);
+    	 salma.addAlter("toka", "select1", "int", "saloka");
+    	 String[][]select=salma.distinct("toka", "select1", columsName);
+    	 //salma.deleteAlter("toka", "select1", "nour");
+    	 //salma.updateWhitoutWhere("toka", "select1", updateStatment);
+    	 //salma.deleteTable("toka", "select1");
+    	 //salma.deleteSubTable("toka", "select1", condition);
+    	 //String[]columntitles={"id","name"};
+    	 //String[][]select =salma.selectColumnsWithCondition("toka", "select1",columntitles ,condition);
+    	 //String[][]select =salma.selectAllWithCondition("toka", "select1" ,condition);
+    	for (int i = 0; i < select.length; i++) {
+			for (int j = 0; j < select[0].length; j++) {
+				//System.out.println(select[i][j]);
+			}
+		}
+    }*/
+
 
     private String databasepath = "";
 	@Override
-	public void createDatabase(String databaseName  ) {
+	public void createDatabase(String databaseName ) {
 		// TODO Auto-generated method stub
-	
-		currentDataBase = new DataBase(databaseName,WriterType);
-		File dataBaseDirectory = new File(System.getProperty("user.home") + File.separator + databaseName);
-		databasepath = System.getProperty("user.home") + File.separator + databaseName;
+		currentDataBase = new DataBase(databaseName,writerType);
+		File dataBaseDirectory = new File(path+ File.separator + databaseName);
+		databasepath = path + File.separator + databaseName;
 		if (!dataBaseDirectory.exists()) {
 			if (!dataBaseDirectory.mkdirs()) {
 				dataBaseDirectory.mkdirs();
@@ -83,7 +114,7 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public void dropDatabase(String databaseName) {
 		// TODO Auto-generated method stub
-		File file = new File(System.getProperty("user.home") + File.separator + databaseName);
+		File file = new File(path+ File.separator + databaseName);
 		try {
 			FileUtils.deleteDirectory(file);
 			System.out.println("Data Base Dropped successfully");
@@ -127,7 +158,6 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
-
 		return currentDataBase.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
@@ -217,9 +247,14 @@ public class Queries  implements DataBaseInterface  {
 		// TODO Auto-generated method stub
 		return currentDataBase.distinct(databaseName, tableName, columsName);
 	}
-
-	
-	
-	
+	@Override
+	public boolean DetectDataBase(String name) {
+		File file = new File(path+ File.separator + name);
+		currentDataBase = new DataBase(path, writerType);
+		if (file.exists()){
+			return true;
+			}
+		return false;
+	}
 
 }

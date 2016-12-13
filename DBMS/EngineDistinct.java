@@ -12,7 +12,7 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 	for (int j = 0; j < columsName.length; j++) {
 		out=0;
 		for (int i = 0; i < headers.length; i++) {
-			if (columsName[j].equals(headers[i])) {
+			if (columsName[j].equalsIgnoreCase(headers[i])) {
 				out++;
 				location.add(i);
 			}
@@ -27,7 +27,7 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 			ArrayList<String>newRow =new ArrayList<String>();
 			for (int k = 0; k < location.size(); k++) {
 				newRow.add(tableData.get(i).get(location.get(k)));
-				System.out.println("8888888"+tableData.get(i).get(location.get(k)));
+			   System.out.println("8888888"+tableData.get(i).get(location.get(k)));
 			}
 		output.add(newRow);
 		
@@ -40,7 +40,7 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 		for (int j = i+1; j <output.size(); j++) {
 			check=0;
 			for (int j2 = 0; j2 <output.get(0).size(); j2++) {
-				System.out.println("size"+output.get(0).size());
+				//System.out.println("size"+output.get(0).size());
 				if (newRow.get(j2).equals(output.get(j).get(j2))) {
 					System.out.println("now     "+newRow.get(j2));
 					System.out.println("compare  "+output.get(i).get(j2));
@@ -52,7 +52,7 @@ public ArrayList<ArrayList<String>>  distinct( ArrayList<ArrayList<String>> tabl
 				System.out.println("j"+j);
 			}
 			
-			
+	
 		}
 	}
 	System.out.println("sgaswgs"+delete.size());

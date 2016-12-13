@@ -49,16 +49,16 @@ public class EngineUpdate {
 			return tableData;
 		}
 		for (int i = 1; i < tableData.size(); i++) {
-			if (columType.equals("int")) {
+			if (columType.equalsIgnoreCase("int")) {
 				int check= comparing.compareInteger(tableData.get(i).get(testing), condition[2]);
 				adding(condition, tableData, i, check,update,itemsCounterUpdate);
-			}else if (columType.equals("varchar") ){
+			}else if (columType.equalsIgnoreCase("varchar") ){
 				int check= comparing.compareString(tableData.get(i).get(testing), condition[2]);
 		        adding(condition, tableData, i, check,update,itemsCounterUpdate);
-			}else if (columType.equals("float") ){
+			}else if (columType.equalsIgnoreCase("float") ){
 				int check= comparing.compareFloat(tableData.get(i).get(testing), condition[2]);
 				adding(condition, tableData, i, check,update,itemsCounterUpdate);
-			}else if (columType.equals("date") ){
+			}else if (columType.equalsIgnoreCase("date") ){
 		                                              ////                                             datttttttttttttttttttttttttttttttttttte
 			}
 		}

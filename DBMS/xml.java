@@ -19,16 +19,21 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-public class xml extends XmlValidation{
+public class xml {
 	 protected  DocumentBuilderFactory documentBuilderFactory;
 	 protected DocumentBuilder documentBuilder;
 	 protected Document document;
 	 protected BufferedWriter fileWriter;
 	 protected int indexOfTable = 0;
+	  private String path;
 	 
+	  public  xml(String path) {
+		this.path = path;
+	}
+	  private XmlValidation obXmlValidation=new XmlValidation(path);
 	 public boolean fileMinimizeBoolean( String databaseName,String tableName) {
 			boolean testData =false; 
-			testData=DetectDataBase(databaseName);
+			testData=obXmlValidation.DetectDataBase(databaseName);
 			if(!testData){
 			 System.out.println("invalid database");
 			 return true;
@@ -44,11 +49,11 @@ public class xml extends XmlValidation{
 			return false;
 		}
 		public boolean fileMinimizeBolean(File folderName, String databaseName, String tableName) {
-			 boolean testData=DetectDataBase(databaseName);
+			 boolean testData=obXmlValidation.DetectDataBase(databaseName);
 				if(!testData){
 				 System.out.println("invalid database");
 				 return true;}
-				boolean testTable= DetectTable(databaseName, tableName);
+				boolean testTable= obXmlValidation.DetectTable(databaseName, tableName);
 		        if(!testTable){
 		        	System.out.println("invalid table name");
 		        	return true; }
@@ -73,7 +78,7 @@ public class xml extends XmlValidation{
 				DOMSource source = new DOMSource(document);
 				try {
 					FileWriter XmlFileWriter = new FileWriter(
-							System.getProperty("user.home") + File.separator + databaseName+File.separator+TableName+".txt");
+							path + File.separator + databaseName+File.separator+TableName+".txt");
 					StreamResult result = new StreamResult(XmlFileWriter);
 					transformer.transform(source, result);
 					XmlFileWriter.close();
@@ -87,5 +92,11 @@ public class xml extends XmlValidation{
 			}
 		}
 
-
+		protected boolean DetectDataBase(String name) {
+			File file = new File(path + File.separator + name);
+			if (file.exists()){
+				return true;
+				}
+			return false;
+		}
 }

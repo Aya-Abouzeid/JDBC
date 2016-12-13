@@ -8,8 +8,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XmlValidation {
+	private String path;
+	public  XmlValidation(String path ) {
+		this.path = path;
+	}
 	protected boolean DetectDataBase(String name) {
-		File file = new File(System.getProperty("user.home") + File.separator + name);
+		File file = new File(path + File.separator + name);
 		if (file.exists()){
 			return true;
 			}
@@ -17,13 +21,16 @@ public class XmlValidation {
 	}
 	protected boolean DetectTable(String databaseName, String tableName) {
 		File tableFile = new File(
-				System.getProperty("user.home") + File.separator + databaseName + File.separator + tableName + ".txt");
+				path + File.separator + databaseName + File.separator + tableName + ".txt");
 		if (tableFile.exists()){
 			return true;
 			}
 		return false;
 	}
 
+	
+	
+	
 	
 
 }

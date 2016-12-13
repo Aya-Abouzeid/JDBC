@@ -9,28 +9,28 @@ import javax.crypto.CipherInputStream;
 import org.apache.commons.io.FileUtils;
 
 public class DataBase {
-	private String databasepath = "";
+	private String path = "";
 	private String writerType ="";
 	protected ITable writer= null;
 	public  DataBase() {
 		
 	}
 	public  DataBase( String databasepath,String writerType ) {
-		this.databasepath = databasepath;
+		this.path = databasepath;
 		this.writerType = writerType;
 		if ( writerType.equals("xmldb")){
-			writer = new XmlTable();
+			writer = new XmlTable(path);
 		}else if (writerType.equals("jsondb")){
-			writer= new JsonTable();
+			writer= new JsonTable(path);
 			
 		}
 	}
 	public  DataBase(String writerType) {
 		this.writerType = writerType;
 		if ( writerType.equals("xmldb")){
-			writer = new XmlTable();
+			writer = new XmlTable(path);
 		}else if (writerType.equals("jsondb")){
-			writer= new JsonTable();
+			writer= new JsonTable(path);
 			
 		}
 	}
@@ -65,7 +65,6 @@ public class DataBase {
 
 	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
-
 		return writer.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
@@ -137,7 +136,7 @@ public class DataBase {
 		return writer.distinct(databaseName, tableName, columsName);
 	}
 	protected void ListTables(String DataBase){
-	   	 File tables = new File(System.getProperty("user.home") + File.separator + DataBase);
+	   	 File tables = new File(path+ File.separator + DataBase);
 	   String[] x =tables.list();	
 	   for(int i =0; i<x.length;i++ ){
       	System.out.println(x[i]);

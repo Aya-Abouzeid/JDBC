@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.DBMS;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,8 +18,13 @@ public class XmlTable implements ITable {
 	 protected String[] ArrayOfTypes;
 	 protected String[] headers;
 	 private Titles titles= new Titles();
-	 private DtdFile dtdObject = new DtdFile();
-	 private xml xmlObject = new xml(); 
+	
+	 private String path;
+	  public  XmlTable(String path) {
+		this.path = path;
+	}
+	 private xml xmlObject = new xml(path); 
+	 private DtdFile dtdObject = new DtdFile(path);
 	 private EngineDelete  deleteObject = new EngineDelete();
 	 private EngineInsert  insetObject = new EngineInsert();
 	 private EngineSelect  SelectObject =new EngineSelect();
@@ -38,6 +44,17 @@ public class XmlTable implements ITable {
 			String[]dtd =new String[properties.length] ;
 			for (int i = 0; i < properties.length; i++) {
 				String[] str = properties[i].split(" ");
+				if (str[0].equalsIgnoreCase("int")) {
+					
+				}else if (str[0].equalsIgnoreCase("varchar")) {
+					
+				}else if (str[0].equalsIgnoreCase("float")) {
+					
+				}else if (str[0].equalsIgnoreCase("date")) {
+					
+				}else{
+					//throw new SQLException();
+				}
 				Node column = xmlObject.document.createElement(str[0]);
 				dtd[i]=str[1];
 				type[i]=str[0];
@@ -52,7 +69,7 @@ public class XmlTable implements ITable {
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
 	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName){
-		File tables = new File(System.getProperty("user.home") + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
 		if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){return null;}
 		Element root = xmlObject.document.getDocumentElement();
 		NodeList roots = root.getElementsByTagName(tableName);
@@ -80,8 +97,8 @@ public class XmlTable implements ITable {
  }
 	 @Override
 		public void dropTable(String databaseName, String TableName) {
-			File table = new File(System.getProperty("user.home") + File.separator + databaseName+File.separator+TableName+".txt");
-			File dtd = new File(System.getProperty("user.home") + File.separator + databaseName+File.separator+TableName+".dtd");
+			File table = new File(path + File.separator + databaseName+File.separator+TableName+".txt");
+			File dtd = new File(path + File.separator + databaseName+File.separator+TableName+".dtd");
 
 			if (xmlObject.DetectDataBase(databaseName)&& table.exists()) {
 				table.delete();
@@ -92,7 +109,7 @@ public class XmlTable implements ITable {
 		}
 	 @Override
  public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> tableData){
-		File tables = new File(System.getProperty("user.home") + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
 		dropTable(databaseName, tableName);
 		if (xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;}
 		    Element tableFile = xmlObject.document.createElement(tableName);
@@ -129,7 +146,7 @@ public class XmlTable implements ITable {
  }
 	
 	public void  check( String databaseName ,String tableName) {
-		File tables = new File(	System.getProperty("user.home") + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
 		 if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){
 			 return;
 		 }
@@ -142,7 +159,7 @@ public class XmlTable implements ITable {
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertRow(working, properties, ArrayOfTypes,headers);
          writeFile(databaseName, tableName,tableData);
-
+		
 		return insetObject.getCounter();
 	}
 	@Override
@@ -156,7 +173,7 @@ public class XmlTable implements ITable {
 			}
 		}*/
         writeFile(databaseName, tableName,tableData);
-
+		
 		return insetObject.getCounter();
 	}
 	@Override

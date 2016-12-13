@@ -66,7 +66,7 @@ public class Update extends Validate {
 	     for (int i = 0; i < updated_fields2.length; i++) {
 	         updated_fields2[i][0] = updated_fields1.get(i);
 	     }
-	    if( reform2(updated_fields2)){
+	    if( reform2(updated_fields2) && Detect.DetectTable(CurrentlyUsedDB, tablename)){
 	    	UpdateCount=  Query.updateWhitoutWhere(CurrentlyUsedDB, tablename, updateStatment);
 	     System.out.println("updated");
 	 	 Executed = true;
@@ -94,7 +94,7 @@ public class Update extends Validate {
 	     for (int i = 0; i < updated_fields2.length; i++) {
 	         updated_fields2[i][0] = updated_fields1.get(i);
 	     }
-	    if( reform2(updated_fields2)){
+	    if( reform2(updated_fields2) && Detect.DetectTable(CurrentlyUsedDB, tablename)){
 		     System.out.println("updated");
 
 		     UpdateCount= Query.update(CurrentlyUsedDB, tablename, condition, updateStatment);

@@ -17,58 +17,64 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-public class DtdFile extends xml {
+public class DtdFile  {
 	/* protected  DocumentBuilderFactory documentBuilderFactory;
 	 protected DocumentBuilder documentBuilder;
 	 protected Document document;
 	 protected BufferedWriter fileWriter;
 	 protected int indexOfTable = 0;*/
+	
+	private String path;
+	public  DtdFile(String path) {
+		//this.path= path;
+	}
+	private xml objXml= new xml(path);
 	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type){
-   	 File dtdFile = new File(System.getProperty("user.home") + File.separator + databaseName + File.separator + tableName + ".dtd");
-   	 File tables = new File(System.getProperty("user.home") + File.separator + databaseName + File.separator + tableName + ".txt");
-   	 documentBuilderFactory = DocumentBuilderFactory.newInstance();
+   	 File dtdFile = new File(path + File.separator + databaseName + File.separator + tableName + ".dtd");
+   	 File tables = new File(path + File.separator + databaseName + File.separator + tableName + ".txt");
+   	objXml.documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			document = documentBuilder.parse(tables);
+			objXml.documentBuilder = objXml.documentBuilderFactory.newDocumentBuilder();
+			objXml.document = objXml.documentBuilder.parse(tables);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-   		 Element root = document.getDocumentElement();
+   		 Element root =objXml.document.getDocumentElement();
     		 NodeList roots = root.getElementsByTagName(tableName);
     		 NodeList columns = (roots.item(0)).getChildNodes();     		 
-       	 try {fileWriter = new BufferedWriter(new FileWriter(dtdFile));
-   			fileWriter.write("<!ELEMENT "+tableName+" "+"("+tableName +","+ tableName +"*)"+">\n");
-   			fileWriter.write("<!ATTLIST "+tableName+" "+" numberOfRows"+ " CDATA "+"#REQUIRED"+">\n");
-   			fileWriter.write("<!ELEMENT "+roots.item(0).getNodeName()+" (");
+       	 try {objXml.fileWriter = new BufferedWriter(new FileWriter(dtdFile));
+       	objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"("+tableName +","+ tableName +"*)"+">\n");
+       	objXml.fileWriter.write("<!ATTLIST "+tableName+" "+" numberOfRows"+ " CDATA "+"#REQUIRED"+">\n");
+       	objXml.fileWriter.write("<!ELEMENT "+roots.item(0).getNodeName()+" (");
    			//ForLoopNodes(columns);
-   			fileWriter.write(columns.item(columns.getLength()-2).getNodeName()+")>\n");
+       	objXml.fileWriter.write(columns.item(columns.getLength()-2).getNodeName()+")>\n");
    			for(int y = 0;y < (type.length);y++){
-      				if(y ==(type.length - 1)){fileWriter.write(type[y]+")>\n");}
-      				else{fileWriter.write(type[y]+",");}}
+      				if(y ==(type.length - 1)){objXml.fileWriter.write(type[y]+")>\n");}
+      				else{objXml.fileWriter.write(type[y]+",");}}
    			for(int g = 0 ;g < type.length; g++){
-   				fileWriter.write("<!ELEMENT "+type[g]+" (#PCDATA)>\n");}
-   			fileWriter.write("<!ELEMENT "+tableName+" "+"(");
+   				objXml.fileWriter.write("<!ELEMENT "+type[g]+" (#PCDATA)>\n");}
+   			objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"(");
       			for(int y = 0;y < (dtd.length);y++){
       				if(y==(dtd.length-1)){
-      					fileWriter.write(dtd[y]);
+      					objXml.fileWriter.write(dtd[y]);
       				}else{
-      					fileWriter.write(dtd[y]+",");
+      					objXml.fileWriter.write(dtd[y]+",");
        				
       				}
    			}
-       			fileWriter.write(")>\n");
+      			objXml.fileWriter.write(")>\n");
  	
    			for(int g = 0 ;g < dtd.length; g++){
-   				fileWriter.write("<!ELEMENT "+dtd[g]+" (#PCDATA)>\n");
+   				objXml.fileWriter.write("<!ELEMENT "+dtd[g]+" (#PCDATA)>\n");
    			}	
-       	    fileWriter.close();
+   			objXml. fileWriter.close();
        			} catch (IOException e) {System.out.println("Invalid Input");}
        	 }
 	protected void ForLoopNodes(NodeList elements){
 		for(int i = 0; i<(elements.getLength()-2); i++){
 			if(!elements.item(i).getNodeName().equals("#text")){
 				try {
-					fileWriter.write(elements.item(i).getNodeName()+",");
+					objXml.fileWriter.write(elements.item(i).getNodeName()+",");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -81,7 +87,7 @@ public class DtdFile extends xml {
 		for(int g = 0 ;g < elements.getLength(); g++){
 			if(!elements.item(g).getNodeName().equals("#text")){
 				try {
-					fileWriter.write("<!ELEMENT "+elements.item(g).getNodeName()+" (#PCDATA)>\n");
+					objXml.fileWriter.write("<!ELEMENT "+elements.item(g).getNodeName()+" (#PCDATA)>\n");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -102,7 +108,7 @@ public class DtdFile extends xml {
 		            public void error(SAXParseException e) throws SAXException {}
 		            public void fatalError(SAXParseException e) throws SAXException {
 		              System.out.println("FATAL : " + e.getMessage());}});
-		      builder.parse(new InputSource(System.getProperty("user.home") + File.separator + databaseName+File.separator+tableName+".txt"));
+		      builder.parse(new InputSource(path + File.separator + databaseName+File.separator+tableName+".txt"));
 		      return true;}
 		    catch (ParserConfigurationException pce) {
 		      throw pce;}

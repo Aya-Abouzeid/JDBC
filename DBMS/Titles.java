@@ -7,7 +7,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Titles extends xml {
+public class Titles  {
+	
 	protected String[] columTitles (Element root ){
 		NodeList children = root.getChildNodes();
 		Node workNode = children.item(1);
@@ -67,13 +68,14 @@ public class Titles extends xml {
         return titles;
 	}
 
-	protected boolean DetectColumn(String databaseName, String tableName , String Column) {
+	protected boolean DetectColumn(String databaseName, String tableName , String Column ,String path) {
 		File tableFile = new File(
-				System.getProperty("user.home") + File.separator + databaseName + File.separator + tableName + ".txt");
-		 if (fileMinimizeBolean(tableFile,databaseName,tableName)){
+				path + File.separator + databaseName + File.separator + tableName + ".txt");
+		xml objXml = new xml(path);
+		 if (objXml.fileMinimizeBolean(tableFile,databaseName,tableName)){
 			 return false;
 		 }
-		Element root = document.getDocumentElement();
+		Element root = objXml.document.getDocumentElement();
 		String[] columntitles=columTitles(root);
 		for(int i = 0 ; i < columntitles.length;i++){
 			if (columntitles[i].equals(Column))

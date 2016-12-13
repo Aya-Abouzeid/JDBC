@@ -14,7 +14,7 @@ public interface DataBaseInterface {
 	  * a call to executeStructureQuery() internally to create or drop the database. 
 	  * @param databaseName   Database name
 	  */
-	public void createDatabase(String databaseName );
+	public void createDatabase(String databaseName);
 	/**
 	  * Drop database with the given name from the directory.  
 	  * @param databaseName   Database name
@@ -119,4 +119,5 @@ public interface DataBaseInterface {
     public int addAlter(String databaseName, String tableName ,String type,String columName) ;
     public int deleteAlter(String databaseName, String tableName ,String columName) ;
     public String[][] distinct(String databaseName, String tableName ,String[] columsName);
+    public boolean DetectDataBase(String name);
 }
