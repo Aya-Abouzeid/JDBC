@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.management.RuntimeErrorException;
 import javax.xml.parsers.DocumentBuilder;
@@ -70,7 +71,7 @@ public class xml {
 			return false ;
 		}
 		
-		protected void transform(Document document ,String databaseName ,String TableName) {
+		protected void transform(Document document ,String databaseName ,String TableName) throws SQLException {
 			try {
 				Transformer transformer = TransformerFactory.newInstance().newTransformer();
 				transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
@@ -89,9 +90,9 @@ public class xml {
 					e.printStackTrace();
 				}
 			} catch (TransformerConfigurationException e) {
-				throw new RuntimeErrorException(null);
+				throw new SQLException();
 			} catch (TransformerException e) {
-				throw new RuntimeErrorException(null);
+				throw new SQLException();
 			}
 		}
 

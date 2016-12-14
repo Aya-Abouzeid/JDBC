@@ -47,7 +47,7 @@ public class XmlTable implements ITable {
 	 private EngineDistinct distinctObject = new EngineDistinct();
 	 private ArrayList<ArrayList<String>>  working ;
 	 @Override
-	 public void creatTable( String databaseName,String tableName , String[] properties) {
+	 public void creatTable( String databaseName,String tableName , String[] properties) throws SQLException {
 			if(xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;} 
 		    Element tableNameElement = xmlObject.document.createElement(tableName);
 			Element rows = xmlObject.document.createElement(tableName);
@@ -67,6 +67,7 @@ public class XmlTable implements ITable {
 				}else if (str[0].equalsIgnoreCase("date")) {
 					
 				}else{
+					throw new SQLException();
 					//throw new SQLException();
 				}
 				Node column = xmlObject.document.createElement(str[0]);
@@ -122,7 +123,7 @@ public class XmlTable implements ITable {
 			}
 		}
 	 @Override
- public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> tableData){
+ public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> tableData) throws SQLException{
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		dropTable(databaseName, tableName);
 		if (xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;}
@@ -167,7 +168,7 @@ public class XmlTable implements ITable {
 		
 	}
 	@Override
-	public int insertRow(String databaseName, String tableName, String[] properties) {
+	public int insertRow(String databaseName, String tableName, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertRow(working, properties, ArrayOfTypes,headers);
@@ -176,7 +177,7 @@ public class XmlTable implements ITable {
 		return insetObject.getCounter();
 	}
 	@Override
-	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
+	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertSub(working,columSend, properties, ArrayOfTypes,headers);
@@ -186,7 +187,7 @@ public class XmlTable implements ITable {
 		return insetObject.getCounter();
 	}
 	@Override
-	public int deleteTable(String databaseName, String tableName) {
+	public int deleteTable(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -196,7 +197,7 @@ public class XmlTable implements ITable {
 		return deleteObject.getCounter();
 	}
 	@Override
-	public int deleteSubTable(String databaseName, String tableName, String[] condition) {
+	public int deleteSubTable(String databaseName, String tableName, String[] condition) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -205,7 +206,7 @@ public class XmlTable implements ITable {
 		return deleteObject.getCounter();
 	}
 	@Override
-	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) {
+	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -214,7 +215,7 @@ public class XmlTable implements ITable {
 		return UpdatObject.getCounter();
 	}
 	@Override
-	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) {
+	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -224,7 +225,7 @@ public class XmlTable implements ITable {
 	}
 	@Override
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
-			String[] Condition) {
+			String[] Condition) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -235,7 +236,7 @@ public class XmlTable implements ITable {
 		return outputTable;
 	}
 	@Override
-	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
+	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -246,7 +247,7 @@ public class XmlTable implements ITable {
 		return outputTable;
 	}
 	@Override
-	public String[][] selectAllColumns(String databaseName, String tableName) {
+	public String[][] selectAllColumns(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		writeFile(databaseName, tableName, SelectObject.selectAllColumns(working,ArrayOfTypes)); ///////////// return array
@@ -260,7 +261,7 @@ public class XmlTable implements ITable {
 		return outputTable;
 	}
 	@Override
-	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
+	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
@@ -271,7 +272,7 @@ public class XmlTable implements ITable {
 		return outputTable;
 	}
 	@Override
-	public int addAlter(String databaseName, String tableName, String type, String columName) {
+	public int addAlter(String databaseName, String tableName, String type, String columName) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=alterObject.addColum(working, ArrayOfTypes,headers,type,columName);
@@ -281,7 +282,7 @@ public class XmlTable implements ITable {
 		return alterObject.getCounter();
 	}
 	@Override
-	public int deleteAlter(String databaseName, String tableName, String columName) {
+	public int deleteAlter(String databaseName, String tableName, String columName) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=alterObject.deleteColum(working, ArrayOfTypes,headers,columName);
@@ -291,7 +292,7 @@ public class XmlTable implements ITable {
 		return alterObject.getCounter();
 	}
 	@Override
-	public String[][] distinct(String databaseName, String tableName, String[] columsName) {
+	public String[][] distinct(String databaseName, String tableName, String[] columsName) throws SQLException {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();

@@ -16,6 +16,7 @@ public class Statement implements java.sql.Statement {
 	Select SelectObject = new Select();
 	Update UpdateObject = new Update();
 	Alter AlterObject = new Alter();
+	Log4j logging = new Log4j();
 	XmlValidation DetectObject;
 	public String[]Type;
 	public String tableName;
@@ -30,8 +31,10 @@ public class Statement implements java.sql.Statement {
 	private ResultSet Rset = null;
 	private Parser parse;
 	Queries query ;
+	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
+		logging.INFO("Statement Created.");
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;

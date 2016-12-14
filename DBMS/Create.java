@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Create extends Validate {
@@ -7,7 +8,7 @@ public class Create extends Validate {
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
+	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) throws SQLException {
 			this.Query = query;
 		 int UpdateCount = 0;
 		 this.Detect = Detect;
@@ -49,7 +50,7 @@ public class Create extends Validate {
 	        }
 	        return UpdateCount;
 	    }
-	 private int CreateTable(String Rest) {
+	 private int CreateTable(String Rest) throws SQLException {
 		int UpdateCount = 0;
 	        if (DBfound) {
 

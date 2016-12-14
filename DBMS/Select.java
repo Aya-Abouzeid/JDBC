@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Select extends Validate {
 	int MaxValueLength = -1;
 	boolean Executed;
      public String []Type;
-	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) {
+	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) throws SQLException {
 		this.Query = query;
 		this.Detect = Detect;
 		String[][] x = null;
@@ -45,7 +46,7 @@ public class Select extends Validate {
 			return x;
 	}
 
-	private String[][] selectDistinct(String getRest) {
+	private String[][] selectDistinct(String getRest) throws SQLException {
 		String x[][] = null;
 		distinct=true;
 		x = select_withoutASt(getRest);
@@ -53,7 +54,7 @@ public class Select extends Validate {
 		return x;
 	}
 
-	private String[][] select_withASt(String Rest) {
+	private String[][] select_withASt(String Rest) throws SQLException {
 		String[][] x = null;
 		boolean s1 = check_from_state(Rest);
 		boolean s2 = true;
@@ -89,7 +90,7 @@ public boolean GetExecuted(){
 	return Executed;
 }
 
-	private String[][] select_withoutASt(String Rest) {
+	private String[][] select_withoutASt(String Rest) throws SQLException {
 		String[][] x = null;
 		if (!Rest.toLowerCase().contains("from")) {
 			System.out.println("Invalid Command.");

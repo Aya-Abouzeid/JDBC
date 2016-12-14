@@ -1,12 +1,14 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import java.sql.SQLException;
+
 public class Alter extends Validate{
 	boolean Executed;
 	String tablename=null;
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	public int Alter(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence , Queries query , XmlValidation Detect) {
+	public int Alter(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence , Queries query , XmlValidation Detect) throws SQLException {
 		this.Query = query;
 this.Detect = Detect;
 		Executed = false;
@@ -49,7 +51,7 @@ this.Detect = Detect;
 		
 	}
 
-	private int alterdrop(String rest) {
+	private int alterdrop(String rest) throws SQLException {
 		int UpdateCount = 0;
 		tablename=GetBeforeDrop(rest);
 		if(tablename!=null && space(tablename)
@@ -73,7 +75,7 @@ this.Detect = Detect;
 		return UpdateCount;
 	}
 
-	private int checkColumn(String g) {
+	private int checkColumn(String g) throws SQLException {
 		int UpdateCount =  0;
      if(g.equalsIgnoreCase("add")){
    String columnName= GetFirstWord(GetRest);
@@ -140,7 +142,7 @@ this.Detect = Detect;
 		return g;
 	}
 
-	private int alterAdd(String rest) {
+	private int alterAdd(String rest) throws SQLException {
 		int UpdateCount = 0;
 		tablename=GetBeforeAdd(rest);
         if(tablename!=null  && space(tablename)

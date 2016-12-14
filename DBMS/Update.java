@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Update extends Validate {
@@ -7,7 +8,7 @@ public class Update extends Validate {
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	public int Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query,XmlValidation Detect) {
+	public int Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query,XmlValidation Detect) throws SQLException {
 		Executed = false;
 		this.Query = query;
 		this.Detect = Detect;
@@ -44,7 +45,7 @@ public class Update extends Validate {
         return UpdateCount;
        
     }
-	private int update_withoutwhere(String Rest,String tablename){
+	private int update_withoutwhere(String Rest,String tablename) throws SQLException{
 		
 		int UpdateCount = 0;
 		 Rest = TrimCommand(Rest);
@@ -75,7 +76,7 @@ public class Update extends Validate {
 	     }	 
 	    return UpdateCount;
 	 }
-	 private int update_withwhere(String tablename){
+	 private int update_withwhere(String tablename) throws SQLException{
 		 int UpdateCount = 0;
 		 before_where = TrimCommand(before_where);
 	     before_where = Trim_end(before_where);

@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.DBMS;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.sql.SQLException;
 
 import javax.crypto.CipherInputStream;
 
@@ -34,14 +35,14 @@ public class DataBase {
 			
 		}
 	}
-	public void creatTable(String databaseName, String tableName, String[] properties) {
+	public void creatTable(String databaseName, String tableName, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub                                                   
 		
 		writer.creatTable(databaseName, tableName, properties);
 	}
 
 
-	public int insertRow(String databaseName, String tableName, String[] properties) {
+	public int insertRow(String databaseName, String tableName, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.insertRow(databaseName, tableName, properties);
 		
@@ -49,35 +50,35 @@ public class DataBase {
 	}
 
 	
-	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) {
+	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.update(databaseName, tableName, condition, updateStatment);
 		
 	}
 
 	
-	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) {
+	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.updateWhitoutWhere(databaseName, tableName, updateStatment);
 		
 	}
 
 
-	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
+	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
 
 
-	public int deleteTable(String databaseName, String tableName) {
+	public int deleteTable(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.deleteTable(databaseName, tableName);
 	
 	}
 
 
-	public int deleteSubTable(String databaseName, String tableName, String[] condition) {
+	public int deleteSubTable(String databaseName, String tableName, String[] condition) throws SQLException {
 		// TODO Auto-generated method stub
 		return writer.deleteSubTable(databaseName, tableName, condition);
 	
@@ -86,7 +87,7 @@ public class DataBase {
 
 
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
-			String[] Condition) {
+			String[] Condition) throws SQLException {
 		// TODO Auto-generated method stub;
 		Type=writer.getType();
 		return writer.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
@@ -94,21 +95,21 @@ public class DataBase {
 	}
 
 
-	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
+	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) throws SQLException {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 	  return writer.selectColumns(databaseName, tableName, columntitles);
 	}
 
 	
-	public String[][] selectAllColumns(String databaseName, String tableName) {
+	public String[][] selectAllColumns(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 		return  writer.selectAllColumns(databaseName, tableName);
 	}
 
 	
-	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
+	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) throws SQLException {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 		return  writer.selectAllWithCondition(databaseName, tableName, Condition);
@@ -128,15 +129,15 @@ public class DataBase {
 
 	
     
-	public int addAlter(String databaseName, String tableName ,String type,String columName) {
+	public int addAlter(String databaseName, String tableName ,String type,String columName) throws SQLException {
 		return writer.addAlter(databaseName, tableName, type, columName);
 		
 	}
-    public int deleteAlter(String databaseName, String tableName ,String columName) {
+    public int deleteAlter(String databaseName, String tableName ,String columName) throws SQLException {
 		return writer.deleteAlter(databaseName, tableName, columName);
     	
     }
-    public String[][] distinct(String databaseName, String tableName ,String[] columsName) {
+    public String[][] distinct(String databaseName, String tableName ,String[] columsName) throws SQLException {
     	Type=writer.getType();
 		return writer.distinct(databaseName, tableName, columsName);
 	}
