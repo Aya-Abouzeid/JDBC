@@ -95,7 +95,7 @@ public class Queries  implements DataBaseInterface  {
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
 		
-		
+		System.out.println(databaseName);
 		currentDataBase.creatTable(databaseName, tableName, properties);
 	}
 
