@@ -126,7 +126,12 @@ public class Statement implements java.sql.Statement {
 			String FirstWord = parse.Parse(sql);
 			
 			if (sql != null){
+				try{
 				ChooseQuery(FirstWord);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 		
 			}
 			
