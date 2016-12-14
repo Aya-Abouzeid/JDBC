@@ -5,7 +5,8 @@ import java.sql.Driver;
 import org.junit.Assert;
 import org.junit.Test;
 
-import eg.edu.alexu.csd.TestRunner;
+
+import eg.edu.alexu.csd.oop.test.jdbc.TestRunner;
 
 public class IntegrationTest {
 

@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.jdbc;
+package eg.edu.alexu.csd.oop.test.jdbc;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -14,7 +14,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import eg.edu.alexu.csd.oop.jdbc.Driver;
+//import eg.edu.alexu.csd.oop.test.jdbc.Driver;
 
 public class TestRunner {
 
