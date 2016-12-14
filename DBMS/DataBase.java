@@ -116,7 +116,7 @@ public class DataBase {
 	}
 
 	
-	public void dropTable(String databaseName, String tableName) {
+	public void dropTable(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		writer.dropTable(databaseName, tableName);
 	}

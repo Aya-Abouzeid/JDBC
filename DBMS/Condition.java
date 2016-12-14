@@ -1,25 +1,26 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 import org.w3c.dom.Element;
 
 public class Condition extends Titles {
 
-	protected boolean checkConditionBoolean(Element root,String[] condition ) {
+	protected boolean checkConditionBoolean(Element root,String[] condition ) throws SQLException {
 		String[]pass={ condition[0]};
         String[]types= columType(root,pass);
         String[]proberties={condition[2]};
         if (checkValueBoolean(types, proberties, 0)){
         	System.out.println(" invald type for condition");
-        	return false;}
+			throw new SQLException()        			;}
         return true;
 	}
-	protected boolean checkValueBoolean(String[]types,String[] proberties,int y){
+	protected boolean checkValueBoolean(String[]types,String[] proberties,int y) throws SQLException{
 		if(types[y].equalsIgnoreCase("int") ){
 			if(!isNumeric(proberties[y])){
 				System.out.println("invalid value for int");
-				return true;
+				throw new SQLException();
 			}
 		}
 		return false;

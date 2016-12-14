@@ -126,12 +126,7 @@ public class Statement implements java.sql.Statement {
 			String FirstWord = parse.Parse(sql);
 			
 			if (sql != null){
-				try{
 				ChooseQuery(FirstWord);
-				}
-				catch(Throwable e){
-					e.printStackTrace();
-				}
 		
 			}
 			
@@ -174,7 +169,8 @@ public class Statement implements java.sql.Statement {
 			System.out.println("Invalid command. Select a Database first.");
 
 	}
-
+////////////////////////////////////////////////////////////////////
+	
 	private void CaseUpdate() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public interface ITable {
 	public void creatTable( String databaseName,String tableName , String [] properties)  throws SQLException;
 	public String[]getType();
-	public void dropTable(String databaseName,String tableName ) ;
-	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName);
+	public void dropTable(String databaseName,String tableName ) throws SQLException ;
+	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName) throws SQLException;
     public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> table)  throws SQLException;
 	public int  insertRow(String databaseName ,String tableName ,String [] properties ) throws SQLException;
 	public int insertSub(String databaseName,String tableName ,String[]columSend ,String [] properties ) throws SQLException;

@@ -275,7 +275,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public void dropTable(String databaseName, String tableName) {
+	public void dropTable(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();

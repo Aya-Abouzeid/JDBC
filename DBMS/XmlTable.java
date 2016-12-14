@@ -83,7 +83,7 @@ public class XmlTable implements ITable {
 		}
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
-	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName){
+	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName) throws SQLException{
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){return null;}
 		Element root = xmlObject.document.getDocumentElement();
@@ -111,7 +111,7 @@ public class XmlTable implements ITable {
 	return tableData; 
  }
 	 @Override
-		public void dropTable(String databaseName, String TableName) {
+		public void dropTable(String databaseName, String TableName) throws SQLException {
 			File table = new File(path + File.separator + databaseName+File.separator+TableName+".xml");
 			File dtd = new File(path + File.separator + databaseName+File.separator+TableName+".dtd");
 
@@ -120,13 +120,16 @@ public class XmlTable implements ITable {
 				dtd.delete();
 			}else{
 				System.out.println("Invalid command.");
+				throw new SQLException();
 			}
 		}
 	 @Override
  public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> tableData) throws SQLException{
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		dropTable(databaseName, tableName);
-		if (xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;}
+		if (xmlObject.fileMinimizeBoolean(databaseName,tableName)){
+			throw new SQLException();
+					}
 		    Element tableFile = xmlObject.document.createElement(tableName);
 		    Element row = xmlObject. document.createElement(tableName);
 		    String[]dtd=new String[tableData.get(0).size()];
@@ -159,7 +162,7 @@ public class XmlTable implements ITable {
 			
  }
 	
-	public void  check( String databaseName ,String tableName) {
+	public void  check( String databaseName ,String tableName) throws SQLException {
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		 if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){
 			 return;

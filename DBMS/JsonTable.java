@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.ArrayList;
  
 public class JsonTable implements ITable{
@@ -83,13 +84,14 @@ public class JsonTable implements ITable{
 	}
  
 	@Override
-	public void dropTable(String databaseName, String tableName) {
+	public void dropTable(String databaseName, String tableName) throws SQLException {
 		// TODO Auto-generated method stub
 		File table = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		if (xmlObject.DetectDataBase(databaseName)&& table.exists()) {
 			table.delete();
 		}else{
 			System.out.println("Invalid command.");
+			throw new SQLException();
 		}
 	}
  
@@ -194,7 +196,7 @@ public class JsonTable implements ITable{
 		} catch (IOException e) {e.printStackTrace();}}
  
 	@Override
-	public int insertRow(String databaseName, String tableName, String[] properties) {
+	public int insertRow(String databaseName, String tableName, String[] properties) throws SQLException {
 		// TODO Auto-generated method stub
 		working = readFile(databaseName, tableName);
 		tableData=insetObject.insertRow(working, properties, ArrayOfTypes,headers);

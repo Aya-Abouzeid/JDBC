@@ -20,7 +20,7 @@ public interface DataBaseInterface {
 	  * Drop database with the given name from the directory.  
 	  * @param databaseName   Database name
 	  */
-	public void dropDatabase(String databaseName);
+	public void dropDatabase(String databaseName) throws SQLException;
 	/**
 	  * Create an XML file to save database in a table .  
 	  * @param databaseName   Database name .
@@ -35,7 +35,7 @@ public interface DataBaseInterface {
 	  * @param properties   inserted row values .
 	  */
 	public int  insertRow(String databaseName ,String tableName ,String [] properties ) throws SQLException;
-	public void dropTable(String databaseName,String tableName ) ;
+	public void dropTable(String databaseName,String tableName ) throws SQLException ;
 	/**
 	  * change types or values in the table with special condition and add it in the given XML file .  
 	  * @param databaseName   Database name .

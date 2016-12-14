@@ -44,6 +44,7 @@ public class xml {
 			}
 			documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			try {
+				
 				documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			} catch (ParserConfigurationException e) {
 				// TODO Auto-generated catch block
@@ -52,15 +53,19 @@ public class xml {
 			document = documentBuilder.newDocument();
 			return false;
 		}
-		public boolean fileMinimizeBolean(File folderName, String databaseName, String tableName) {
+		public boolean fileMinimizeBolean(File folderName, String databaseName, String tableName) throws SQLException {
 			 boolean testData=obXmlValidation.DetectDataBase(databaseName);
 				if(!testData){
 				 System.out.println("invalid database");
-				 return true;}
+					throw new SQLException();
+
+				 }
 				boolean testTable= obXmlValidation.DetectTable(databaseName, tableName);
 		        if(!testTable){
 		        	System.out.println("invalid table name");
-		        	return true; }
+					throw new SQLException();
+
+		        	}
 			documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			try {
 				documentBuilder = documentBuilderFactory.newDocumentBuilder();
