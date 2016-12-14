@@ -38,7 +38,7 @@ this.Detect = Detect;
 	            }
 	            else
 	            { DBfound2 = false;
-	            	Query.dropDatabase(Rest);
+	            	Query.dropDatabase(Rest.toLowerCase());
 	            	Executed = true;
 	            }
 	        } else {

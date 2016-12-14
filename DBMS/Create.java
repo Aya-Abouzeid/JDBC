@@ -42,7 +42,7 @@ public class Create extends Validate {
 	 
 	        } else if (GetFirstWord(GetRest).equals(Rest) ) {
 
-	            Query.createDatabase(Rest);
+	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
 	        } else {
 	            System.out.println("Invalid Command.");

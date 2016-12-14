@@ -268,9 +268,9 @@ public class Statement implements java.sql.Statement {
 	public void CaseUse() throws SQLException {
         String Name = parse.GetGetRest();
  
-if(DetectObject.DetectDataBase(Name)){
+if(DetectObject.DetectDataBase(Name.toLowerCase())){
         
-            parse.SetCurrentlyUsed(Name);
+            parse.SetCurrentlyUsed(Name.toLowerCase());
             parse.SetDBFound(true);
             System.out.println("database found");
         } else {
