@@ -40,7 +40,6 @@ public class JsonTable implements ITable{
 	  }
 	@Override
     public void creatTable(String databaseName, String tableName, String[] properties) {
-		System.out.println("jsonpath"+path);
 		File jsonFile  = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		try {
 			if (jsonFile.createNewFile()){System.out.println("File is created!");

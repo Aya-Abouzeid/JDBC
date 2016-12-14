@@ -15,7 +15,6 @@ public class Driver implements java.sql.Driver {
 	String WriterType;
 	@Override
 	public boolean acceptsURL(String url) throws SQLException {
-		System.out.println(url);
 		if(url==null){
          return false;
 		}
@@ -38,7 +37,6 @@ protected String getpath(){
 }
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
-		System.out.println(info.get("path").toString());
 		if(acceptsURL(url)){
 //		path = info.g
 			
