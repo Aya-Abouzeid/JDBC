@@ -102,7 +102,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int insertRow(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub
-		
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.insertRow(databaseName, tableName, properties);
 		
 		
@@ -111,6 +120,17 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) {
 		// TODO Auto-generated method stub
+		
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.update(databaseName, tableName, condition, updateStatment);
 		
 	}
@@ -118,6 +138,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.updateWhitoutWhere(databaseName, tableName, updateStatment);
 		
 	}
@@ -125,6 +155,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
@@ -132,6 +172,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int deleteTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.deleteTable(databaseName, tableName);
 	
 	}
@@ -139,6 +189,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int deleteSubTable(String databaseName, String tableName, String[] condition) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.deleteSubTable(databaseName, tableName, condition);
 	
 		
@@ -149,6 +209,16 @@ public class Queries  implements DataBaseInterface  {
 			String[] Condition) {
 		// TODO Auto-generated method stub;
 		Type=currentDataBase.Type;
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
 		
 	}
@@ -157,6 +227,16 @@ public class Queries  implements DataBaseInterface  {
 	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 	  return currentDataBase.selectColumns(databaseName, tableName, columntitles);
 	}
 
@@ -164,6 +244,16 @@ public class Queries  implements DataBaseInterface  {
 	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return  currentDataBase.selectAllColumns(databaseName, tableName);
 	}
 
@@ -171,12 +261,32 @@ public class Queries  implements DataBaseInterface  {
 	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return  currentDataBase.selectAllWithCondition(databaseName, tableName, Condition);
 	}
 
 	@Override
 	public void dropTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		currentDataBase.dropTable(databaseName, tableName);
 	}
 
@@ -190,6 +300,16 @@ public class Queries  implements DataBaseInterface  {
 	public boolean validateWithDTDUsingDOM(String databaseName, String tableName)
 			throws ParserConfigurationException, IOException {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return dtdObject.validateWithDTDUsingDOM(databaseName, tableName);
 	}
 
@@ -202,6 +322,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int addAlter(String databaseName, String tableName, String type, String columName) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		currentDataBase.addAlter(databaseName, tableName, type, columName);
 		return 0;
 	}
@@ -209,6 +339,16 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public int deleteAlter(String databaseName, String tableName, String columName) {
 		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		currentDataBase.deleteAlter(databaseName, tableName, columName);
 		return 0;
 	}
@@ -217,6 +357,16 @@ public class Queries  implements DataBaseInterface  {
 	public String[][] distinct(String databaseName, String tableName, String[] columsName) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
 		return currentDataBase.distinct(databaseName, tableName, columsName);
 	}
 	@Override
