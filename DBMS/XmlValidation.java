@@ -23,6 +23,7 @@ public class XmlValidation {
 			}
 		return false;
 	}
+	
 	public boolean DetectTable(String databaseName, String tableName) {
 		File tableFile = new File(
 				path + File.separator + databaseName + File.separator + tableName + ".json");
