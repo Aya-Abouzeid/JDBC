@@ -24,6 +24,19 @@ public class XmlValidation {
 		return false;
 	}
 	public boolean DetectTable(String databaseName, String tableName) {
+		
+//		File dbdirectory = new File (path + File.separator + databaseName);
+//				 String[] tablesNames=dbdirectory.list();
+//				 if(tablesNames != null){
+//				 for (int i = 0; i < tablesNames.length; i++) {
+//						if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+//							
+//							tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+//						}
+//				 }
+//				}
+		
+		
 		File tableFile = new File(
 				path + File.separator + databaseName + File.separator + tableName + ".xml");
 		File tableFile2 = new File(

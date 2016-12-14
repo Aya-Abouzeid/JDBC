@@ -95,12 +95,14 @@ public class Queries  implements DataBaseInterface  {
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
 		
+		
 		currentDataBase.creatTable(databaseName, tableName, properties);
 	}
 
 	@Override
 	public int insertRow(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub
+		
 		return currentDataBase.insertRow(databaseName, tableName, properties);
 		
 		

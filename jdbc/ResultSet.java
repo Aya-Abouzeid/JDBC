@@ -25,7 +25,7 @@ public class ResultSet implements java.sql.ResultSet {
 	private String TableName;
 	private int cursor = 0;
 	private Statement statement = null;
-	private String[]Type=null;
+	private String[]Type;
 	boolean closed = false;
 
 	public ResultSet(Statement statement, String[][] Rset) {
@@ -313,10 +313,14 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("date")) {
+		
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return null;
 		}
-
+	
+		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
+	    	   return null;
+	       }
 		Date value = Date.valueOf(this.resultSet[this.cursor][columnIndex - 1]);
 		return value;
 
@@ -327,9 +331,13 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("date")) {
+		
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return null;
 		}
+		if(this.resultSet[this.cursor][this.findColumn(columnLabel) - 1].equals("null")){
+	    	   return null;
+	       }
 
 		int columnIndex = this.findColumn(columnLabel);
 		return this.getDate(columnIndex);
@@ -377,10 +385,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("float")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return 0;
 		}
-
+		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
+	    	   return 0;
+	       }
 		float value = Float.parseFloat(this.resultSet[this.cursor][columnIndex - 1]);
 		return value;
 
@@ -391,10 +401,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("float")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return 0;
 		}
-
+		if(this.resultSet[this.cursor][findColumn(columnLabel) - 1].equals("null")){
+	    	   return 0;
+	       }
 		int columnIndex = this.findColumn(columnLabel);
 		return this.getFloat(columnIndex);
 
@@ -411,10 +423,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("int")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return 0;
 		}
-        
+		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
+	    	   return 0;
+	       }
 		int value = Integer.parseInt(this.resultSet[this.cursor][columnIndex - 1]);
 		return value;
 
@@ -425,9 +439,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("int")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return 0;
 		}
+		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){
+	    	   return 0;
+	       }
 		int columnIndex = this.findColumn(columnLabel);
 		return this.getInt(columnIndex);
 	}
@@ -595,10 +612,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("varchar")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return null;
 		}
-
+		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
+	    	   return null;
+	       }
 		return this.resultSet[this.cursor][columnIndex - 1];
 	}
 
@@ -607,10 +626,12 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("varchar")) {
+		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return null;
 		}
-
+		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){
+	    	   return null;
+	       }
 		int columnIndex = this.findColumn(columnLabel);
 		return this.getString(columnIndex);
 	}
