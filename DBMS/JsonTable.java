@@ -38,21 +38,21 @@ public class JsonTable implements ITable{
 	public String[] getType(){
 		  return this.Type;
 	  }
-	protected boolean detectTypes(String[]properties){
-		 for(int i = 0; i < properties.length; i++){
-		    	String[] str = properties[i].split(" ");
-		    	if(!(str[0].equals("int"))||!(str[0].equals("float"))||!(str[0].equals("date"))||!(str[0].equals("varchar"))){
-		    		return false;
-		    	}
-		 }
-		return true;
-	}
+//	protected boolean detectTypes(String[]properties){
+//		 for(int i = 0; i < properties.length; i++){
+//		    	String[] str = properties[i].split(" ");
+//		    	if(!(str[0].equals("int"))||!(str[0].equals("float"))||!(str[0].equals("date"))||!(str[0].equals("varchar"))){
+//		    		return false;
+//		    	}
+//		 }
+//		return true;
+//	}
 	@Override
     public void creatTable(String databaseName, String tableName, String[] properties) {
 		System.out.println("jsonpath"+path);
 		File jsonFile  = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		try {
-			if(detectTypes(properties)){
+//			if(detectTypes(properties)){
 				
 			
 			if (jsonFile.createNewFile()){System.out.println("File is created!");
@@ -70,7 +70,8 @@ public class JsonTable implements ITable{
 			file.newLine();
 			file.write("}");
 			file.close();
-		} }catch (IOException e) {e.printStackTrace();}
+//		}
+		}catch (IOException e) {e.printStackTrace();}
 	}
  
 	private void write(File jsonFile ,String tableName){
