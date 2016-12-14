@@ -28,7 +28,7 @@ public class XmlValidation {
 		File tableFile = new File(
 				path + File.separator + databaseName + File.separator + tableName + ".json");
 		File tableFile2 = new File(
-				path + File.separator + databaseName + File.separator + tableName + ".xml");
+				path + File.separator + databaseName + File.separator + tableName + ".txt");
 		if (tableFile.exists() ||tableFile2.exists() ){
 			return true;
 			}
