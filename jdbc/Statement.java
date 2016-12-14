@@ -129,7 +129,7 @@ public class Statement implements java.sql.Statement {
 				try{
 				ChooseQuery(FirstWord);
 				}
-				catch(Exception e){
+				catch(Throwable e){
 					e.printStackTrace();
 				}
 		
