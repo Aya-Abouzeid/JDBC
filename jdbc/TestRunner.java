@@ -37,15 +37,15 @@ public class TestRunner {
 	public static Object getImplementationInstance(){
 		try {
 
-			for(Constructor<?> constructor : implementation.getDeclaredConstructors()){
-
-				if(constructor.getParameterTypes().length == 0){
-					constructor.setAccessible(true);
-
-					return constructor.newInstance((java.lang.Object[])null);
-				}
-			}
-//			return new Driver();
+//			for(Constructor<?> constructor : implementation.getDeclaredConstructors()){
+//
+//				if(constructor.getParameterTypes().length == 0){
+//					constructor.setAccessible(true);
+//
+//					return constructor.newInstance((java.lang.Object[])null);
+//				}
+//			}
+			return new Driver();
 		} catch (Throwable e) {
 		}
 		return null;

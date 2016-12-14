@@ -16,18 +16,9 @@ public class JSONFile {
 	
 private String[] type ;
 private String[] columnTitles;
-	/* public static void main(String[] args) {
-			// TODO Auto-generated method stub
-		JSONFile mona = new JSONFile();
-		EngineInsert test = new EngineInsert();
-		ArrayList<ArrayList<String>> l = mona.jsonReader("table", "test");
-		String [] properties ={"11","discrete","140"};		
-		l = test.insertRow(l, properties, mona.column("table", "test"), mona.headers(l));
-		mona.jsonWriter("table" , "alaa" ,l);
-	 }
-	 */
-	public void createJSONfile(String databaseName , String tableName ,String[] properties ){
-		File jsonFile  = new File(System.getProperty("user.home") + File.separator + databaseName+File.separator+tableName+".json");
+
+	public void createJSONfile(String databaseName , String tableName ,String[] properties ,String path){
+		File jsonFile  = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		try {
 			if (jsonFile.createNewFile()){
 		        System.out.println("File is created!");

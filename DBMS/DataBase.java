@@ -20,6 +20,7 @@ public class DataBase {
 		if ( writerType.equals("xmldb")){
 			writer = new XmlTable(path);
 		}else if (writerType.equals("jsondb")){
+			System.out.println("writer json");
 			writer= new JsonTable(path);
 			
 		}

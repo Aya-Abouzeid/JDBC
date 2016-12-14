@@ -25,8 +25,10 @@ public class XmlValidation {
 	}
 	public boolean DetectTable(String databaseName, String tableName) {
 		File tableFile = new File(
-				path + File.separator + databaseName + File.separator + tableName + ".txt");
-		if (tableFile.exists()){
+				path + File.separator + databaseName + File.separator + tableName + ".json");
+		File tableFile2 = new File(
+				path + File.separator + databaseName + File.separator + tableName + ".xml");
+		if (tableFile.exists() ||tableFile2.exists() ){
 			return true;
 			}
 
