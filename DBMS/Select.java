@@ -3,18 +3,19 @@ package eg.edu.alexu.csd.oop.DBMS;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+//import wagu.Block;
+//import wagu.Board;
+//import wagu.Table;
 
 public class Select extends Validate {
 	boolean distinct=false;
 	ArrayList<String[]> table = new ArrayList<>();
 	int MaxValueLength = -1;
 	boolean Executed;
-
+     public String []Type;
 	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) {
 		this.Query = query;
 		this.Detect = Detect;
-
 		String[][] x = null;
         differ=false;
 		DBfound = IsDBFound;
@@ -65,6 +66,7 @@ public class Select extends Validate {
 		} else {
 			if (withwhere) {
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
+				 Type=Query.Type;
 				 Executed = true;
 				if(x != null){
 					x = Print2D(x);	}
@@ -72,6 +74,8 @@ public class Select extends Validate {
 					System.out.println("Invalid Condition.");
 				}	} else {
 				x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
+				 Type=Query.Type;
+
 				 Executed = true;
 
 				if(x !=null)
@@ -109,11 +113,11 @@ public boolean GetExecuted(){
 //
 //					}
 //					else{
-					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,
-							condition);
+					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
+					 Type=Query.Type;
 					 Executed = true;
 
-				//	}
+//					}
 					if(x != null){
 					x=Print2D(x);
 					}
@@ -123,12 +127,13 @@ public boolean GetExecuted(){
 
 				} else {
 					if(distinct){
-						x = Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
+						x =Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
 						 Executed = true;
 
 					}
 					else{
 					 x = Query.selectColumns(CurrentlyUsedDB, current_table1, selected_fields);
+					 Type=Query.Type;
 					 Executed = true;
 
 					}
@@ -164,7 +169,7 @@ public boolean GetExecuted(){
 				rowsList = rows;
 			
 				if(rowsList.size() >=1 ){
-//					headersList = header;
+					headersList = header;
 //					Board board = new Board(75);
 //									String tableString = board.setInitialBlock(new Table(board, 75, headersList, rowsList).tableToBlocks()).build()
 //							.getPreview();

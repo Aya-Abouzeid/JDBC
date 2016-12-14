@@ -7,12 +7,18 @@ public class EngineSelect {
 	private Condition  test = new Condition();
 	private int counter=0;
 	private compare comparing = new compare();
-	public ArrayList<ArrayList<String>> selectAllColumns(ArrayList<ArrayList<String>> tableData){
+	private String[]selectTypes;
+	public ArrayList<ArrayList<String>> selectAllColumns(ArrayList<ArrayList<String>> tableData, String[]ArrayOfTypes){
+     selectTypes= new String[ArrayOfTypes.length];
+     for (int i = 0; i < ArrayOfTypes.length; i++) {
+		selectTypes[i]=ArrayOfTypes[i];
+	}
 		return tableData;	
 	}
 	public String[][] selectColumnsWithCondition(ArrayList<ArrayList<String>> tableData,String[]condition,
 			String[]columntitles,String[] ArrayOfTypes, String[]headers){
 		ArrayList<Integer> itemsCounter= new ArrayList<Integer>();
+		//ArrayList<Integer> index= new ArrayList<Integer>();
 		ArrayList<String> newRow;
 		boolean out = false;
 		ArrayList<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
@@ -58,6 +64,10 @@ public class EngineSelect {
 		                                              ////                                             datttttttttttttttttttttttttttttttttttte
 			}
 		}
+		selectTypes= new String[itemsCounter.size()];
+		for (int i = 0; i < itemsCounter.size(); i++) {
+			selectTypes[i]=ArrayOfTypes[itemsCounter.get(i)];
+		}
 		String[][]outputTable = new String[(output.size())][output.get(0).size()];
 		for (int i = 0; i < output.size(); i++) {
 			for (int j = 0; j < output.get(0).size(); j++) {
@@ -86,6 +96,10 @@ public class EngineSelect {
 			if(!newRow.isEmpty() ){
 				output.add(newRow);
 			}
+		}
+		selectTypes= new String[itemsCounterUpdate.size()];
+		for (int i = 0; i < itemsCounterUpdate.size(); i++) {
+			selectTypes[i]=ArrayOfTypes[itemsCounterUpdate.get(i)];
 		}
 		String[][]outputTable = new String[(output.size())][output.get(0).size()];
 		for (int i = 0; i < output.size(); i++) {
@@ -129,6 +143,9 @@ public class EngineSelect {
 				counter++;
 			}
 		}
+	}
+	public String[] getType() {
+		return selectTypes;
 	}
 
 }

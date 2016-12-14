@@ -17,6 +17,8 @@ public class Statement implements java.sql.Statement {
 	Update UpdateObject = new Update();
 	Alter AlterObject = new Alter();
 	XmlValidation DetectObject;
+	public String[]Type;
+	public String tableName;
 	private boolean counted = false;
 	private boolean RsetFound = false;
 	private boolean OperationNotExecuted = false;
@@ -42,7 +44,7 @@ public class Statement implements java.sql.Statement {
 		this.query = query;
 		this.DetectObject = Detect;
 	}
-
+	
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
 		// TODO Auto-generated method stub
@@ -120,9 +122,11 @@ public class Statement implements java.sql.Statement {
 
 			String FirstWord = parse.Parse(sql);
 			
-			if (sql != null)
+			if (sql != null){
 				ChooseQuery(FirstWord);
-
+		
+			}
+			
 			if (Rset != null)
 				return true;
 
@@ -136,12 +140,13 @@ public class Statement implements java.sql.Statement {
 		if (parse.GetDBfound()) {
 			counted = true;
 			UpdateCount = InsertObject.Insert(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
-
+          
 			if (InsertObject.GetExecuted() == false || (UpdateCount == 0 && InsertObject.GetExecuted() == true)){
 				OperationNotExecuted = true;
 				throw new SQLException();
 
 			}
+			
 		} else
 			System.out.println("Invalid command. Select a Database first.");
 
@@ -179,13 +184,12 @@ public class Statement implements java.sql.Statement {
 	private void CaseSelect() throws SQLException {
 		if (parse.GetDBfound()) { 
 			RsetFound = true;
-			if(SelectObject.Select(parse.GetDBfound(),
-					parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject) == null)
+			if(SelectObject.Select(parse.GetDBfound(),parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject) == null)
 				Rset = null;
 			else
-			Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(),
-					parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject));
-
+			Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(),parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject));
+			Type=SelectObject.Type;
+            tableName=SelectObject.current_table1;
 			if (SelectObject.GetExecuted() == false ){
 				SelectNotExecuted = true;
 				throw new SQLException();

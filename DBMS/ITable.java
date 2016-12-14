@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public interface ITable {
 	public void creatTable( String databaseName,String tableName , String [] properties);
+	public String[]getType();
 	public void dropTable(String databaseName,String tableName ) ;
 	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName);
     public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> table);

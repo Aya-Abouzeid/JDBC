@@ -26,7 +26,7 @@ public class Driver implements java.sql.Driver {
 	     return true;
           }	
          if(url.equals("jdbc:altdb://localhost")){
-        this.WriterType="jsondb";
+        this.WriterType="altdb";
 	    return true;
             }
 

@@ -17,7 +17,7 @@ public class Validate  {
 	protected ArrayList<String> Values = new ArrayList<String>();
 	protected ArrayList<String> Columns = new ArrayList<String>();
 	protected String[] updateStatment;
-	protected String current_table1 = new String();
+	public String current_table1 = new String();
 	protected String[] condition = new String[3];
 	protected String before_from = new String();
 	protected String before_where = new String();

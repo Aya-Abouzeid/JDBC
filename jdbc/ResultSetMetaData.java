@@ -77,16 +77,16 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 		}
  
 			String type=this.resultSet.getType(column);
-			if(type.equals("int")){
+			if(type.equalsIgnoreCase("int")){
 				return Types.INTEGER;
 			}
-			if(type.equals("varchar")){
+			if(type.equalsIgnoreCase("varchar")){
 				return Types.VARCHAR;
 			}
-			if(type.equals("date")){
+			if(type.equalsIgnoreCase("date")){
 				return Types.DATE;
 			}
-			if(type.equals("float")){
+			if(type.equalsIgnoreCase("float")){
 				return Types.FLOAT;
 			}
  

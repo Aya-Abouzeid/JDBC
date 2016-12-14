@@ -9,6 +9,7 @@ import javax.crypto.CipherInputStream;
 
 public class DataBase {
 	private String path = "";
+	public String[]Type;
 	private String writerType ="";
 	protected ITable writer= null;
 	public  DataBase() {
@@ -19,8 +20,7 @@ public class DataBase {
 		this.writerType = writerType;
 		if ( writerType.equals("xmldb")){
 			writer = new XmlTable(path);
-		}else if (writerType.equals("jsondb")){
-			System.out.println("writer json");
+		}else if (writerType.equals("altdb")){
 			writer= new JsonTable(path);
 			
 		}
@@ -29,7 +29,7 @@ public class DataBase {
 		this.writerType = writerType;
 		if ( writerType.equals("xmldb")){
 			writer = new XmlTable(path);
-		}else if (writerType.equals("jsondb")){
+		}else if (writerType.equals("altdb")){
 			writer= new JsonTable(path);
 			
 		}
@@ -88,6 +88,7 @@ public class DataBase {
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
 			String[] Condition) {
 		// TODO Auto-generated method stub;
+		Type=writer.getType();
 		return writer.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
 		
 	}
@@ -95,18 +96,21 @@ public class DataBase {
 
 	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
 		// TODO Auto-generated method stub
+		Type=writer.getType();
 	  return writer.selectColumns(databaseName, tableName, columntitles);
 	}
 
 	
 	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
+		Type=writer.getType();
 		return  writer.selectAllColumns(databaseName, tableName);
 	}
 
 	
 	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
 		// TODO Auto-generated method stub
+		Type=writer.getType();
 		return  writer.selectAllWithCondition(databaseName, tableName, Condition);
 	}
 

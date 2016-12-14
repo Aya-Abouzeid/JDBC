@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 
 public class XmlTable implements ITable {
 	 protected String[] ArrayOfTypes;
+	 public String[]Type;
 	 protected String[] headers;
 	 /*protected  DocumentBuilderFactory documentBuilderFactory;
 	 protected DocumentBuilder documentBuilder;
@@ -25,14 +26,19 @@ public class XmlTable implements ITable {
 	 private Titles titles= new Titles();
 	 private xml xmlObject;
 	 private String path;
-	  public  XmlTable(String path) {
+	 private DtdFile dtdObject;
 
+	 public  XmlTable(String path) {
 		this.path = path;
+		dtdObject = new DtdFile(path);
+		System.out.println("XMLTable: " + path);
 		xmlObject= new xml(this.path); 
 
 	}
+	  public String[] getType(){
+		  return this.Type;
+	  }
 	  
-	 private DtdFile dtdObject = new DtdFile(path);
 	 private EngineDelete  deleteObject = new EngineDelete();
 	 private EngineInsert  insetObject = new EngineInsert();
 	 private EngineSelect  SelectObject =new EngineSelect();
@@ -77,7 +83,7 @@ public class XmlTable implements ITable {
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
 	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName){
-		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){return null;}
 		Element root = xmlObject.document.getDocumentElement();
 		NodeList roots = root.getElementsByTagName(tableName);
@@ -105,7 +111,7 @@ public class XmlTable implements ITable {
  }
 	 @Override
 		public void dropTable(String databaseName, String TableName) {
-			File table = new File(path + File.separator + databaseName+File.separator+TableName+".txt");
+			File table = new File(path + File.separator + databaseName+File.separator+TableName+".xml");
 			File dtd = new File(path + File.separator + databaseName+File.separator+TableName+".dtd");
 
 			if (xmlObject.DetectDataBase(databaseName)&& table.exists()) {
@@ -117,7 +123,7 @@ public class XmlTable implements ITable {
 		}
 	 @Override
  public void writeFile(String databaseName , String tableName , ArrayList<ArrayList<String>> tableData){
-		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		dropTable(databaseName, tableName);
 		if (xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;}
 		    Element tableFile = xmlObject.document.createElement(tableName);
@@ -153,7 +159,7 @@ public class XmlTable implements ITable {
  }
 	
 	public void  check( String databaseName ,String tableName) {
-		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".txt");
+		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		 if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){
 			 return;
 		 }
@@ -225,6 +231,7 @@ public class XmlTable implements ITable {
 		tableData = working;
 		writeFile(databaseName, tableName, tableData); ///////////// return array
 		String[][]outputTable = SelectObject.selectColumnsWithCondition(tableData,Condition,columntitles,ArrayOfTypes,headers);
+		Type=SelectObject.getType();
 		return outputTable;
 	}
 	@Override
@@ -235,13 +242,15 @@ public class XmlTable implements ITable {
 		tableData = working;
 		writeFile(databaseName, tableName, tableData); ///////////// return array
 		String[][]outputTable = SelectObject.selectColumns(tableData,columntitles,ArrayOfTypes,headers);
+		Type=SelectObject.getType();
 		return outputTable;
 	}
 	@Override
 	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		working= readFile(databaseName, tableName);
-		writeFile(databaseName, tableName, SelectObject.selectAllColumns(working)); ///////////// return array
+		writeFile(databaseName, tableName, SelectObject.selectAllColumns(working,ArrayOfTypes)); ///////////// return array
+		Type=SelectObject.getType();
 		String[][]outputTable = new String[(working.size())][working.get(0).size()];
 		for (int i = 0; i < working.size(); i++) {
 			for (int j = 0; j < working.get(0).size(); j++) {
@@ -258,6 +267,7 @@ public class XmlTable implements ITable {
 		tableData = working;
 		writeFile(databaseName, tableName, tableData); ///////////// return array
 		String[][]outputTable = SelectObject.selectAllWithCondition(tableData,Condition,ArrayOfTypes,headers);
+		Type=SelectObject.getType();
 		return outputTable;
 	}
 	@Override
@@ -286,7 +296,7 @@ public class XmlTable implements ITable {
 		working= readFile(databaseName, tableName);
 		tableData= new ArrayList<ArrayList<String>>();
 		tableData = working;
-		working= distinctObject.distinct(tableData, columsName,headers);
+		working= distinctObject.distinct(tableData, columsName,headers,ArrayOfTypes);
 		writeFile(databaseName, tableName, tableData); ///////////// return array
 		String[][]outputTable = new String[(working.size())][working.get(0).size()];
 		for (int i = 0; i < working.size(); i++) {

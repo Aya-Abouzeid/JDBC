@@ -70,7 +70,8 @@ public class Titles  {
 
 	protected boolean DetectColumn(String databaseName, String tableName , String Column ,String path) {
 		File tableFile = new File(
-				path + File.separator + databaseName + File.separator + tableName + ".txt");
+				path + File.separator + databaseName + File.separator + tableName + ".xml");
+		System.out.println("XMLTitle: " + path);
 		xml objXml = new xml(path);
 		 if (objXml.fileMinimizeBolean(tableFile,databaseName,tableName)){
 			 return false;

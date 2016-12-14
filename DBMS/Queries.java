@@ -22,7 +22,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,21 +40,22 @@ public class Queries  implements DataBaseInterface  {
     //protected DataBase  currentDataBase= new DataBase("kdfojanfj", "kjlkajewijf");
 	String path;
 	String writerType;
+	String[]Type;
+    protected DtdFile dtdObject;
+
 	public  Queries( String path,String writerType) {
 		this.path=path;
-System.out.println("query"+path);
+		dtdObject = new DtdFile(path);
 		this.writerType= writerType;
 	}
 	
 	protected DataBase  currentDataBase;
 	protected DataBase  openDataBase;
-    protected DtdFile dtdObject = new DtdFile(path);
 
 
     private String databasepath = "";
-    
 	@Override
-    public void createDatabase(String databaseName ) {
+	public void createDatabase(String databaseName ) {
 		// TODO Auto-generated method stub
 		currentDataBase = new DataBase(path,writerType);
 		
@@ -90,6 +90,7 @@ System.out.println("query"+path);
 		
 		
 	}
+
 	@Override
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
@@ -145,6 +146,7 @@ System.out.println("query"+path);
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
 			String[] Condition) {
 		// TODO Auto-generated method stub;
+		Type=currentDataBase.Type;
 		return currentDataBase.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
 		
 	}
@@ -152,18 +154,21 @@ System.out.println("query"+path);
 	@Override
 	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
 		// TODO Auto-generated method stub
+		Type=currentDataBase.Type;
 	  return currentDataBase.selectColumns(databaseName, tableName, columntitles);
 	}
 
 	@Override
 	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
+		Type=currentDataBase.Type;
 		return  currentDataBase.selectAllColumns(databaseName, tableName);
 	}
 
 	@Override
 	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
 		// TODO Auto-generated method stub
+		Type=currentDataBase.Type;
 		return  currentDataBase.selectAllWithCondition(databaseName, tableName, Condition);
 	}
 

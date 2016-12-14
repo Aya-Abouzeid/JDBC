@@ -25,13 +25,15 @@ public class DtdFile  {
 	 protected int indexOfTable = 0;*/
 	
 	private String path;
+	private xml objXml;
 	public  DtdFile(String path) {
-		//this.path= path;
+		System.out.println("XMLDTD: " + path);
+		this.path= path;
+		objXml= new xml(path);
 	}
-	private xml objXml= new xml(path);
 	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type){
    	 File dtdFile = new File(path + File.separator + databaseName + File.separator + tableName + ".dtd");
-   	 File tables = new File(path + File.separator + databaseName + File.separator + tableName + ".txt");
+   	 File tables = new File(path + File.separator + databaseName + File.separator + tableName + ".xml");
    	objXml.documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
 			objXml.documentBuilder = objXml.documentBuilderFactory.newDocumentBuilder();
@@ -108,7 +110,7 @@ public class DtdFile  {
 		            public void error(SAXParseException e) throws SAXException {}
 		            public void fatalError(SAXParseException e) throws SAXException {
 		              System.out.println("FATAL : " + e.getMessage());}});
-		      builder.parse(new InputSource(path + File.separator + databaseName+File.separator+tableName+".txt"));
+		      builder.parse(new InputSource(path + File.separator + databaseName+File.separator+tableName+".xml"));
 		      return true;}
 		    catch (ParserConfigurationException pce) {
 		      throw pce;}

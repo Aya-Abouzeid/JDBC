@@ -14,7 +14,6 @@ import java.sql.RowId;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.SQLXML;
-import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -26,20 +25,25 @@ public class ResultSet implements java.sql.ResultSet {
 	private String TableName;
 	private int cursor = 0;
 	private Statement statement = null;
+	private String[]Type=null;
 	boolean closed = false;
 
 	public ResultSet(Statement statement, String[][] Rset) {
 		this.statement = statement;
 		this.resultSet = Rset;
 	}
-
+	public void getTypes()  {
+		this.Type=this.statement.Type;
+		
+		}
 	public String getName() {
+		this.TableName=this.statement.tableName;
 		return this.TableName;
 	}
 
 	public String getType(int column) {
-		// TODO Auto-generated method stub
-		return null;
+        getTypes();
+		return  this.Type[column-1];
 	}
 
 	@Override

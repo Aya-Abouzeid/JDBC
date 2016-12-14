@@ -85,7 +85,7 @@ public class Create extends Validate {
 	                        if (reform(fields2) && !Detect.DetectTable(CurrentlyUsedDB, TableName)) {
 	                            Query.creatTable(CurrentlyUsedDB, TableName, fields3);
 	                            Executed = true;
-	                			System.out.println("Table is Created");
+//	                			System.out.println("Table is Created");
 	                        }
 	 
 	                    } else {

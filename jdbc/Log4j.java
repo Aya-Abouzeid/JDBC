@@ -1,8 +1,8 @@
 package eg.edu.alexu.csd.oop.jdbc;
-//
-//import java.io.File;
-//import java.io.IOException;
-//import java.sql.SQLException;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 //
 //import org.apache.log4j.BasicConfigurator;
 //import org.apache.log4j.Logger;

@@ -26,13 +26,14 @@ public class xml {
 	 protected BufferedWriter fileWriter;
 	 protected int indexOfTable = 0;
 	  private String path;
-	 
+	  private XmlValidation obXmlValidation;
+
 	  public  xml(String path) {
 		this.path = path;
-
+		System.out.println("xml" + path);
+		this.obXmlValidation = new XmlValidation(path);
 
 	}
-	  private XmlValidation obXmlValidation=new XmlValidation(path);
 	 public boolean fileMinimizeBoolean( String databaseName,String tableName) {
 			boolean testData =false; 
 			testData=obXmlValidation.DetectDataBase(databaseName);
@@ -80,7 +81,7 @@ public class xml {
 				DOMSource source = new DOMSource(document);
 				try {
 					FileWriter XmlFileWriter = new FileWriter(
-							path + File.separator + databaseName+File.separator+TableName+".txt");
+							path + File.separator + databaseName+File.separator+TableName+".xml");
 					StreamResult result = new StreamResult(XmlFileWriter);
 					transformer.transform(source, result);
 					XmlFileWriter.close();

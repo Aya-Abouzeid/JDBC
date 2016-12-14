@@ -1,7 +1,5 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class Alter extends Validate{
 	boolean Executed;
 	String tablename=null;
@@ -91,7 +89,6 @@ this.Detect = Detect;
 		 else
 		 { 	String DataType = GetFirstWord(GetRest);
 		 if(GetRest == null){
-
 			 // UpdateCount =call Queries.alterdrop(tablename,columnName,GetRest);
 			 UpdateCount = Query.addAlter(CurrentlyUsedDB, tablename, DataType, columnName);
 			 Executed = true;
