@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
  
+import java.sql.SQLException;
 import java.util.ArrayList;
  
 public class Parser  {
@@ -25,7 +26,7 @@ public class Parser  {
    public void SetCurrentlyUsed(String name){
 	   CurrentlyUsedDB = name;
    }
-    public String Parse(String command) {
+    public String Parse(String command) throws SQLException {
         if (!command.equals("")) {
 
             Sql = TrimCommand(command);
@@ -73,12 +74,13 @@ public class Parser  {
  
     }
    
-    private String Trim_end(String command) {
+    private String Trim_end(String command) throws SQLException {
         if (command == null) {
  
             System.out.println("invalid command");
  
-            return null;
+			throw new SQLException();
+
         }
  
         int i = command.length() - 1;
@@ -93,7 +95,7 @@ public class Parser  {
  
     }
   
-    private String GetFirstWord(String sql) {
+    private String GetFirstWord(String sql) throws SQLException {
         if (sql == null) {
             return null;
         }

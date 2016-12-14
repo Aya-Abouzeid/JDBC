@@ -152,6 +152,8 @@ public class Statement implements java.sql.Statement {
 			
 		} else
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();
+
 
 	}
 
@@ -167,6 +169,8 @@ public class Statement implements java.sql.Statement {
 			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();
+
 
 	}
 ////////////////////////////////////////////////////////////////////
@@ -182,6 +186,8 @@ public class Statement implements java.sql.Statement {
 			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();
+
 
 	}
 
@@ -201,6 +207,8 @@ public class Statement implements java.sql.Statement {
 			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();
+
 
 	}
 
@@ -215,6 +223,8 @@ public class Statement implements java.sql.Statement {
 			}
 		} else
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();
+
 
 	}
 
@@ -266,6 +276,8 @@ public class Statement implements java.sql.Statement {
 			break;
 		default: {
 			System.out.println("Invalid Command.");
+			throw new SQLException();
+
 		}
 		}
 	}

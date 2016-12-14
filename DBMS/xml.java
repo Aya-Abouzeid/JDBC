@@ -35,12 +35,13 @@ public class xml {
 		this.obXmlValidation = new XmlValidation(path);
 
 	}
-	 public boolean fileMinimizeBoolean( String databaseName,String tableName) {
+	 public boolean fileMinimizeBoolean( String databaseName,String tableName) throws SQLException {
 			boolean testData =false; 
 			testData=obXmlValidation.DetectDataBase(databaseName);
 			if(!testData){
 			 System.out.println("invalid database");
-			 return true;
+				throw new SQLException();
+
 			}
 			documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			try {
