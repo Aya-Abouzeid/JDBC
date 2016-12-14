@@ -19,7 +19,7 @@ public class EngineAlter {
 		}else if (type.equalsIgnoreCase("date")) {
 			out++;
 		}else {
-			//                                                          invalid type
+			out++;
 		}
 		if (out==0) {
 			titles = new String[headers.length];

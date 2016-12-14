@@ -47,7 +47,8 @@ public class EngineDelete {
 				int check= comparing.compareFloat(tableData.get(i).get(testing), condition[2]);
 				adding(condition, itemsCounterDeleted, i, check);
 			}else if (columType.equalsIgnoreCase("date") ){
-		                                              ////                                             datttttttttttttttttttttttttttttttttttte
+				int check= comparing.compareDate(tableData.get(i).get(testing), condition[2]);
+				adding(condition, itemsCounterDeleted, i, check);
 			}
 			
 			

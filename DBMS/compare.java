@@ -14,8 +14,9 @@ public class compare {
       
    }
   
-   public int compareDate(Date one , Date two){
-         
+   public int compareDate(String one , String two){
+	   Date first =   Date.valueOf(one);
+	   Date second = Date.valueOf(two);
        return one.compareTo(two);
       
    }

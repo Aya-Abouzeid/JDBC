@@ -61,7 +61,8 @@ public class EngineSelect {
 				adding(condition, tableData, i, check,itemsCounter,newRow,output);
 				
 			}else if (columType.equalsIgnoreCase("date") ){
-		                                              ////                                             datttttttttttttttttttttttttttttttttttte
+				int check= comparing.compareDate(tableData.get(i).get(testing), condition[2]);
+				adding(condition, tableData, i, check,itemsCounter,newRow,output);                                                                              
 			}
 		}
 		selectTypes= new String[itemsCounter.size()];
