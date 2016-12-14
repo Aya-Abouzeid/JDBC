@@ -31,6 +31,7 @@ public class XmlTable implements ITable {
 	 public  XmlTable(String path) {
 		this.path = path;
 		dtdObject = new DtdFile(path);
+		System.out.println("XMLTable: " + path);
 		xmlObject= new xml(this.path); 
 
 	}
@@ -47,7 +48,6 @@ public class XmlTable implements ITable {
 	 private ArrayList<ArrayList<String>>  working ;
 	 @Override
 	 public void creatTable( String databaseName,String tableName , String[] properties) {
-		 
 			if(xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;} 
 		    Element tableNameElement = xmlObject.document.createElement(tableName);
 			Element rows = xmlObject.document.createElement(tableName);
@@ -78,12 +78,11 @@ public class XmlTable implements ITable {
 			xmlObject.document.appendChild(tableNameElement);
 			xmlObject.document.normalize();
 			xmlObject.transform(xmlObject.document,databaseName,tableName);
-//			dtdObject.CreateDtDFile(databaseName, tableName,dtd,type);		
+			dtdObject.CreateDtDFile(databaseName, tableName,dtd,type);		
 		}
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
 	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName){
-		
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){return null;}
 		Element root = xmlObject.document.getDocumentElement();
@@ -154,7 +153,7 @@ public class XmlTable implements ITable {
 			xmlObject.document.appendChild(tableFile);
 			xmlObject.document.normalize();
 			xmlObject.transform(xmlObject.document, databaseName, tableName);
-//			dtdObject.CreateDtDFile(databaseName, tableName,dtd,ArrayOfTypes);	
+			dtdObject.CreateDtDFile(databaseName, tableName,dtd,ArrayOfTypes);	
 			tableData=new  ArrayList<ArrayList<String>>();
 			
  }
@@ -299,6 +298,7 @@ public class XmlTable implements ITable {
 		tableData = working;
 		working= distinctObject.distinct(tableData, columsName,headers,ArrayOfTypes);
 		writeFile(databaseName, tableName, tableData); ///////////// return array
+		Type=distinctObject.getType();
 		String[][]outputTable = new String[(working.size())][working.get(0).size()];
 		for (int i = 0; i < working.size(); i++) {
 			for (int j = 0; j < working.get(0).size(); j++) {

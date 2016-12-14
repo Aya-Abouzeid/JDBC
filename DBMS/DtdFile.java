@@ -27,50 +27,51 @@ public class DtdFile  {
 	private String path;
 	private xml objXml;
 	public  DtdFile(String path) {
+		System.out.println("XMLDTD: " + path);
 		this.path= path;
 		objXml= new xml(path);
 	}
-//	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type){
-//   	 File dtdFile = new File(path + File.separator + databaseName + File.separator + tableName + ".dtd");
-//   	 File tables = new File(path + File.separator + databaseName + File.separator + tableName + ".xml");
-//   	objXml.documentBuilderFactory = DocumentBuilderFactory.newInstance();
-//		try {
-//			objXml.documentBuilder = objXml.documentBuilderFactory.newDocumentBuilder();
-//			objXml.document = objXml.documentBuilder.parse(tables);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//   		 Element root =objXml.document.getDocumentElement();
-//    		 NodeList roots = root.getElementsByTagName(tableName);
-//    		 NodeList columns = (roots.item(0)).getChildNodes();     		 
-//       	 try {objXml.fileWriter = new BufferedWriter(new FileWriter(dtdFile));
-//       	objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"("+tableName +","+ tableName +"*)"+">\n");
-//       	objXml.fileWriter.write("<!ATTLIST "+tableName+" "+" numberOfRows"+ " CDATA "+"#REQUIRED"+">\n");
-//       	objXml.fileWriter.write("<!ELEMENT "+roots.item(0).getNodeName()+" (");
-//   			//ForLoopNodes(columns);
-//       	objXml.fileWriter.write(columns.item(columns.getLength()-2).getNodeName()+")>\n");
-//   			for(int y = 0;y < (type.length);y++){
-//      				if(y ==(type.length - 1)){objXml.fileWriter.write(type[y]+")>\n");}
-//      				else{objXml.fileWriter.write(type[y]+",");}}
-//   			for(int g = 0 ;g < type.length; g++){
-//   				objXml.fileWriter.write("<!ELEMENT "+type[g]+" (#PCDATA)>\n");}
-//   			objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"(");
-//      			for(int y = 0;y < (dtd.length);y++){
-//      				if(y==(dtd.length-1)){
-//      					objXml.fileWriter.write(dtd[y]);
-//      				}else{
-//      					objXml.fileWriter.write(dtd[y]+",");
-//       				
-//      				}
-//   			}
-//      			objXml.fileWriter.write(")>\n");
-// 	
-//   			for(int g = 0 ;g < dtd.length; g++){
-//   				objXml.fileWriter.write("<!ELEMENT "+dtd[g]+" (#PCDATA)>\n");
-//   			}	
-//   			objXml. fileWriter.close();
-//       			} catch (IOException e) {System.out.println("Invalid Input");}
-//       	 }
+	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type){
+   	 File dtdFile = new File(path + File.separator + databaseName + File.separator + tableName + ".dtd");
+   	 File tables = new File(path + File.separator + databaseName + File.separator + tableName + ".xml");
+   	objXml.documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		try {
+			objXml.documentBuilder = objXml.documentBuilderFactory.newDocumentBuilder();
+			objXml.document = objXml.documentBuilder.parse(tables);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+   		 Element root =objXml.document.getDocumentElement();
+    		 NodeList roots = root.getElementsByTagName(tableName);
+    		 NodeList columns = (roots.item(0)).getChildNodes();     		 
+       	 try {objXml.fileWriter = new BufferedWriter(new FileWriter(dtdFile));
+       	objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"("+tableName +","+ tableName +"*)"+">\n");
+       	objXml.fileWriter.write("<!ATTLIST "+tableName+" "+" numberOfRows"+ " CDATA "+"#REQUIRED"+">\n");
+       	objXml.fileWriter.write("<!ELEMENT "+roots.item(0).getNodeName()+" (");
+   			//ForLoopNodes(columns);
+       	objXml.fileWriter.write(columns.item(columns.getLength()-2).getNodeName()+")>\n");
+   			for(int y = 0;y < (type.length);y++){
+      				if(y ==(type.length - 1)){objXml.fileWriter.write(type[y]+")>\n");}
+      				else{objXml.fileWriter.write(type[y]+",");}}
+   			for(int g = 0 ;g < type.length; g++){
+   				objXml.fileWriter.write("<!ELEMENT "+type[g]+" (#PCDATA)>\n");}
+   			objXml.fileWriter.write("<!ELEMENT "+tableName+" "+"(");
+      			for(int y = 0;y < (dtd.length);y++){
+      				if(y==(dtd.length-1)){
+      					objXml.fileWriter.write(dtd[y]);
+      				}else{
+      					objXml.fileWriter.write(dtd[y]+",");
+       				
+      				}
+   			}
+      			objXml.fileWriter.write(")>\n");
+ 	
+   			for(int g = 0 ;g < dtd.length; g++){
+   				objXml.fileWriter.write("<!ELEMENT "+dtd[g]+" (#PCDATA)>\n");
+   			}	
+   			objXml. fileWriter.close();
+       			} catch (IOException e) {System.out.println("Invalid Input");}
+       	 }
 	protected void ForLoopNodes(NodeList elements){
 		for(int i = 0; i<(elements.getLength()-2); i++){
 			if(!elements.item(i).getNodeName().equals("#text")){

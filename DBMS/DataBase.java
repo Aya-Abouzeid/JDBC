@@ -137,6 +137,7 @@ public class DataBase {
     	
     }
     public String[][] distinct(String databaseName, String tableName ,String[] columsName) {
+    	Type=writer.getType();
 		return writer.distinct(databaseName, tableName, columsName);
 	}
 	protected void ListTables(String DataBase){

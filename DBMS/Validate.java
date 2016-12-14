@@ -127,7 +127,51 @@ public class Validate  {
 		fields2[i][1] = TrimCommand(GetRest);
 		fields3[i] = fields2[i][1] + " " + fields2[i][0];
 	}
-
+	public boolean checkDate(String date){
+		if(date==null){
+			return false;
+		}
+		
+		date=TrimCommand(date);
+		date=Trim_end(date);
+		if(date==null){
+			return false;
+		}
+		if(date.contains(" ")){
+			return false;
+		}
+		if(!date.contains("-")){
+			return false;
+		};
+		String year=date.substring(0,date.indexOf("-"));
+		date=date.substring(date.indexOf("-"));
+        if(date.length()<=1||date.charAt(1)=='-'){
+        	return false;
+        }
+		date=date.substring(1);
+		if(!date.contains("-")){
+			return false;
+		};
+		String month=date.substring(0,date.indexOf("-"));
+		date=date.substring(date.indexOf("-"));
+		if(date.length()<=1){
+        	return false;
+        }
+		String day=date.substring(1);
+		try{
+		Integer.parseInt(year);
+		Integer.parseInt(month);
+		Integer.parseInt(day);
+		
+		}
+		catch(Exception e){
+			return false;
+		}
+		if(year.length()!=4||Integer.parseInt(month)<=0||Integer.parseInt(month)>12||Integer.parseInt(day)<=0||Integer.parseInt(day)>31){
+			return false;
+		}
+		return true;
+	}
 	protected boolean ms_secondword(int i) {
 		if (fields2[i][1] != null && (fields2[i][1].equalsIgnoreCase("float") ||
 				fields2[i][1].equalsIgnoreCase("date") ||fields2[i][1].equalsIgnoreCase("int")

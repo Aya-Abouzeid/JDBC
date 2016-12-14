@@ -40,6 +40,7 @@ public class JsonTable implements ITable{
 	  }
 	@Override
     public void creatTable(String databaseName, String tableName, String[] properties) {
+		System.out.println("jsonpath"+path);
 		File jsonFile  = new File(path + File.separator + databaseName+File.separator+tableName+".json");
 		try {
 			if (jsonFile.createNewFile()){System.out.println("File is created!");
@@ -344,6 +345,7 @@ public class JsonTable implements ITable{
 		tableData = working;
 		working= distinctObject.distinct(tableData, columsName,headers,ArrayOfTypes);
 		writeFile(databaseName, tableName, tableData); ///////////// return array
+		Type=distinctObject.getType();
 		String[][]outputTable = new String[(working.size())][working.get(0).size()];
 		for (int i = 0; i < working.size(); i++) {
 			for (int j = 0; j < working.get(0).size(); j++) {

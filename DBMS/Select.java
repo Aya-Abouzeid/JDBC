@@ -3,9 +3,9 @@ package eg.edu.alexu.csd.oop.DBMS;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//import wagu.Block;
-//import wagu.Board;
-//import wagu.Table;
+import wagu.Block;
+import wagu.Board;
+import wagu.Table;
 
 public class Select extends Validate {
 	boolean distinct=false;
@@ -107,17 +107,11 @@ public boolean GetExecuted(){
 			} else if (s1 == true && s2 == true) {
 				check_select();
 				if (withwhere) {
-//					if(distinct){
-//						///////////////////x=call here
-//						 Executed = true;
-//
-//					}
-//					else{
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
 					 Type=Query.Type;
 					 Executed = true;
 
-//					}
+
 					if(x != null){
 					x=Print2D(x);
 					}
@@ -128,6 +122,7 @@ public boolean GetExecuted(){
 				} else {
 					if(distinct){
 						x =Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
+						Type=Query.Type;
 						 Executed = true;
 
 					}
@@ -170,10 +165,10 @@ public boolean GetExecuted(){
 			
 				if(rowsList.size() >=1 ){
 					headersList = header;
-//					Board board = new Board(75);
-//									String tableString = board.setInitialBlock(new Table(board, 75, headersList, rowsList).tableToBlocks()).build()
-//							.getPreview();
-//					System.out.println(tableString);
+					Board board = new Board(75);
+									String tableString = board.setInitialBlock(new Table(board, 75, headersList, rowsList).tableToBlocks()).build()
+							.getPreview();
+					System.out.println(tableString);
 					}
 					else{
 						 System.out.println("No Results found");
