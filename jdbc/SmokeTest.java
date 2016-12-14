@@ -11,7 +11,7 @@ import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Test;
 
-import eg.edu.alexu.csd.TestRunner;
+import eg.edu.alexu.csd.oop.jdbc.TestRunner;
 
 /**
  * Notes: 
@@ -26,7 +26,7 @@ import eg.edu.alexu.csd.TestRunner;
  **/
 public class SmokeTest {
 
-	private String protocol = "xmldb";
+	private String protocol = "altdb";
 	private String tmp = System.getProperty("java.io.tmpdir");
 
 	public static Class<?> getSpecifications() {
