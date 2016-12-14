@@ -32,13 +32,13 @@ this.Detect = Detect;
 	    private int DropDataBase(String Rest) {
 	    	int UpdateCount = 0;
 	        if (GetRest != null && GetFirstWord(GetRest).equals(Rest)) {
-	            if (!Detect.DetectDataBase(Rest)){
+	            if (!Detect.DetectDataBase(Rest.toLowerCase())){
 	            	DBfound2 = DBfound;
 	                System.out.println("DataBase Not Found.");
 	            }
 	            else
 	            { DBfound2 = false;
-	            	Query.dropDatabase(Rest);
+	            	Query.dropDatabase(Rest.toLowerCase());
 	            	Executed = true;
 	            }
 	        } else {

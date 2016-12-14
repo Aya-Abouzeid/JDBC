@@ -30,7 +30,7 @@ public class xml {
 
 	  public  xml(String path) {
 		this.path = path;
-		System.out.println("xml" + path);
+		
 		this.obXmlValidation = new XmlValidation(path);
 
 	}

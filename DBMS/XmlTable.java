@@ -31,7 +31,6 @@ public class XmlTable implements ITable {
 	 public  XmlTable(String path) {
 		this.path = path;
 		dtdObject = new DtdFile(path);
-		System.out.println("XMLTable: " + path);
 		xmlObject= new xml(this.path); 
 
 	}
@@ -48,6 +47,7 @@ public class XmlTable implements ITable {
 	 private ArrayList<ArrayList<String>>  working ;
 	 @Override
 	 public void creatTable( String databaseName,String tableName , String[] properties) {
+		 
 			if(xmlObject.fileMinimizeBoolean(databaseName,tableName)){return ;} 
 		    Element tableNameElement = xmlObject.document.createElement(tableName);
 			Element rows = xmlObject.document.createElement(tableName);
@@ -83,6 +83,7 @@ public class XmlTable implements ITable {
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
 	public ArrayList<ArrayList<String>> readFile(String databaseName , String tableName){
+		
 		File tables = new File(path + File.separator + databaseName+File.separator+tableName+".xml");
 		if (xmlObject.fileMinimizeBolean(tables,databaseName,tableName)){return null;}
 		Element root = xmlObject.document.getDocumentElement();

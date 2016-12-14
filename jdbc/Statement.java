@@ -156,7 +156,7 @@ public class Statement implements java.sql.Statement {
 		if (parse.GetDBfound()) {
 			counted = true;
 			UpdateCount = DeleteObject.Delete(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject);
-			System.out.println(UpdateCount);
+		
 			if (DeleteObject.GetExecuted() == false|| (UpdateCount == 0 && DeleteObject.GetExecuted() == true)) {
 				OperationNotExecuted = true;
 				throw new SQLException();
@@ -268,7 +268,7 @@ public class Statement implements java.sql.Statement {
 	public void CaseUse() throws SQLException {
         String Name = parse.GetGetRest();
  
-if(DetectObject.DetectDataBase(Name)){
+if(query.DetectDataBase(Name)){
         
             parse.SetCurrentlyUsed(Name);
             parse.SetDBFound(true);

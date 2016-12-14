@@ -313,7 +313,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("date")) {
 			return null;
 		}
 
@@ -327,7 +327,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("date")) {
 			return null;
 		}
 
@@ -377,7 +377,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("float")) {
 			return 0;
 		}
 
@@ -391,7 +391,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("float")) {
 			return 0;
 		}
 
@@ -411,10 +411,10 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("int")) {
 			return 0;
 		}
-
+        
 		int value = Integer.parseInt(this.resultSet[this.cursor][columnIndex - 1]);
 		return value;
 
@@ -425,7 +425,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("int")) {
 			return 0;
 		}
 		int columnIndex = this.findColumn(columnLabel);
@@ -595,7 +595,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("varchar")) {
 			return null;
 		}
 
@@ -607,7 +607,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("varchar")) {
 			return null;
 		}
 
