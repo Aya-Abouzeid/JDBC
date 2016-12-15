@@ -45,7 +45,7 @@ public class Queries  implements DataBaseInterface  {
 
 	public  Queries( String path,String writerType) {
 		this.path=path;
-//		dtdObject = new DtdFile(path);
+		dtdObject = new DtdFile(path);
 		this.writerType= writerType;
 	}
 	
@@ -293,28 +293,28 @@ public class Queries  implements DataBaseInterface  {
 		currentDataBase.dropTable(databaseName, tableName);
 	}
 
-//	@Override
-//	public void CreateDtDFile(String databaseName, String tableName, String[] dtd, String[] type) {
-//		// TODO Auto-generated method stub
-//		//dtdObject.CreateDtDFile(databaseName, tableName, dtd, type);	                 monaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-//	}
+	@Override
+	public void CreateDtDFile(String databaseName, String tableName, String[] dtd, String[] type) {
+		// TODO Auto-generated method stub
+		//dtdObject.CreateDtDFile(databaseName, tableName, dtd, type);	                 monaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	}
 
-//	@Override
-//	public boolean validateWithDTDUsingDOM(String databaseName, String tableName)
-//			throws ParserConfigurationException, IOException {
-//		// TODO Auto-generated method stub
-//		File dbdirectory = new File (path + File.separator + databaseName);
-//		 String[] tablesNames=dbdirectory.list();
-//		 if(tablesNames != null){
-//		 for (int i = 0; i < tablesNames.length; i++) {
-//				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
-//					
-//					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
-//				}
-//		 }
-//		}
-//		return dtdObject.validateWithDTDUsingDOM(databaseName, tableName);
-//	}
+	@Override
+	public boolean validateWithDTDUsingDOM(String databaseName, String tableName)
+			throws ParserConfigurationException, IOException {
+		// TODO Auto-generated method stub
+		File dbdirectory = new File (path + File.separator + databaseName);
+		 String[] tablesNames=dbdirectory.list();
+		 if(tablesNames != null){
+		 for (int i = 0; i < tablesNames.length; i++) {
+				if(tablesNames[i].substring(0, tablesNames[i].indexOf('.')).equalsIgnoreCase(tableName)){
+					
+					tableName = tablesNames[i].substring(0, tablesNames[i].indexOf('.'));
+				}
+		 }
+		}
+		return dtdObject.validateWithDTDUsingDOM(databaseName, tableName);
+	}
 
 	@Override
 	public void ListTables(String DataBase) {

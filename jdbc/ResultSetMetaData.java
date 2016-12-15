@@ -76,17 +76,20 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 		if(column<=0||column>this.resultSet.resultSet[0].length){
 			return 0;
 		}
- 
 			String type=this.resultSet.getType(column);
+			
 			if(type.equalsIgnoreCase("int")){
 				return Types.INTEGER;
 			}
+			
 			if(type.equalsIgnoreCase("varchar")){
 				return Types.VARCHAR;
 			}
+			
 			if(type.equalsIgnoreCase("date")){
 				return Types.DATE;
 			}
+			
 			if(type.equalsIgnoreCase("float")){
 				return Types.FLOAT;
 			}

@@ -13,6 +13,7 @@ public class Driver implements java.sql.Driver {
 	Properties info = new Properties();
 	String path;
 	String WriterType;
+	Log4j log = new Log4j();
 	@Override
 	public boolean acceptsURL(String url) throws SQLException {
 		if(url==null){
@@ -39,7 +40,7 @@ protected String getpath(){
 	public Connection connect(String url, Properties info) throws SQLException {
 		if(acceptsURL(url)){
 //		path = info.g
-			
+			log.INFO("new connection");
 				path =  info.get("path").toString();
 		return new Connection(this , WriterType); 
 		}

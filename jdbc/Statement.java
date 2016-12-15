@@ -32,6 +32,8 @@ public class Statement implements java.sql.Statement {
 	private Parser parse;
 	Queries query ;
 	
+	
+	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
 		logging.INFO("Statement Created.");

@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Log4j {
+	
 	 Logger logger = Logger.getLogger("Log4j");
 	 Properties preferences = new Properties();
      FileHandler handler;  

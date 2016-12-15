@@ -14,8 +14,10 @@ public class ConfigFile {
 	}
 	public void configurationFile(String databaseName,String tableName ,String value, String UserName , String Password){
 		try {
+			
+			
 			File configFile = new File("mona");
-			Properties mainObject = new Properties();
+			Properties mainObject = new Properties();			
 			mainObject.setProperty("database", databaseName);
 			mainObject.setProperty("table", tableName);
 			mainObject.setProperty("WritingFormat", value);
@@ -24,7 +26,7 @@ public class ConfigFile {
 			FileWriter write = new FileWriter(configFile);
 			mainObject.store(write, "xml file");
 			write.close();
-
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -512,8 +512,20 @@ public class ResultSet implements java.sql.ResultSet {
 		if (this.resultSet == null || this.resultSet.length <= 1) {
 			return null;
 		}
-
-		return this.resultSet[this.cursor][columnIndex - 1];
+        if(this.getType(columnIndex).equalsIgnoreCase("int")){
+        	return Integer.parseInt(this.resultSet[this.cursor][columnIndex - 1]);	
+        }
+        if(this.getType(columnIndex).equalsIgnoreCase("varchar")){
+        	return this.resultSet[this.cursor][columnIndex - 1];	
+        }
+        if(this.getType(columnIndex).equalsIgnoreCase("date")){
+        	return Date.valueOf(this.resultSet[this.cursor][columnIndex - 1]);	
+        }
+        if(this.getType(columnIndex).equalsIgnoreCase("float")){
+        	return Float.parseFloat(this.resultSet[this.cursor][columnIndex - 1]);	
+        }
+        return null;
+		
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class XmlTable implements ITable {
 
 	 public  XmlTable(String path) {
 		this.path = path;
-//		dtdObject = new DtdFile(path);
+		dtdObject = new DtdFile(path);
 		xmlObject= new xml(this.path); 
 
 	}
@@ -77,7 +77,7 @@ public class XmlTable implements ITable {
 			xmlObject.document.appendChild(tableNameElement);
 			xmlObject.document.normalize();
 			xmlObject.transform(xmlObject.document,databaseName,tableName);
-//			dtdObject.CreateDtDFile(databaseName, tableName,dtd,type);		
+			dtdObject.CreateDtDFile(databaseName, tableName,dtd,type);		
 		}
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
@@ -152,7 +152,7 @@ public class XmlTable implements ITable {
 			xmlObject.document.appendChild(tableFile);
 			xmlObject.document.normalize();
 			xmlObject.transform(xmlObject.document, databaseName, tableName);
-//			dtdObject.CreateDtDFile(databaseName, tableName,dtd,ArrayOfTypes);	
+			dtdObject.CreateDtDFile(databaseName, tableName,dtd,ArrayOfTypes);	
 			tableData=new  ArrayList<ArrayList<String>>();
 			
  }
