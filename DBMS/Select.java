@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +13,7 @@ public class Select extends Validate {
 	int MaxValueLength = -1;
 	boolean Executed;
      public String []Type;
-	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) throws SQLException {
+	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) {
 		this.Query = query;
 		this.Detect = Detect;
 		String[][] x = null;
@@ -46,7 +45,7 @@ public class Select extends Validate {
 			return x;
 	}
 
-	private String[][] selectDistinct(String getRest) throws SQLException {
+	private String[][] selectDistinct(String getRest) {
 		String x[][] = null;
 		distinct=true;
 		x = select_withoutASt(getRest);
@@ -54,7 +53,7 @@ public class Select extends Validate {
 		return x;
 	}
 
-	private String[][] select_withASt(String Rest) throws SQLException {
+	private String[][] select_withASt(String Rest) {
 		String[][] x = null;
 		boolean s1 = check_from_state(Rest);
 		boolean s2 = true;
@@ -67,7 +66,7 @@ public class Select extends Validate {
 		} else {
 			if (withwhere) {
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
-				 Type=Query.Type;
+				 Type=Query.getType();
 				 Executed = true;
 				if(x != null){
 					x = Print2D(x);	}
@@ -75,7 +74,7 @@ public class Select extends Validate {
 					System.out.println("Invalid Condition.");
 				}	} else {
 				x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
-				 Type=Query.Type;
+				 Type=Query.getType();
 
 				 Executed = true;
 
@@ -90,7 +89,7 @@ public boolean GetExecuted(){
 	return Executed;
 }
 
-	private String[][] select_withoutASt(String Rest) throws SQLException {
+	private String[][] select_withoutASt(String Rest) {
 		String[][] x = null;
 		if (!Rest.toLowerCase().contains("from")) {
 			System.out.println("Invalid Command.");
@@ -109,7 +108,8 @@ public boolean GetExecuted(){
 				check_select();
 				if (withwhere) {
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
-					 Type=Query.Type;
+					 Type=Query.getType();
+					 System.out.println("jjj"+Type);
 					 Executed = true;
 
 
@@ -123,13 +123,13 @@ public boolean GetExecuted(){
 				} else {
 					if(distinct){
 						x =Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
-						Type=Query.Type;
+						Type=Query.getType();
 						 Executed = true;
 
 					}
 					else{
 					 x = Query.selectColumns(CurrentlyUsedDB, current_table1, selected_fields);
-					 Type=Query.Type;
+					 Type=Query.getType();
 					 Executed = true;
 
 					}

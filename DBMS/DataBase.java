@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.DBMS;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.sql.SQLException;
 
 import javax.crypto.CipherInputStream;
 
@@ -35,14 +34,14 @@ public class DataBase {
 			
 		}
 	}
-	public void creatTable(String databaseName, String tableName, String[] properties) throws SQLException {
+	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
 		
 		writer.creatTable(databaseName, tableName, properties);
 	}
 
 
-	public int insertRow(String databaseName, String tableName, String[] properties) throws SQLException {
+	public int insertRow(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub
 		return writer.insertRow(databaseName, tableName, properties);
 		
@@ -50,35 +49,35 @@ public class DataBase {
 	}
 
 	
-	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) throws SQLException {
+	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) {
 		// TODO Auto-generated method stub
 		return writer.update(databaseName, tableName, condition, updateStatment);
 		
 	}
 
 	
-	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) throws SQLException {
+	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) {
 		// TODO Auto-generated method stub
 		return writer.updateWhitoutWhere(databaseName, tableName, updateStatment);
 		
 	}
 
 
-	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) throws SQLException {
+	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
 		return writer.insertSub(databaseName, tableName, columSend, properties);
 		
 	}
 
 
-	public int deleteTable(String databaseName, String tableName) throws SQLException {
+	public int deleteTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		return writer.deleteTable(databaseName, tableName);
 	
 	}
 
 
-	public int deleteSubTable(String databaseName, String tableName, String[] condition) throws SQLException {
+	public int deleteSubTable(String databaseName, String tableName, String[] condition) {
 		// TODO Auto-generated method stub
 		return writer.deleteSubTable(databaseName, tableName, condition);
 	
@@ -87,7 +86,7 @@ public class DataBase {
 
 
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
-			String[] Condition) throws SQLException {
+			String[] Condition) {
 		// TODO Auto-generated method stub;
 		Type=writer.getType();
 		return writer.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
@@ -95,28 +94,28 @@ public class DataBase {
 	}
 
 
-	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) throws SQLException {
+	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 	  return writer.selectColumns(databaseName, tableName, columntitles);
 	}
 
 	
-	public String[][] selectAllColumns(String databaseName, String tableName) throws SQLException {
+	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 		return  writer.selectAllColumns(databaseName, tableName);
 	}
 
 	
-	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) throws SQLException {
+	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
 		// TODO Auto-generated method stub
 		Type=writer.getType();
 		return  writer.selectAllWithCondition(databaseName, tableName, Condition);
 	}
 
 	
-	public void dropTable(String databaseName, String tableName) throws SQLException {
+	public void dropTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		writer.dropTable(databaseName, tableName);
 	}
@@ -129,15 +128,15 @@ public class DataBase {
 
 	
     
-	public int addAlter(String databaseName, String tableName ,String type,String columName) throws SQLException {
+	public int addAlter(String databaseName, String tableName ,String type,String columName) {
 		return writer.addAlter(databaseName, tableName, type, columName);
 		
 	}
-    public int deleteAlter(String databaseName, String tableName ,String columName) throws SQLException {
+    public int deleteAlter(String databaseName, String tableName ,String columName) {
 		return writer.deleteAlter(databaseName, tableName, columName);
     	
     }
-    public String[][] distinct(String databaseName, String tableName ,String[] columsName) throws SQLException {
+    public String[][] distinct(String databaseName, String tableName ,String[] columsName) {
     	Type=writer.getType();
 		return writer.distinct(databaseName, tableName, columsName);
 	}

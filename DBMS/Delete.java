@@ -1,13 +1,11 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
-import java.sql.SQLException;
-
 public class Delete extends Validate{
 	boolean Executed;
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	 public int Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) throws SQLException {
+	 public int Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
 			this.Query = query;
 			this.Detect = Detect;
 

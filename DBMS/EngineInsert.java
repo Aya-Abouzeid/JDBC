@@ -4,20 +4,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EngineInsert {
-	boolean failed ;
 	private int counter =0;
-	protected boolean getFailed(){
-		return failed;
-	}
 	private Titles titlesObject = new Titles();
 	private Condition  test = new Condition();
 	public ArrayList<ArrayList<String>>  insertRow(ArrayList<ArrayList<String>> tableData, String[] properties,
-			String[] ArrayOfTypes, String[]headers) throws SQLException{
+			String[] ArrayOfTypes, String[]headers){
 		counter=0;
-		failed = false;
 		if(headers.length!= properties.length ){
 			System.out.println(" invalid insertion");
-			throw new SQLException();
+			return tableData ;
 			}
 		boolean out = false;
 		for (int i = 0; i < headers.length; i++) {

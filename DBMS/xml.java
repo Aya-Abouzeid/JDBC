@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.management.RuntimeErrorException;
 import javax.xml.parsers.DocumentBuilder;
@@ -35,17 +34,15 @@ public class xml {
 		this.obXmlValidation = new XmlValidation(path);
 
 	}
-	 public boolean fileMinimizeBoolean( String databaseName,String tableName) throws SQLException {
+	 public boolean fileMinimizeBoolean( String databaseName,String tableName) {
 			boolean testData =false; 
 			testData=obXmlValidation.DetectDataBase(databaseName);
 			if(!testData){
 			 System.out.println("invalid database");
-				throw new SQLException();
-
+			 return true;
 			}
 			documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			try {
-				
 				documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			} catch (ParserConfigurationException e) {
 				// TODO Auto-generated catch block
@@ -54,19 +51,15 @@ public class xml {
 			document = documentBuilder.newDocument();
 			return false;
 		}
-		public boolean fileMinimizeBolean(File folderName, String databaseName, String tableName) throws SQLException {
+		public boolean fileMinimizeBolean(File folderName, String databaseName, String tableName) {
 			 boolean testData=obXmlValidation.DetectDataBase(databaseName);
 				if(!testData){
 				 System.out.println("invalid database");
-					throw new SQLException();
-
-				 }
+				 return true;}
 				boolean testTable= obXmlValidation.DetectTable(databaseName, tableName);
 		        if(!testTable){
 		        	System.out.println("invalid table name");
-					throw new SQLException();
-
-		        	}
+		        	return true; }
 			documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			try {
 				documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -77,7 +70,7 @@ public class xml {
 			return false ;
 		}
 		
-		protected void transform(Document document ,String databaseName ,String TableName) throws SQLException {
+		protected void transform(Document document ,String databaseName ,String TableName) {
 			try {
 				Transformer transformer = TransformerFactory.newInstance().newTransformer();
 				transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
@@ -96,9 +89,9 @@ public class xml {
 					e.printStackTrace();
 				}
 			} catch (TransformerConfigurationException e) {
-				throw new SQLException();
+				throw new RuntimeErrorException(null);
 			} catch (TransformerException e) {
-				throw new SQLException();
+				throw new RuntimeErrorException(null);
 			}
 		}
 

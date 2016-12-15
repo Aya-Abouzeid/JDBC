@@ -1,7 +1,5 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
-import java.sql.SQLException;
-
 public class Drop extends Validate {
 	boolean Executed ;
 	public boolean GetExecuted(){
@@ -9,7 +7,7 @@ public class Drop extends Validate {
 	}
 
 	protected Boolean DBfound2 = DBfound;
-	 public int Drop(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query ,  XmlValidation Detect) throws SQLException {
+	 public int Drop(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query ,  XmlValidation Detect) {
 			this.Query = query;
 this.Detect = Detect;
 		 Executed = false;
@@ -50,7 +48,7 @@ this.Detect = Detect;
 	 return UpdateCount ;
 	    }
 	 
-	    private int DropTable(String Rest) throws SQLException {
+	    private int DropTable(String Rest) {
 	 int UpdateCount = 0;
 	        if (GetRest != null && GetFirstWord(GetRest).equals(Rest)) {
 	            if (!DBfound)

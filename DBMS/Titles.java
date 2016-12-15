@@ -1,7 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
 import java.io.File;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.w3c.dom.Element;
@@ -69,7 +68,7 @@ public class Titles  {
         return titles;
 	}
 
-	protected boolean DetectColumn(String databaseName, String tableName , String Column ,String path) throws SQLException {
+	protected boolean DetectColumn(String databaseName, String tableName , String Column ,String path) {
 		File tableFile = new File(
 				path + File.separator + databaseName + File.separator + tableName + ".xml");
 		System.out.println("XMLTitle: " + path);

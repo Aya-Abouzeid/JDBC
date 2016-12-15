@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Insert extends Validate {
@@ -10,7 +9,7 @@ public class Insert extends Validate {
 		return Executed;
 	}
 
-	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) throws SQLException {
+	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) {
 		this.Query = query;
 		Executed = false;
 		this.Detect = Detect;
@@ -35,7 +34,7 @@ public class Insert extends Validate {
 		return UpdateCount;
 	}
 
-	private int CallInsertMethod(String TableName) throws SQLException {
+	private int CallInsertMethod(String TableName) {
 		int UpdateCount = 0;
 		String[] FinalColumns = new String[Columns.size()];
 		String[] FinalValues = new String[Values.size()];
@@ -54,7 +53,7 @@ public class Insert extends Validate {
 		return UpdateCount;
 	}
 
-	private int InsertWithColumns() throws SQLException {
+	private int InsertWithColumns() {
 		int UpdateCount = 0;
 		String TableName = getf_rest(GetRest);
 		Columns = new ArrayList<String>();
@@ -80,7 +79,7 @@ public class Insert extends Validate {
 		return UpdateCount;
 	}
 
-	private int InsertWithoutColumns() throws SQLException {
+	private int InsertWithoutColumns() {
 		int UpdateCount = 0;
 		String TableName = new String();
 		Values = new ArrayList<String>();

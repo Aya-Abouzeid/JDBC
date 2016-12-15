@@ -314,7 +314,7 @@ public class ResultSet implements java.sql.ResultSet {
 			throw new SQLException();
 		}
 		
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("date")) {
 			return null;
 		}
 	
@@ -332,7 +332,8 @@ public class ResultSet implements java.sql.ResultSet {
 			throw new SQLException();
 		}
 		
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("date")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][this.findColumn(columnLabel) - 1].equals("null")){
@@ -385,7 +386,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("float")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -401,7 +402,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("float")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][findColumn(columnLabel) - 1].equals("null")){
@@ -423,7 +424,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("int")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -439,7 +440,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("int")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){
@@ -612,7 +613,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("varchar")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -626,7 +627,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("varchar")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){

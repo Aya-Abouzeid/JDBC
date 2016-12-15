@@ -92,7 +92,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public void creatTable(String databaseName, String tableName, String[] properties) throws SQLException {
+	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
 		
 		System.out.println(databaseName);
@@ -100,7 +100,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int insertRow(String databaseName, String tableName, String[] properties) throws SQLException {
+	public int insertRow(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -118,7 +118,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) throws SQLException {
+	public int update(String databaseName, String tableName, String[] condition, String[] updateStatment) {
 		// TODO Auto-generated method stub
 		
 		File dbdirectory = new File (path + File.separator + databaseName);
@@ -136,7 +136,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) throws SQLException {
+	public int updateWhitoutWhere(String databaseName, String tableName, String[] updateStatment) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -153,7 +153,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) throws SQLException {
+	public int insertSub(String databaseName, String tableName, String[] columSend, String[] properties) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -170,7 +170,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int deleteTable(String databaseName, String tableName) throws SQLException {
+	public int deleteTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -187,7 +187,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int deleteSubTable(String databaseName, String tableName, String[] condition) throws SQLException {
+	public int deleteSubTable(String databaseName, String tableName, String[] condition) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -206,9 +206,10 @@ public class Queries  implements DataBaseInterface  {
 
 	@Override
 	public String[][] selectColumnsWithCondition(String databaseName, String tableName, String[] columntitles,
-			String[] Condition) throws SQLException {
+			String[] Condition) {
 		// TODO Auto-generated method stub;
 		Type=currentDataBase.Type;
+		System.out.println("here"+Type);
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
 		 if(tablesNames != null){
@@ -222,9 +223,11 @@ public class Queries  implements DataBaseInterface  {
 		return currentDataBase.selectColumnsWithCondition(databaseName, tableName, columntitles, Condition);
 		
 	}
-
+   public String[]getType(){
+	   return currentDataBase.Type;
+   }
 	@Override
-	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) throws SQLException {
+	public String[][] selectColumns(String databaseName, String tableName, String[] columntitles) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
 		File dbdirectory = new File (path + File.separator + databaseName);
@@ -241,7 +244,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public String[][] selectAllColumns(String databaseName, String tableName) throws SQLException {
+	public String[][] selectAllColumns(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
 		File dbdirectory = new File (path + File.separator + databaseName);
@@ -258,7 +261,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) throws SQLException {
+	public String[][] selectAllWithCondition(String databaseName, String tableName, String[] Condition) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
 		File dbdirectory = new File (path + File.separator + databaseName);
@@ -275,7 +278,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public void dropTable(String databaseName, String tableName) throws SQLException {
+	public void dropTable(String databaseName, String tableName) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -320,7 +323,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int addAlter(String databaseName, String tableName, String type, String columName) throws SQLException {
+	public int addAlter(String databaseName, String tableName, String type, String columName) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -337,7 +340,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public int deleteAlter(String databaseName, String tableName, String columName) throws SQLException {
+	public int deleteAlter(String databaseName, String tableName, String columName) {
 		// TODO Auto-generated method stub
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
@@ -354,7 +357,7 @@ public class Queries  implements DataBaseInterface  {
 	}
 
 	@Override
-	public String[][] distinct(String databaseName, String tableName, String[] columsName) throws SQLException {
+	public String[][] distinct(String databaseName, String tableName, String[] columsName) {
 		// TODO Auto-generated method stub
 		Type=currentDataBase.Type;
 		File dbdirectory = new File (path + File.separator + databaseName);

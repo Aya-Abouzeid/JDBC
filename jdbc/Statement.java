@@ -150,11 +150,8 @@ public class Statement implements java.sql.Statement {
 
 			}
 			
-		} else{
+		} else
 			System.out.println("Invalid command. Select a Database first.");
-		throw new SQLException();
-
-		}
 
 	}
 
@@ -168,15 +165,11 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else{
+		} else
 			System.out.println("Invalid command. Select a Database first.");
-		throw new SQLException();
-
-		}
 
 	}
-////////////////////////////////////////////////////////////////////
-	
+
 	private void CaseUpdate() throws SQLException {
 		if (parse.GetDBfound()) {
 			counted = true;
@@ -186,11 +179,8 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else{
+		} else
 			System.out.println("Invalid command. Select a Database first.");
-		throw new SQLException();
-
-		}
 
 	}
 
@@ -208,11 +198,8 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else{
+		} else
 			System.out.println("Invalid command. Select a Database first.");
-		throw new SQLException();
-
-		}
 
 	}
 
@@ -225,11 +212,9 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else{
+		} else
 			System.out.println("Invalid command. Select a Database first.");
-		throw new SQLException();
 
-		}
 	}
 
 	private void ChooseQuery(String FirstWord) throws SQLException {
@@ -280,8 +265,6 @@ public class Statement implements java.sql.Statement {
 			break;
 		default: {
 			System.out.println("Invalid Command.");
-			throw new SQLException();
-
 		}
 		}
 	}
