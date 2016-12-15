@@ -107,14 +107,14 @@ public interface DataBaseInterface {
 	 * @param DtdFileName  DTD file name .
 	 * @param tableName XML file name . 
 	 */
-	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type);
+//	public void CreateDtDFile(String databaseName,String tableName, String[] dtd,String[]type);
        /**
 	 * validate using DOM (DTD as defined in the XML).
 	 * @param databaseName   Database name .
 	 * @param tableName   XML file Name . 
 	 * @return true for validation DTD file and XML file
 	 */
-	public boolean validateWithDTDUsingDOM(String databaseName, String tableName )throws ParserConfigurationException, IOException;
+//	public boolean validateWithDTDUsingDOM(String databaseName, String tableName )throws ParserConfigurationException, IOException;
     public void ListTables(String DataBase);
     public int addAlter(String databaseName, String tableName ,String type,String columName) ;
     public int deleteAlter(String databaseName, String tableName ,String columName) ;

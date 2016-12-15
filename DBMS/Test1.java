@@ -20,7 +20,7 @@ public class Test1 {
     String []fields3={"String name","int grade","int id"};
     Query.creatTable("test","table1", fields3);
     
-    Assert.assertEquals(true , Query.validateWithDTDUsingDOM("test", "table1"));
+//    Assert.assertEquals(true , Query.validateWithDTDUsingDOM("test", "table1"));
 
     
     String []FinalValues={"aya fouad","10","1"};

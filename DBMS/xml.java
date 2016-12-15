@@ -88,9 +88,7 @@ public class xml {
 					e.printStackTrace();
 				}
 			} catch (TransformerConfigurationException e) {
-				throw new RuntimeErrorException(null);
 			} catch (TransformerException e) {
-				throw new RuntimeErrorException(null);
 			}
 		}
 
