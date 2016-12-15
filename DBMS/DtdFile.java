@@ -27,7 +27,6 @@ public class DtdFile  {
 	private String path;
 	private xml objXml;
 	public  DtdFile(String path) {
-		System.out.println("XMLDTD: " + path);
 		this.path= path;
 		objXml= new xml(path);
 	}

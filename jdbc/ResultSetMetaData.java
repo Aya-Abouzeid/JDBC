@@ -72,7 +72,8 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 		if(this.resultSet.resultSet==null){
 			return 0;
 		}
-		if(column<=0||column>=this.resultSet.resultSet[0].length){
+
+		if(column<=0||column>this.resultSet.resultSet[0].length){
 			return 0;
 		}
  

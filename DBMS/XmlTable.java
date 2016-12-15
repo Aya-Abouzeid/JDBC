@@ -31,7 +31,6 @@ public class XmlTable implements ITable {
 	 public  XmlTable(String path) {
 		this.path = path;
 		dtdObject = new DtdFile(path);
-		System.out.println("XMLTable: " + path);
 		xmlObject= new xml(this.path); 
 
 	}

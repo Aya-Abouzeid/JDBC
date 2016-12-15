@@ -21,7 +21,6 @@ import java.util.Map;
 
 public class ResultSet implements java.sql.ResultSet {
 	public String[][] resultSet = null;
-	private ResultSetMetaData resultSetMetaData = new ResultSetMetaData(this);
 	private String TableName;
 	private int cursor = 0;
 	private Statement statement = null;
@@ -313,8 +312,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("date")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("date")) {
 			return null;
 		}
 	
@@ -331,9 +329,11 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
+		System.out.println(this.getType(this.findColumn(columnLabel)));
+		ResultSetMetaData n=this.getMetaData();
+		 System.out.println("333"+n.getColumnType(this.findColumn(columnLabel)));
 		
-		
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("date")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("date")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][this.findColumn(columnLabel) - 1].equals("null")){
@@ -386,7 +386,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("float")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("float")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -402,7 +402,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("float")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("float")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][findColumn(columnLabel) - 1].equals("null")){
@@ -424,7 +424,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("int")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("int")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -440,7 +440,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("int")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("int")) {
 			return 0;
 		}
 		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){
@@ -465,7 +465,7 @@ public class ResultSet implements java.sql.ResultSet {
 	@Override
 	public ResultSetMetaData getMetaData() throws SQLException {
 
-		return this.resultSetMetaData;
+		return  new ResultSetMetaData(this);
 	}
 
 	@Override
@@ -613,7 +613,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equals("varchar")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(columnIndex).equalsIgnoreCase("varchar")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][columnIndex - 1].equals("null")){
@@ -627,7 +627,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equals("varchar")) {
+		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("varchar")) {
 			return null;
 		}
 		if(this.resultSet[this.cursor][ this.findColumn(columnLabel)- 1].equals("null")){
