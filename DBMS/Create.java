@@ -15,7 +15,7 @@ public class Create extends Validate {
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
 		 CurrentlyUsedDB = CurrentUsedDB;
-			 Executed = false;
+		  Executed = false;
 
 	        if (GetRest != null) {
 	 
@@ -37,7 +37,7 @@ public class Create extends Validate {
 	 private int CreateDataBase(String Rest) {
 		 
 		 int UpdateCount = 0;
-	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest)) {
+	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest) || Rest.charAt(0) == '_') {
 	            System.out.println("Invalid Name.");
 	 
 	        } else if (GetFirstWord(GetRest).equals(Rest) && !Detect.DetectDataBase(Rest.toLowerCase())) {
