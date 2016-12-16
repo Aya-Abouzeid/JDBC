@@ -54,7 +54,7 @@ public class Validate  {
 	public String Trim_end(String command) {
 		if (command == null) {
 
-			System.out.println("Invalid Command.");
+			System.out.println("Invalid Command.Enter SQL command");
 
 			return null;
 		}

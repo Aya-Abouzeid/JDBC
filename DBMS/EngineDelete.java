@@ -14,8 +14,6 @@ public class EngineDelete {
 			newRow.add(headers[i]);
 		}
 		tableData.add(newRow);
-//		counter = headers.length;
-		System.out.println("deleteengine="+counter);
 		return tableData;
 	}
 	public ArrayList<ArrayList<String>> deleteSubTable(ArrayList<ArrayList<String>> tableData,String[]condition,

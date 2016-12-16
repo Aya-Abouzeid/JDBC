@@ -30,18 +30,18 @@ this.Detect = Detect;
 					}
 					else
 					{
-						System.out.println("11111Invalid Command.");		
+						System.out.println("Invalid Command.choose add or drop");		
 					}
 					}
 					else{
-					System.out.println("2222Invalid Command.");		
+					System.out.println("Invalid Command.complete the sql");		
 					}
 					
 				} else {
-					System.out.println("3333Invalid Command.");	
+					System.out.println("Invalid Command.complete the sql");	
 				}
 			} else{
-				System.out.println("4444Invalid Command.");
+				System.out.println("Invalid Command.complete the sql");
 		}
 			
 			
@@ -56,19 +56,19 @@ this.Detect = Detect;
                 && CheckName(tablename) && check_validname(tablename)){
 			if(GetFirstWord(GetRest).equalsIgnoreCase("drop")){
 				if(GetRest==null){
-			    System.out.println("135131Invalid Command.");	
+			    System.out.println("Invalid Command.complete the sql");	
 				}
 				else{
 					UpdateCount = checkColumn("drop");
 				}
 			}
 			else{
-	   System.out.println("513513Invalid Command.");		
+	   System.out.println("Invalid Command.check syntax");		
 			}	
 		}
 		else
 		{
-		System.out.println("13513Invalid Command.");	
+		System.out.println("Invalid Name.");	
 		}
 		return UpdateCount;
 	}
@@ -79,12 +79,12 @@ this.Detect = Detect;
    String columnName= GetFirstWord(GetRest);
    if(GetRest==null||!(GetRest.equalsIgnoreCase("int")||!GetRest.equalsIgnoreCase("varchar")||
 		   !GetRest.equalsIgnoreCase("float")||!GetRest.equalsIgnoreCase("date"))){
-	   System.out.println("3251331Invalid Command.");	  
+	   System.out.println("Invalid Command.name is from the keywords");	  
    }
    else{
 	   if(!check_validname(tablename)||!space(tablename) ||! CheckName(tablename)||
 			   !check_validname(columnName)||!space(columnName) ||! CheckName(columnName) ){
-			 System.out.println("afafahInvalid Command.");		 
+			 System.out.println("Invalid Name.");		 
 		 }
 		 else
 		 { 	String DataType = GetFirstWord(GetRest);
@@ -94,7 +94,7 @@ this.Detect = Detect;
 			 Executed = true;
 		 }
 		 else
-			 System.out.println("Invalid Command.");
+			 System.out.println("Invalid Command.complete the sql");
 		 }
    }
      } 
@@ -102,7 +102,7 @@ this.Detect = Detect;
     	 if(GetFirstWord(GetRest).equalsIgnoreCase("column")&&GetRest!=null){
     		 if(!check_validname(tablename)||!space(tablename) ||
     				 ! CheckName(tablename)||!check_validname(GetRest)||!space(GetRest) ||! CheckName(GetRest) ){
-    			 System.out.println("qw4624Invalid Command.");		 
+    			 System.out.println("Invalid Name.");		 
     		 }
     		 else
     		 {
@@ -114,12 +114,12 @@ this.Detect = Detect;
     				 Executed= true;
     				 }
     				 else
-    					 System.out.println("236243Invalid Command.");
+    					 System.out.println("Invalid Command.complete the sql");
     		 }
     		 
     	 }
     	 else {
-    	System.out.println("3131Invalid Command.");		 
+    	System.out.println("Invalid Command.complete the sql");		 
     	 }
      }
 		
@@ -147,19 +147,19 @@ this.Detect = Detect;
                 && CheckName(tablename) && check_validname(tablename)){
 			if(GetFirstWord(GetRest).equalsIgnoreCase("add")){
 				if(GetRest==null){
-			    System.out.println("51251Invalid Command.");	
+			    System.out.println("Invalid Command.complete the sql");	
 				}
 				else{
 					UpdateCount = checkColumn("add");
 				}
 			}
 			else{
-	   System.out.println("35131Invalid Command.");		
+	   System.out.println("Invalid Command.check syntax");		
 			}
 		}
 		else
 		{
-		System.out.println("1212Invalid Command.");	
+		System.out.println("Invalid Name.");	
 		}
         return  UpdateCount;
 	}

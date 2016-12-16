@@ -27,9 +27,9 @@ public class Insert extends Validate {
 			} else if (space(GetBeforeValues(GetRest)) && !getf_rest(GetRest).equalsIgnoreCase("values")) {
 				UpdateCount = InsertWithoutColumns();
 			} else
-				System.out.println("Invalid Command.");
+				System.out.println("Invalid Command.complete the sql");
 		} else
-			System.out.println("Invalid Command.");
+			System.out.println("Invalid Command.check syntax");
 
 		return UpdateCount;
 	}
@@ -70,9 +70,9 @@ public class Insert extends Validate {
 				if (CorrectColumns && CorrectValues && Values.size() == Columns.size()) {
 					UpdateCount = CallInsertMethod(TableName);
 				} else
-					System.out.println("Invalid Command");
+					System.out.println("Invalid Command check values or columns");
 			} else {
-				System.out.println("Invalid Command.");
+				System.out.println("Invalid Command.check syntax");
 			}
 		}
 
@@ -98,12 +98,12 @@ public class Insert extends Validate {
 					Executed = true;
 					System.out.println("Inserted.");
 				} else {
-					System.out.println("Invalid Table Name.");
+					System.out.println("Invalid Table Name.table is not in the database!");
 				}
 			} else
-				System.out.println("Invalid Command");
+				System.out.println("Invalid Command check values");
 		} else
-			System.out.println("Invalid Command");
+			System.out.println("Invalid Command check syntax");
 
 		return UpdateCount;
 	}

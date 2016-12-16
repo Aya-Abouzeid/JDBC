@@ -329,9 +329,7 @@ public class ResultSet implements java.sql.ResultSet {
 		if (closed) {
 			throw new SQLException();
 		}
-		System.out.println(this.getType(this.findColumn(columnLabel)));
 		ResultSetMetaData n=this.getMetaData();
-		 System.out.println("333"+n.getColumnType(this.findColumn(columnLabel)));
 		
 		if (this.resultSet == null || this.resultSet.length <= 1||!this.getType(this.findColumn(columnLabel)).equalsIgnoreCase("date")) {
 			return null;

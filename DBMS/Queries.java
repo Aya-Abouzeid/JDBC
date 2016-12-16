@@ -95,7 +95,6 @@ public class Queries  implements DataBaseInterface  {
 	public void creatTable(String databaseName, String tableName, String[] properties) {
 		// TODO Auto-generated method stub                                                   
 		
-		System.out.println(databaseName);
 		currentDataBase.creatTable(databaseName, tableName, properties);
 	}
 
@@ -209,7 +208,6 @@ public class Queries  implements DataBaseInterface  {
 			String[] Condition) {
 		// TODO Auto-generated method stub;
 		Type=currentDataBase.Type;
-		System.out.println("here"+Type);
 		File dbdirectory = new File (path + File.separator + databaseName);
 		 String[] tablesNames=dbdirectory.list();
 		 if(tablesNames != null){

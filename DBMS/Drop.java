@@ -22,7 +22,7 @@ this.Detect = Detect;
 	        } else if (j.equalsIgnoreCase("table")) {
 	        	UpdateCount =  DropTable(Rest);
 	        } else
-	            System.out.println("Invalid Command.");
+	            System.out.println("Invalid Command.complete the sql");
 	 
 	        return UpdateCount;
 	 }
@@ -43,7 +43,7 @@ this.Detect = Detect;
 	            }
 	        } else {
             	DBfound2 = DBfound;
-	            System.out.println("Invalid Command.");
+	            System.out.println("Invalid Command.complete the sql");
 	        }
 	 return UpdateCount ;
 	    }
@@ -62,7 +62,7 @@ this.Detect = Detect;
 	    			System.out.println("Table is Dropped");
 	            }
 	        } else {
-	            System.out.println("Invalid Command.");
+	            System.out.println("Invalid Command.complete the sql");
 	        }
 	 return UpdateCount;
 	    }

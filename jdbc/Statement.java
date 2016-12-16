@@ -16,7 +16,7 @@ public class Statement implements java.sql.Statement {
 	Select SelectObject = new Select();
 	Update UpdateObject = new Update();
 	Alter AlterObject = new Alter();
-	Log4j logging = new Log4j();
+	Log4j logger = new Log4j();
 	XmlValidation DetectObject;
 	public String[]Type;
 	public String tableName;
@@ -36,7 +36,8 @@ public class Statement implements java.sql.Statement {
 	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
-		logging.INFO("Statement Created.");
+
+		logger.projectLog().info("stamement created");
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;
@@ -161,7 +162,6 @@ public class Statement implements java.sql.Statement {
 		if (parse.GetDBfound()) {
 			counted = true;
 			UpdateCount = DeleteObject.Delete(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject);
-			System.out.println(UpdateCount);
 			if (DeleteObject.GetExecuted() == false|| (UpdateCount == 0 && DeleteObject.GetExecuted() == true)) {
 				OperationNotExecuted = true;
 				throw new SQLException();

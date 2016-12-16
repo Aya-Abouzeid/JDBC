@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 import org.w3c.dom.Element;
 
@@ -12,14 +13,26 @@ public class Condition extends Titles {
         String[]proberties={condition[2]};
         if (checkValueBoolean(types, proberties, 0)){
         	System.out.println(" invald type for condition");
-        	return false;}
+        	try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	//return false;
+        	}
         return true;
 	}
 	protected boolean checkValueBoolean(String[]types,String[] proberties,int y){
 		if(types[y].equalsIgnoreCase("int") ){
 			if(!isNumeric(proberties[y])){
 				System.out.println("invalid value for int");
-				return true;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return false;
@@ -32,7 +45,12 @@ public class Condition extends Titles {
 	   }  
 	   catch(NumberFormatException nfe)  
 	   {  
-	     return false;  
+		   try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 	   }  
 	   return true;  
 	 }
@@ -42,40 +60,80 @@ public class Condition extends Titles {
 			 float d = Float.parseFloat(str); 
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			try {
+				throw new SQLException();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 		}
 		return true ;
 	}     
 	 public boolean checkDate(String date){
 		 Validate b=new Validate();
 			if(date==null){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 			date=b.TrimCommand(date);
 			date=b.Trim_end(date);
 			if(date==null){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(date.contains(" ")){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if(!date.contains("-")){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			};
 			String year=date.substring(0,date.indexOf("-"));
 			date=date.substring(date.indexOf("-"));
 	        if(date.length()<=1||date.charAt(1)=='-'){
-	        	return false;
+	        	try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        }
 			date=date.substring(1);
 			if(!date.contains("-")){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			};
 			String month=date.substring(0,date.indexOf("-"));
 			date=date.substring(date.indexOf("-"));
 			if(date.length()<=1){
-	        	return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        }
 			String day=date.substring(1);
 			try{
@@ -85,10 +143,20 @@ public class Condition extends Titles {
 			
 			}
 			catch(Exception e){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			}
 			if(year.length()!=4||Integer.parseInt(month)<=0||Integer.parseInt(month)>12||Integer.parseInt(day)<=0||Integer.parseInt(day)>31){
-				return false;
+				try {
+					throw new SQLException();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			return true;
 		}
@@ -98,6 +166,12 @@ public class Condition extends Titles {
 					location=j;
 					return true;
 					}
+			}
+			try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return false;
 	}
@@ -112,6 +186,12 @@ public class Condition extends Titles {
 					return true;
 					
 					}
+			}
+			try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return false;
 	}

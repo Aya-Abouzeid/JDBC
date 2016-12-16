@@ -40,7 +40,7 @@ public class Select extends Validate {
 					x= select_withoutASt(Rest);
 				}
 			} else
-				System.out.println("Invalid Command.");
+				System.out.println("Invalid Command.complete the sql");
 
 			return x;
 	}
@@ -62,7 +62,7 @@ public class Select extends Validate {
 			withwhere = true;
 			s2 = check_where_state(Rest);
 		}if (s1 == false || s2 == false) {
-			System.out.println("Invalid Command.");
+			System.out.println("Invalid Command.check from or where state");
 		} else {
 			if (withwhere) {
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
@@ -71,7 +71,7 @@ public class Select extends Validate {
 				if(x != null){
 					x = Print2D(x);	}
 				else{
-					System.out.println("Invalid Condition.");
+					System.out.println("Invalid Condition.impty table");
 				}	} else {
 				x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
 				 Type=Query.getType();
@@ -81,7 +81,7 @@ public class Select extends Validate {
 				if(x !=null)
 				x=	Print2D(x);		
 					else
-						System.out.println("Invalid Condition.");	}
+						System.out.println("Invalid Condition.impty table");	}
 		}	
 		return x;
 		}
@@ -92,7 +92,7 @@ public boolean GetExecuted(){
 	private String[][] select_withoutASt(String Rest) {
 		String[][] x = null;
 		if (!Rest.toLowerCase().contains("from")) {
-			System.out.println("Invalid Command.");
+			System.out.println("Invalid Command.forgot to write from");
 		} else {
 
 			boolean s1 = check_from_state(Rest);
@@ -103,13 +103,12 @@ public boolean GetExecuted(){
 				s2 = check_where_state(Rest);
 			}
 			if (s1 == false || s2 == false) {
-				System.out.println("Invalid Command.");
+				System.out.println("Invalid Command.check from or where state");
 			} else if (s1 == true && s2 == true) {
 				check_select();
 				if (withwhere) {
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
 					 Type=Query.getType();
-					 System.out.println("jjj"+Type);
 					 Executed = true;
 
 
@@ -117,7 +116,7 @@ public boolean GetExecuted(){
 					x=Print2D(x);
 					}
 					else
-						System.out.println("Invalid Condition.");
+						System.out.println("Invalid Condition.impty table");
 
 
 				} else {
@@ -136,7 +135,7 @@ public boolean GetExecuted(){
 				if(x != null)
 					x= Print2D(x);
 				else
-					System.out.println("Invalid Condition.");
+					System.out.println("Invalid Condition.impty table");
 
 				}
 			}}

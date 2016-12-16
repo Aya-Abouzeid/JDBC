@@ -26,10 +26,10 @@ public class Create extends Validate {
 	            } else if (GetRest != null && j.equalsIgnoreCase("table") && GetRest.contains("(") && GetRest.contains(")")) {
 	            	UpdateCount = CreateTable(Rest);
 	            } else {
-	                System.out.println("Invalid Command.");
+	                System.out.println("Invalid Command.complete the sql");
 	            }
 	        } else {
-	            System.out.println("Invalid Command.");
+	            System.out.println("Invalid Command.complete the sql");
 	 
 	        }
 	        return UpdateCount;
@@ -45,7 +45,7 @@ public class Create extends Validate {
 	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
 	        } else {
-	            System.out.println("Invalid Command.");
+	            System.out.println("Invalid Command.complete the sql");
 	        }
 	        return UpdateCount;
 	    }
@@ -89,13 +89,13 @@ public class Create extends Validate {
 	                        }
 	 
 	                    } else {
-	                        System.out.println("Invalid command.");
+	                        System.out.println("Invalid command.check Syntax");
 	                    }
 	                } else {
-	                    System.out.println("Invalid Command.");
+	                    System.out.println("Invalid Command.complete the sql");
 	                }
 	            } else {
-	                System.out.println("Invalid Command.");
+	                System.out.println("Invalid Command.complete the sql");
 	            }
 	        } else
 	            System.out.println("Select a Database first.");
