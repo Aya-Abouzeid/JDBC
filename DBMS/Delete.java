@@ -37,13 +37,26 @@ public class Delete extends Validate{
 	                    System.out.println("Invalid Command.check where or from ");
 	                }
 	                else {
-	                	if(withwhere){	   
+	                	if(withwhere){	 
+	                		 try{
+	                			 throw new RuntimeException();
+	                			 }
+	                			 catch(Exception e){
+	                				 e.printStackTrace();
+	                			 }
 	                		UpdateCount=	Query.deleteSubTable(CurrentUsedDB, current_table1, condition);
 	                		Executed = true;
 	            			System.out.println("Deleted.");
 
 	                	}
 	                	else{
+	                		 try{
+	                			 throw new RuntimeException();
+	                			 }
+	                			 catch(Exception e){
+	                				 e.printStackTrace();
+	                			 }
+	                		 
 	                		UpdateCount=Query.deleteTable(CurrentUsedDB, current_table1);
 	                		Executed = true;
 	            			System.out.println("Table is Deleted");

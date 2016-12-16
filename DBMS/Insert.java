@@ -44,7 +44,12 @@ public class Insert extends Validate {
 		}
 	
 		if (Detect.DetectTable(CurrentlyUsedDB, TableName)) {
-			
+			 try{
+				 throw new RuntimeException();
+				 }
+				 catch(Exception e){
+					 e.printStackTrace();
+				 }
 			UpdateCount = Query.insertSub(CurrentlyUsedDB, TableName, FinalColumns, FinalValues);
 			Executed = true;
 		} else
@@ -94,6 +99,12 @@ public class Insert extends Validate {
 					FinalValues[i] = Values.get(i);
 				}
 				if (Detect.DetectTable(CurrentlyUsedDB, TableName)) {
+					 try{
+						 throw new RuntimeException();
+						 }
+						 catch(Exception e){
+							 e.printStackTrace();
+						 }
 					UpdateCount=Query.insertRow(CurrentlyUsedDB, TableName, FinalValues);
 					Executed = true;
 					System.out.println("Inserted.");

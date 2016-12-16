@@ -38,6 +38,12 @@ this.Detect = Detect;
 	            }
 	            else
 	            { DBfound2 = false;
+	       	 try{
+				 throw new RuntimeException();
+				 }
+				 catch(Exception e){
+					 e.printStackTrace();
+				 }
 	            	Query.dropDatabase(Rest.toLowerCase());
 	            	Executed = true;
 	            }
@@ -57,6 +63,12 @@ this.Detect = Detect;
 	                System.out.println("Invalid Command. Table was not found.");
 	            } else
 	            {
+	           	 try{
+	    			 throw new RuntimeException();
+	    			 }
+	    			 catch(Exception e){
+	    				 e.printStackTrace();
+	    			 }
 	                Query.dropTable(CurrentlyUsedDB, Rest);
 	                Executed = true;
 	    			System.out.println("Table is Dropped");
