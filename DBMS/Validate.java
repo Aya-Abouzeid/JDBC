@@ -54,7 +54,7 @@ public class Validate  {
 	public String Trim_end(String command) {
 		if (command == null) {
 
-			System.out.println("Invalid Command.Enter SQL command");
+			System.out.println("Invalid Command.complete the sql");
 
 			return null;
 		}
@@ -113,7 +113,7 @@ public class Validate  {
 			s = ms_secondword(i);
 			i++;
 			if (s == false) {
-				System.out.println("Invalid Command.");
+				System.out.println("Invalid Command.check syntax");
 				break;
 			}
 
@@ -301,7 +301,7 @@ public class Validate  {
 	 protected boolean reform2(String[][] updated_fields2) {
 	        int i = 0 , j=0;
 	        while (i < updated_fields2.length) {   if (!updated_fields2[i][0].contains("=")) {
-	                System.out.println("Invalid Command.");
+	                System.out.println("Invalid Command.forgot =");
 	                break;  } else {     String h = updated_fields2[i][0];
 	                String o = updated_fields2[i][0];
 	                updated_fields2[i][1] =TrimCommand(o.substring(o.indexOf("=") + 1));
@@ -310,14 +310,14 @@ public class Validate  {
 	                updateStatment[j +1] = "=";
 	                updateStatment[j +2] = updated_fields2[i][1];
 	                if(!check_quotes(updateStatment[j + 2])){
-	                	 System.out.println("Invalid Command.");
+	                	 System.out.println("Invalid Command.check quotes");
 	                     return false;
 	                }if (!space(updated_fields2[i][0]) || !CheckName(updated_fields2[i][0])|| !check_validname(updated_fields2[i][0])) {
-	                    System.out.println("Invalid Command.");
+	                    System.out.println("Invalid Name.");
 	                    return false;
 	                }  updateStatment[j + 2]=remove_quotes(updateStatment[j + 2]);
 	                if( updateStatment[i + 2].contains("\'")){
-	                	 System.out.println("Invalid Command.");
+	                	 System.out.println("Invalid Command.check syntax");
 	                	 return false; }}
 	            i++;
 	            j=j+3;
@@ -337,7 +337,7 @@ public class Validate  {
 					selected_fields[i1] = selected_fields1.get(i1);	}
 				if (!space(selected_fields[i2]) || !CheckName(selected_fields[i2])
 						|| !check_validname(selected_fields[i2])) {
-					System.out.println("Invalid Command.");
+					System.out.println("Invalid Name.");
 					break;	}
 				i2++;
 				l = new String();} else {

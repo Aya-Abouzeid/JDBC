@@ -111,12 +111,6 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Statement createStatement() throws SQLException {
 
-		try{
-			throw new RuntimeException();
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
 		return new Statement(this, parse,query , Detect);
 	}
 
