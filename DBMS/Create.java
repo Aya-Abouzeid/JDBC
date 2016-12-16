@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.DBMS;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Create extends Validate {
@@ -7,7 +8,7 @@ public class Create extends Validate {
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
+	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) throws SQLException {
 			this.Query = query;
 		 int UpdateCount = 0;
 		 this.Detect = Detect;
@@ -34,16 +35,16 @@ public class Create extends Validate {
 	        }
 	        return UpdateCount;
 	    }
-	 private int CreateDataBase(String Rest) {
+	 private int CreateDataBase(String Rest) throws SQLException {
 		 
 		 int UpdateCount = 0;
 	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest) || Rest.charAt(0) == '_') {
 	            System.out.println("Invalid Name.");
 	 
 	        } else if (GetFirstWord(GetRest).equals(Rest) && !Detect.DetectDataBase(Rest.toLowerCase())) {
-
-	            Query.createDatabase(Rest.toLowerCase());
-	            Executed = true;
+	        	throw new SQLException();
+//	            Query.createDatabase(Rest.toLowerCase());
+//	            Executed = true;
 	        } else {
 	            System.out.println("Invalid Command.Check database name");
 	        }
