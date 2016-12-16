@@ -12,7 +12,12 @@ public class EngineInsert {
 		counter=0;
 		if(headers.length!= properties.length ){
 			System.out.println(" invalid insertion");
-			return tableData ;
+			try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 		boolean out = false;
 		for (int i = 0; i < headers.length; i++) {
@@ -38,7 +43,12 @@ public class EngineInsert {
 		boolean write =true;
 		if(columSend.length!= properties.length ){
 			System.out.println(" invalid insertion");
-			return tableData;
+			try {
+				throw new SQLException();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 		
 		for (int i = 0; i < columSend.length; i++) {
