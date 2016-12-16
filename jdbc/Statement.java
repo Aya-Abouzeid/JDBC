@@ -37,7 +37,7 @@ public class Statement implements java.sql.Statement {
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
 
-		logger.projectLog().info("stamement created");
+//		logger.projectLog().info("stamement created");
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;
