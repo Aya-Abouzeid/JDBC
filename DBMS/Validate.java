@@ -25,7 +25,7 @@ public class Validate  {
 	protected String[] selected_fields;
 	protected ArrayList<String> selected_fields1 = new ArrayList<String>();
 	protected String specialchar[] = { "+", "-", "*", "/", ")", "(", "&", "%", "$", "#", "@", "!", "~", ">", "<", "?",
-			".", ",", ";", "{", "}", "[", "]" ,"\'","|","^" };
+			".", ",", ";", "{", "}", "[", "]" ,"\'","|","^" ,"=" ,"~","`",":","\""};
 	protected String[][] fields2;
 	protected String[] fields3;
 	protected ArrayList<String> fields1 = new ArrayList<String>();
@@ -79,7 +79,8 @@ public class Validate  {
 				|| name.equalsIgnoreCase("int") || name.equalsIgnoreCase("varchar") || name.equalsIgnoreCase("create") || name.equalsIgnoreCase("update")
 				|| name.equalsIgnoreCase("insert") || name.equalsIgnoreCase("delete") || name.equalsIgnoreCase("drop") || name.equalsIgnoreCase("where")
 				|| name.equalsIgnoreCase("table") || name.equalsIgnoreCase("values") || name.equalsIgnoreCase("date")|| name.equalsIgnoreCase("float")
-				|| name.equalsIgnoreCase("distinct")|| name.equalsIgnoreCase("alter")) {
+				|| name.equalsIgnoreCase("distinct")|| name.equalsIgnoreCase("alter") || name.equalsIgnoreCase("sql") || name.equalsIgnoreCase("union")
+				|| name.equalsIgnoreCase("columns")) {
 			return false;
 		}
 		return true;
