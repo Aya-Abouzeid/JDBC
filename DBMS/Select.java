@@ -65,12 +65,6 @@ public class Select extends Validate {
 			System.out.println("Invalid Command.check from or where state");
 		} else {
 			if (withwhere) {
-				 try{
-					 throw new RuntimeException();
-					 }
-					 catch(Exception e){
-						 e.printStackTrace();
-					 }
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
 				 Type=Query.getType();
 				 Executed = true;
@@ -79,12 +73,6 @@ public class Select extends Validate {
 				else{
 					System.out.println("Invalid Condition.impty table");
 				}	} else {
-					 try{
-						 throw new RuntimeException();
-						 }
-						 catch(Exception e){
-							 e.printStackTrace();
-						 }
 				x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
 				 Type=Query.getType();
 
@@ -119,12 +107,6 @@ public boolean GetExecuted(){
 			} else if (s1 == true && s2 == true) {
 				check_select();
 				if (withwhere) {
-					 try{
-						 throw new RuntimeException();
-						 }
-						 catch(Exception e){
-							 e.printStackTrace();
-						 }
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
 					 Type=Query.getType();
 					 Executed = true;
@@ -139,24 +121,12 @@ public boolean GetExecuted(){
 
 				} else {
 					if(distinct){
-						 try{
-							 throw new RuntimeException();
-							 }
-							 catch(Exception e){
-								 e.printStackTrace();
-							 }
 						x =Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
 						Type=Query.getType();
 						 Executed = true;
 
 					}
 					else{
-						 try{
-							 throw new RuntimeException();
-							 }
-							 catch(Exception e){
-								 e.printStackTrace();
-							 }
 					 x = Query.selectColumns(CurrentlyUsedDB, current_table1, selected_fields);
 					 Type=Query.getType();
 					 Executed = true;

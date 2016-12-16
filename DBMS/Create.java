@@ -41,12 +41,7 @@ public class Create extends Validate {
 	            System.out.println("Invalid Name.");
 	 
 	        } else if (GetFirstWord(GetRest).equals(Rest) ) {
-	       	 try{
-				 throw new RuntimeException();
-				 }
-				 catch(Exception e){
-					 e.printStackTrace();
-				 }
+
 	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
 	        } else {
@@ -88,12 +83,6 @@ public class Create extends Validate {
 	 
 	                    	
 	                        if (reform(fields2) && !Detect.DetectTable(CurrentlyUsedDB, TableName)) {
-	                       	 try{
-	                			 throw new RuntimeException();
-	                			 }
-	                			 catch(Exception e){
-	                				 e.printStackTrace();
-	                			 }
 	                            Query.creatTable(CurrentlyUsedDB, TableName, fields3);
 	                            Executed = true;
 //	                			System.out.println("Table is Created");

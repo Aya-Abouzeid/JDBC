@@ -266,6 +266,7 @@ public class Statement implements java.sql.Statement {
 			break;
 		default: {
 			System.out.println("Invalid Command.");
+			throw new SQLException();
 		}
 		}
 	}

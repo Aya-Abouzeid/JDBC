@@ -89,12 +89,6 @@ this.Detect = Detect;
 		 else
 		 { 	String DataType = GetFirstWord(GetRest);
 		 if(GetRest == null){
-			 try{
-			 throw new RuntimeException();
-			 }
-			 catch(Exception e){
-				 e.printStackTrace();
-			 }
 			 UpdateCount = Query.addAlter(CurrentlyUsedDB, tablename, DataType, columnName);
 			 Executed = true;
 		 }
@@ -114,12 +108,8 @@ this.Detect = Detect;
     			 	String ColumnName = GetFirstWord(GetRest);
     				 if(GetRest == null){
 
-    					 try{
-    						 throw new RuntimeException();
-    						 }
-    						 catch(Exception e){
-    							 e.printStackTrace();
-    						 }    					 UpdateCount= Query.deleteAlter(CurrentlyUsedDB, tablename, ColumnName);
+    			 //  UpdateCount = call Queries.alterdrop(tablename,ColumnName);
+    					 UpdateCount= Query.deleteAlter(CurrentlyUsedDB, tablename, ColumnName);
     				 Executed= true;
     				 }
     				 else
