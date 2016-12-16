@@ -152,8 +152,10 @@ public class Statement implements java.sql.Statement {
 
 			}
 			
-		} else
+		} else{
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();	
+		}
 
 	}
 
@@ -166,8 +168,10 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else
+		} else{
 			System.out.println("Invalid command. Select a Database first.");
+		throw new SQLException();	
+		}
 
 	}
 
@@ -180,9 +184,10 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else
+		} else{
 			System.out.println("Invalid command. Select a Database first.");
-
+		throw new SQLException();	
+		}
 	}
 
 	private void CaseSelect() throws SQLException {
@@ -199,9 +204,10 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else
+		} else{
 			System.out.println("Invalid command. Select a Database first.");
-
+		throw new SQLException();	
+		}
 	}
 
 	private void CaseAlter() throws SQLException {
@@ -213,9 +219,10 @@ public class Statement implements java.sql.Statement {
 				throw new SQLException();
 	
 			}
-		} else
+		} else{
 			System.out.println("Invalid command. Select a Database first.");
-
+		throw new SQLException();	
+		}
 	}
 
 	private void ChooseQuery(String FirstWord) throws SQLException {
