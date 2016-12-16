@@ -235,42 +235,38 @@ public class Statement implements java.sql.Statement {
 
 		switch (FirstWord.toLowerCase()) {
 		case "create": {
-			counted = true;
-			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
-			if (CreateObject.GetExecuted() == false) {
-				OperationNotExecuted = true;
-				throw new SQLException();
-			}
-			break;
+			throw new SQLException();
+//			counted = true;
+//			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
+//			if (CreateObject.GetExecuted() == false) {
+//				OperationNotExecuted = true;
+//				throw new SQLException();
+//			}
+//			break;
 		}
 		case "drop": {
-			counted = true;
-			UpdateCount = DropObject.Drop(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
-			parse.SetDBFound(DropObject.NewDpFound());
-			if (DropObject.GetExecuted() == false) {
-				OperationNotExecuted = true;
-				throw new SQLException();
-			}
+			throw new SQLException();
+
 		}
-			break;
+			
 		case "insert":
-			CaseInsert();
-			break;
+			throw new SQLException();
+
 		case "delete":
-			CaseDelete();
-			break;
+			throw new SQLException();
+
 		case "use":
-			CaseUse();
-			break;
+			throw new SQLException();
+
 		case "update":
-			CaseUpdate();
-			break;
+			throw new SQLException();
+
 		case "select":
-			CaseSelect();
-			break;
+			throw new SQLException();
+
 		case "alter":
-			CaseAlter();
-			break;
+			throw new SQLException();
+
 		default: {
 			System.out.println("Invalid Command.");
 			throw new SQLException();
