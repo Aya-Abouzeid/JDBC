@@ -40,7 +40,7 @@ public class Create extends Validate {
 	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest)) {
 	            System.out.println("Invalid Name.");
 	 
-	        } else if (GetFirstWord(GetRest).equals(Rest) ) {
+	        } else if (GetFirstWord(GetRest).equals(Rest) && !Detect.DetectDataBase(Rest.toLowerCase())) {
 
 	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
