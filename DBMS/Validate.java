@@ -25,7 +25,7 @@ public class Validate  {
 	protected String[] selected_fields;
 	protected ArrayList<String> selected_fields1 = new ArrayList<String>();
 	protected String specialchar[] = { "+", "-", "*", "/", ")", "(", "&", "%", "$", "#", "@", "!", "~", ">", "<", "?",
-			".", ",", ";", "{", "}", "[", "]" ,"\'" };
+			".", ",", ";", "{", "}", "[", "]" ,"\'","|","^" };
 	protected String[][] fields2;
 	protected String[] fields3;
 	protected ArrayList<String> fields1 = new ArrayList<String>();
