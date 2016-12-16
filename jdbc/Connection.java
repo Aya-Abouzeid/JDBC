@@ -23,9 +23,10 @@ public class Connection implements java.sql.Connection {
 	boolean closed = false;
 	Queries query ;
 	XmlValidation Detect;
+	Log4j log = new Log4j();
 	public Connection(Driver driver ,String WriterType) {
 		// TODO Auto-generated constructor stub
-		
+		log.INFO().info("agadhadh");
 		this.Detect = new XmlValidation(driver.getpath());
 	
 		this.query = new Queries(driver.getpath(), WriterType);

@@ -15,7 +15,7 @@ public class Create extends Validate {
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
 		 CurrentlyUsedDB = CurrentUsedDB;
-			boolean Executed = false;
+			 Executed = false;
 
 	        if (GetRest != null) {
 	 
@@ -45,7 +45,7 @@ public class Create extends Validate {
 	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
 	        } else {
-	            System.out.println("Invalid Command.complete the sql");
+	            System.out.println("Invalid Command.Check database name");
 	        }
 	        return UpdateCount;
 	    }

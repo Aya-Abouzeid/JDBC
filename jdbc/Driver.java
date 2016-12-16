@@ -43,6 +43,7 @@ protected String getpath(){
 //			log.logger.info("new connnnnnnection");
 //			log.projectLog().info("newww coonnectioon");
 //			log.INFO("new connection");
+			log.INFO().info("heree");
 				path =  info.get("path").toString();
 		return new Connection(this , WriterType); 
 		}
