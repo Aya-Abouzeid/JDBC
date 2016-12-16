@@ -40,6 +40,8 @@ protected String getpath(){
 	public Connection connect(String url, Properties info) throws SQLException {
 		if(acceptsURL(url)){
 //		path = info.g
+//			log.logger.info("new connnnnnnection");
+//			log.projectLog().info("newww coonnectioon");
 //			log.INFO("new connection");
 				path =  info.get("path").toString();
 		return new Connection(this , WriterType); 

@@ -25,7 +25,7 @@ public class Connection implements java.sql.Connection {
 	XmlValidation Detect;
 	public Connection(Driver driver ,String WriterType) {
 		// TODO Auto-generated constructor stub
-	
+		
 		this.Detect = new XmlValidation(driver.getpath());
 	
 		this.query = new Queries(driver.getpath(), WriterType);

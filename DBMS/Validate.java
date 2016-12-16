@@ -412,7 +412,13 @@ public class Validate  {
 		if (h == null || h.equals("")) {
 			return false;
 		}
-		if (!(h.charAt(0) == '\'') || !(h.charAt(h.length() - 1) == '\'')) {
+		if ((h.charAt(0) == '\'') && !(h.charAt(h.length() - 1) == '\'')) {
+	return false;
+		}
+		if (!(h.charAt(0) == '\'') && (h.charAt(h.length() - 1) == '\'')) {
+		return false;
+		}
+		if (!(h.charAt(0) == '\'') && !(h.charAt(h.length() - 1) == '\'')) {
 			try {
 				d = true;
 				Float.parseFloat(h);
