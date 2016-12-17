@@ -50,6 +50,8 @@ public class Create extends Validate {
 	        return UpdateCount;
 	    }
 	 private int CreateTable(String Rest) {
+if (Rest.contains("table_name5"))
+	throw new RuntimeException("hi :D" + Rest);
 		int UpdateCount = 0;
 	        if (DBfound) {
 
@@ -62,6 +64,7 @@ public class Create extends Validate {
 	                String l = new String();
 	                if (space(TableName) && CheckName(TableName) && check_validname(TableName)) {
 	 
+	                	
 	                    for (int i = 1; i < Rest.length(); i++) {
 	                        if (Rest.charAt(i) == ',' || Rest.charAt(i) == ')') {
 	                            String iterator1 = new String();
