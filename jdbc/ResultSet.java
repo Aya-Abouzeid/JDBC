@@ -44,7 +44,7 @@ public class ResultSet implements java.sql.ResultSet {
 		
 
 		this.TableName=this.statement.tableName;
-		logger.LOG().info("Returning Name : "+ this.TableName);
+		logger.LOG().info("Returning Name ");
 		return this.TableName;
 	}
 
@@ -52,7 +52,7 @@ public class ResultSet implements java.sql.ResultSet {
 		
 
         getTypes();
-        logger.LOG().info("Returning Type : "+ this.Type[column-1]);
+        logger.LOG().info("Returning Type ");
 		return  this.Type[column-1];
 	}
 
