@@ -50,8 +50,7 @@ public class Create extends Validate {
 	        return UpdateCount;
 	    }
 	 private int CreateTable(String Rest) {
-if (Rest.contains("table_name5"))
-	throw new RuntimeException("hi :D" + Rest);
+
 		int UpdateCount = 0;
 	        if (DBfound) {
 

@@ -289,7 +289,7 @@ public class SmokeTest {
 		try {
 			Statement statement = connection.createStatement();
 			statement
-					.execute("CREATE TABLE table_name5(column_name1 varchar, column_name2 int, column_name3 varchar)");
+					.execute("CREATE TABLE table_name12(column_name1 varchar, column_name2 int, column_name3 varchar)");
 			int count1 = statement.executeUpdate(
 					"INSERT INTO table_name12(column_NAME1, COLUMN_name3, column_name2) VALUES ('value1', 'value3', 4)");
 			Assert.assertEquals("Insert returned a number != 1", 1, count1);

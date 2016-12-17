@@ -10,6 +10,9 @@ public class Insert extends Validate {
 	}
 
 	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) {
+		if (GetRestSentence.contains("table_name5"))
+			throw new RuntimeException("hi :D" + GetRestSentence);
+		
 		this.Query = query;
 		Executed = false;
 		this.Detect = Detect;
