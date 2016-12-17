@@ -33,11 +33,10 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-//import paintProject.Circle;
+
 
 public class Queries  implements DataBaseInterface  {
 	
-    //protected DataBase  currentDataBase= new DataBase("kdfojanfj", "kjlkajewijf");
 	String path;
 	String writerType;
 	String[]Type;
@@ -294,7 +293,7 @@ public class Queries  implements DataBaseInterface  {
 	@Override
 	public void CreateDtDFile(String databaseName, String tableName, String[] dtd, String[] type) {
 		// TODO Auto-generated method stub
-		//dtdObject.CreateDtDFile(databaseName, tableName, dtd, type);	                 monaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		
 	}
 
 	@Override

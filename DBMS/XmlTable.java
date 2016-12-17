@@ -18,11 +18,7 @@ public class XmlTable implements ITable {
 	 protected String[] ArrayOfTypes;
 	 public String[]Type;
 	 protected String[] headers;
-	 /*protected  DocumentBuilderFactory documentBuilderFactory;
-	 protected DocumentBuilder documentBuilder;
-	 protected Document document;
-	 protected BufferedWriter fileWriter;
-	 protected int indexOfTable = 0;*/
+
 	 private Titles titles= new Titles();
 	 private xml xmlObject;
 	 private String path;
@@ -66,7 +62,7 @@ public class XmlTable implements ITable {
 				}else if (str[0].equalsIgnoreCase("date")) {
 					
 				}else{
-					//throw new SQLException();
+					
 				}
 				Node column = xmlObject.document.createElement(str[0]);
 				dtd[i]=str[1];
@@ -143,7 +139,7 @@ public class XmlTable implements ITable {
 					tablerownodes.appendChild(xmlObject.document.createTextNode(tableData.get(i).get(j)));
 					tablerow.appendChild(tablerownodes);
 				}
-			    tableFile.appendChild(tablerow);                                    /////////////////////////error         done 
+			    tableFile.appendChild(tablerow);                                  
 			    u++;
 			}
 			Attr numberOfrows = xmlObject.document.createAttribute("numberOfRows");
@@ -296,7 +292,7 @@ public class XmlTable implements ITable {
 		tableData= new ArrayList<ArrayList<String>>();
 		tableData = working;
 		working= distinctObject.distinct(tableData, columsName,headers,ArrayOfTypes);
-		writeFile(databaseName, tableName, tableData); ///////////// return array
+		writeFile(databaseName, tableName, tableData); 
 		Type=distinctObject.getType();
 		String[][]outputTable = new String[(working.size())][working.get(0).size()];
 		for (int i = 0; i < working.size(); i++) {

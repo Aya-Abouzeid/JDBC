@@ -123,7 +123,7 @@ public class DataBase {
 	
 	public void CreateDtDFile(String databaseName, String tableName, String[] dtd, String[] type) {
 		// TODO Auto-generated method stub
-		//dtdObject.CreateDtDFile(databaseName, tableName, dtd, type);	                 monaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		
 	}
 
 	

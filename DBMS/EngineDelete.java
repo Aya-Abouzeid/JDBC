@@ -25,7 +25,6 @@ public class EngineDelete {
 			counter=0;
 			return tableData;
 		}
-		
 		String columType= test.getType();
 		int  testing = test.getlocation();
 		 ArrayList<Integer> itemsCounterDeleted = new ArrayList<Integer>();
@@ -34,23 +33,7 @@ public class EngineDelete {
 			counter=0;
 			return tableData;
 		}
-		for (int i = 1; i < tableData.size(); i++) {
-			if (columType.equalsIgnoreCase("int")) {
-				int check= comparing.compareInteger(tableData.get(i).get(testing), condition[2]);
-				adding(condition, itemsCounterDeleted, i, check);
-			}else if (columType.equalsIgnoreCase("varchar") ){
-				int check= comparing.compareString(tableData.get(i).get(testing), condition[2]);
-		        adding(condition, itemsCounterDeleted, i, check);
-			}else if (columType.equalsIgnoreCase("float") ){
-				int check= comparing.compareFloat(tableData.get(i).get(testing), condition[2]);
-				adding(condition, itemsCounterDeleted, i, check);
-			}else if (columType.equalsIgnoreCase("date") ){
-				int check= comparing.compareDate(tableData.get(i).get(testing), condition[2]);
-				adding(condition, itemsCounterDeleted, i, check);
-			}
-			
-			
-		}
+	  looping(tableData, columType, condition, testing, itemsCounterDeleted);
 		int delete=0;
         for(int i=0;i<itemsCounterDeleted.size();i++){
        	tableData.remove(itemsCounterDeleted.get(i)-delete);
@@ -76,6 +59,25 @@ public class EngineDelete {
 	}
 	public int getCounter() {
 		return counter;
+	}
+	public void looping(ArrayList<ArrayList<String>>tableData, String columType ,String[]condition,int testing ,ArrayList<Integer>itemsCounterDeleted) {
+		for (int i = 1; i < tableData.size(); i++) {
+			if (columType.equalsIgnoreCase("int")) {
+				int check= comparing.compareInteger(tableData.get(i).get(testing), condition[2]);
+				adding(condition, itemsCounterDeleted, i, check);
+			}else if (columType.equalsIgnoreCase("varchar") ){
+				int check= comparing.compareString(tableData.get(i).get(testing), condition[2]);
+		        adding(condition, itemsCounterDeleted, i, check);
+			}else if (columType.equalsIgnoreCase("float") ){
+				int check= comparing.compareFloat(tableData.get(i).get(testing), condition[2]);
+				adding(condition, itemsCounterDeleted, i, check);
+			}else if (columType.equalsIgnoreCase("date") ){
+				int check= comparing.compareDate(tableData.get(i).get(testing), condition[2]);
+				adding(condition, itemsCounterDeleted, i, check);
+			}
+			
+			
+		}
 	}
 }
 

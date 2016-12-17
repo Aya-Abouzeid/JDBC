@@ -13,20 +13,25 @@ public class Driver implements java.sql.Driver {
 	Properties info = new Properties();
 	String path;
 	String WriterType;
-	Log4j log = new Log4j();
+	Log4j logger = new Log4j();
 	@Override
 	public boolean acceptsURL(String url) throws SQLException {
 		if(url==null){
+			logger.INFO().warning("Wrong URL Entered !" +"\n");
          return false;
 		}
 		Validate b=new Validate();
 		url=b.TrimCommand(url);
 		url=b.Trim_end(url);
         if(url.equals("jdbc:xmldb://localhost")){
+			logger.INFO().info("Using XML backend writer");
+
          this.WriterType="xmldb";
 	     return true;
           }	
          if(url.equals("jdbc:altdb://localhost")){
+ 			logger.INFO().info("Using JSON backend writer");
+
         this.WriterType="altdb";
 	    return true;
             }
@@ -39,33 +44,39 @@ protected String getpath(){
 	@Override
 	public Connection connect(String url, Properties info) throws SQLException {
 		if(acceptsURL(url)){
-//		path = info.g
-//			log.logger.info("new connnnnnnection");
-//			log.projectLog().info("newww coonnectioon");
-//			log.INFO("new connection");
-			log.INFO().info("heree");
+
 				path =  info.get("path").toString();
 		return new Connection(this , WriterType); 
 		}
-		else
+		else{
+ 			logger.INFO().warning("Invalid URL entered !");
+
 			throw new  SQLException();
+	
+		}
 	}
  
 	@Override
 	public int getMajorVersion() {
 		// TODO Auto-generated method stub
+		logger.INFO().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public int getMinorVersion() {
 		// TODO Auto-generated method stub
+		logger.INFO().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
 		// TODO Auto-generated method stub
+		logger.INFO().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
  
@@ -85,6 +96,8 @@ protected String getpath(){
 	@Override
 	public boolean jdbcCompliant() {
 		// TODO Auto-generated method stub
+			logger.INFO().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
  

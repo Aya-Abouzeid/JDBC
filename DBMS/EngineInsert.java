@@ -33,22 +33,16 @@ public class EngineInsert {
 	}
 	public ArrayList<ArrayList<String>> insertSub(ArrayList<ArrayList<String>> tableData, String[] columSend, String[] properties,
 			String[] ArrayOfTypes, String[]headers){
-		counter=0;
-		boolean out= false;
-		boolean write =true;
+		boolean out= false, write =true;counter=0;
 		if(columSend.length!= properties.length ){
 			System.out.println(" invalid insertion");
-			return tableData;
-			}
-		
+			return tableData;}
 		for (int i = 0; i < columSend.length; i++) {
 			out= test.inspectColum(headers, columSend[i]);
-			if (!out) {
-				return tableData;
-			}
+			if (!out) {return tableData;}
 		}
 		ArrayList<String> newRow = new ArrayList<String>();
-		for (int i = 0; i < headers.length; i++) {
+		for (int i = 0; i < headers.length; i++){
 			for (int j = 0; j < columSend.length; j++) {
 				if (columSend[j].equalsIgnoreCase(headers[i])) {
 					 write=false;
@@ -57,15 +51,10 @@ public class EngineInsert {
 					newRow.add(properties[j]);
 				}
 			}
-			if(write){
-				newRow.add("null");
-				}
+			if(write){newRow.add("null");}
 			write=true;
 		}
-		if (!newRow.isEmpty()) {
-			tableData.add(newRow);
-		}
-		 
+		if (!newRow.isEmpty()){tableData.add(newRow);}
 		 counter=1;
 		return tableData;
 	}

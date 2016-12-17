@@ -37,7 +37,7 @@ public class Statement implements java.sql.Statement {
 	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
-logger.INFO().info("new Statement Created");;
+		logger.INFO().info("new Statement Created" +"\n");
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;
@@ -66,11 +66,16 @@ logger.INFO().info("new Statement Created");;
 	@Override
 	public void addBatch(String sql) throws SQLException {
 		// TODO Auto-generated method stub
+
 		if (!this.IsClosed) {
+			logger.INFO().info("New command added to batch : "+ sql +"\n");
+
 			this.batch.add(sql);
-		} else
+		} else {
+logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 			throw new SQLException();
 
+		}
 	}
 
 	@Override

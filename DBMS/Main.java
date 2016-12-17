@@ -13,19 +13,19 @@ public class Main {
 	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
 //		System.out.println("Welcome to DBMS");
-////		 Parser p = new Parser();
-//		 Scanner scan = new Scanner(System.in);
+//		Parser p = new Parser();
+//	 Scanner scan = new Scanner(System.in);
 //		Runtime rt = Runtime.getRuntime();
-////			Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.home") + File.separator +"RUN2.bat");
-//String tryy ="023123";
-//		Float f = Float.parseFloat(tryy);
-//		System.out.println(f);
-
-		String s = "9959-12-31"; //varchar
-		Validate b =new Validate();
-		System.out.println(b.checkDate(s));
-		//date
-//		try{
+//			Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.home") + File.separator +"RUN2.bat");
+////String tryy ="023123";
+////		Float f = Float.parseFloat(tryy);
+////		System.out.println(f);
+//
+//		String s = "9959-12-31"; //varchar
+//		Validate b =new Validate();
+//		System.out.println(b.checkDate(s));
+//		//date
+////		try{
 //		Date x = Date.valueOf(s);
 //		System.out.println(x);
 //		}
