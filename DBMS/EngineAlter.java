@@ -10,70 +10,75 @@ public class EngineAlter {
 			String columName) {
 		int out = 0;
 		counter =0;
-		for (int j = 0; j < headers.length; j++) {
-			if (type.equalsIgnoreCase(headers[j])) {
-				System.out.println("invalid colum name");
-				titles = new String[headers.length];
-				titlesType = new String[headers.length];
-				for (int i = 0; i < headers.length; i++) {
-					titles[i]=headers[i];
-					titlesType[i]=ArrayOfTypes[i];}
-				return tableData;
-			}
+		if (type.equalsIgnoreCase("int")) {
+			out++;
+		}else if (type.equalsIgnoreCase("varchar")) {
+			out++;
+		}else if (type.equalsIgnoreCase("float")) {
+			out++;
+		}else if (type.equalsIgnoreCase("date")) {
+			out++;
+		}else {
+			out++;
 		}
-	    out = getOut(out, type);
 		if (out==0) {
 			titles = new String[headers.length];
 			titlesType = new String[headers.length];
 			for (int i = 0; i < headers.length; i++) {
 				titles[i]=headers[i];
-				titlesType[i]=ArrayOfTypes[i];}
+				titlesType[i]=ArrayOfTypes[i];
+			}
 			return tableData;
 		}
-
+		
+		/*for (int i = 0; i < headers.length; i++) {
+			if (type.equals(ArrayOfTypes[i])) {
+				out ++;
+			}
+		}
+		if (out==0) {
+			return tableData;
+		}*/
+		
 		titles = new String[headers.length+1];
 		titlesType = new String[headers.length+1];
 		for (int i = 0; i < headers.length; i++) {
 			titles[i]=headers[i];
-			titlesType[i]=ArrayOfTypes[i];}
+			titlesType[i]=ArrayOfTypes[i];
+		}
 		titles[headers.length]=columName;
 		titlesType[ArrayOfTypes.length]=type;
 		tableData.get(0).add(columName);
-		for (int i =1; i < tableData.size(); i++){tableData.get(i).add("null");}
+		for (int i =1; i < tableData.size(); i++) {
+			tableData.get(i).add("null");
+		}
 		counter++;
 		return tableData ;
 	}
-	public int getOut( int out , String type) {
-		int out2= out;
-		if (type.equalsIgnoreCase("int")) {
-			out2++;
-		}else if (type.equalsIgnoreCase("varchar")) {
-			out2++;
-		}else if (type.equalsIgnoreCase("float")) {
-			out2++;
-		}else if (type.equalsIgnoreCase("date")) {
-			out2++;
-		}else {
-			out2++;
-		}
-		return out2;
-	}
 	public ArrayList<ArrayList<String>> deleteColum (ArrayList<ArrayList<String>> tableData,String[] ArrayOfTypes, String[]headers,
 			String columName) {
-		int out = 0, location = 0;
+		int out = 0;
 		counter =0;
+		int location = 0;
 		for (int i = 0; i < headers.length; i++) {
-			if (columName.equalsIgnoreCase(headers[i])) {out++;location = i;}
+			if (columName.equalsIgnoreCase(headers[i])) {
+				out++;
+				location = i;
+			}
 		}
 		if (out==0) {
 			titles = new String[headers.length];
 			titlesType = new String[headers.length];
 			for (int i = 0; i < headers.length; i++) {
 				titles[i]=headers[i];
-				titlesType[i]=ArrayOfTypes[i];}
+				titlesType[i]=ArrayOfTypes[i];
+			}
 			return tableData;
 		}
-		for (int i = 0; i < tableData.size(); i++) {tableData.get(i).remove(location);}
+		
+		for (int i = 0; i < tableData.size(); i++) {
+			tableData.get(i).remove(location);
+		}
 		titles = new String[headers.length-1];
 		titlesType = new String[headers.length-1];
 		int add =0;
@@ -81,9 +86,13 @@ public class EngineAlter {
 			if (i!= location) {
 				titles[add]=headers[i];
 				titlesType[add]=ArrayOfTypes[i];
+				System.out.println("yyyy"+titles[add]);
+				System.out.println("lllll"+titlesType[add]);
 				add++;
 			}
+			
 		}
+		System.out.println("whfuowh");
 		counter++;
 		return tableData ;
 	}
