@@ -79,28 +79,28 @@ public class SmokeTest {
 			TestRunner.fail("Failed to create table", e);
 		}
 		
-//		try {
-//			
-//			Statement statement = connection.createStatement();
-//			statement.execute("CREATE TABLE table_name1(column_name1 varchar, column_name2 int, column_name3 date)");
-//			Assert.fail("Created existing table successfully!");
-//	
-//		} catch (SQLException e) {
-//
-//		} catch (Throwable e) {
-//			
-//			TestRunner.fail("Invalid Exception thrown", e);
-//		
-//		}
-//
-//		try {
-//			Statement statement = connection.createStatement();
-//			statement.execute("CREATE TABLE incomplete_table_name1");
-//			Assert.fail("Create invalid table succeed");
-//		} catch (SQLException e) {
-//		} catch (Throwable e) {
-//			TestRunner.fail("Invalid Exception thrown", e);
-//		}
+		try {
+			
+			Statement statement = connection.createStatement();
+			statement.execute("CREATE TABLE table_name1(column_name1 varchar, column_name2 int, column_name3 date)");
+			Assert.fail("Created existing table successfully!");
+	
+		} catch (SQLException e) {
+
+		} catch (Throwable e) {
+			
+			TestRunner.fail("Invalid Exception thrown", e);
+		
+		}
+
+		try {
+			Statement statement = connection.createStatement();
+			statement.execute("CREATE TABLE incomplete_table_name1");
+			Assert.fail("Create invalid table succeed");
+		} catch (SQLException e) {
+		} catch (Throwable e) {
+			TestRunner.fail("Invalid Exception thrown", e);
+		}
 		connection.close();
 	}
 //
