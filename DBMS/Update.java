@@ -7,10 +7,12 @@ public class Update extends Validate {
 	public boolean GetExecuted(){
 		return Executed;
 	}
+	private static int i = 0;
 	public int Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query,XmlValidation Detect) {
-		if (GetRestSentence.contains("table_name5"))
+		if (GetRestSentence.contains("table_name5") && i ==1)
 			throw new RuntimeException("hi :D" + GetRestSentence);
 		
+		i++;
 		Executed = false;
 		this.Query = query;
 		this.Detect = Detect;

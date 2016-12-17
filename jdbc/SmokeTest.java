@@ -168,7 +168,7 @@ public class SmokeTest {
 					"INSERT INTO table_name7(column_name1, COLUMN_NAME3, column_NAME2) VALUES ('value2', 'value4', 5)");
 			Assert.assertEquals("Insert returned a number != 1", 1, count3);
 			int count4 = statement.executeUpdate(
-					"UPDATE table_name7 SET column_name1='1111111111', COLUMN_NAME2=2222222, column_name3='333333333'");
+					"UPDATE table_name7 SET column_name1= 1111111111, COLUMN_NAME2=2222222, column_name3='333333333'");
 			Assert.assertEquals("Updated returned wrong number", count1 + count2 + count3, count4);
 			statement.close();
 		} catch (Throwable e) {
