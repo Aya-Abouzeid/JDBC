@@ -31,12 +31,13 @@ public class Statement implements java.sql.Statement {
 	private ResultSet Rset = null;
 	private Parser parse;
 	Queries query ;
-	static String x = new String();
-	int counter = 5;
+	
+	
+	
 	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
-
+logger.INFO().info("new Statement Created");;
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;
@@ -65,7 +66,6 @@ public class Statement implements java.sql.Statement {
 	@Override
 	public void addBatch(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		
 		if (!this.IsClosed) {
 			this.batch.add(sql);
 		} else
@@ -123,11 +123,7 @@ public class Statement implements java.sql.Statement {
 	@Override
 	public boolean execute(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-counter--;
-x += sql +"\n";
-if(counter ==0){
-	throw new SQLException(x);
-}
+
 		if (!this.IsClosed) {
 
 			String FirstWord = parse.Parse(sql);
@@ -343,10 +339,6 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public ResultSet executeQuery(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		x += sql +"\n";
-		if(counter ==0){
-			throw new SQLException(x);
-		}
 		if (!IsClosed) {
 
 				execute(sql);
@@ -364,10 +356,6 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int executeUpdate(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		x += sql +"\n";
-		if(counter ==0){
-			throw new SQLException(x);
-		}
 		if (!IsClosed) {
 
 			execute(sql);
