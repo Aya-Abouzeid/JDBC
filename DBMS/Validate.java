@@ -107,19 +107,30 @@ public class Validate  {
 	}
 
 	protected boolean reform(String[][] l) {
-		boolean s = true;
+		boolean s1 = true;
+		boolean s2 = true;
 		int i = 0;
 		while (i < l.length) {
 			ms_twowords(i);
-			s = ms_secondword(i);
+			s1 = ms_secondword(i);
+			s2=ms_firstword(i);
 			i++;
-			if (s == false) {
+			if (s1 == false||s2== false) {
 				System.out.println("Invalid Command.check syntax");
 				break;
 			}
 
 		}
-		return s;
+		return s1&&s2;
+	}
+
+	private boolean ms_firstword(int i) {
+    if (!check_validname(fields2[i][0])||!space(fields2[i][0])||!CheckName(fields2[i][0])){
+    	return false;
+    }
+		
+		
+		return true;
 	}
 
 	protected void ms_twowords(int i) {
