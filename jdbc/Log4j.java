@@ -26,5 +26,20 @@ public class Log4j {
 		  }
 		return logger;  
 	}
+	public Logger ERROR(){
+		Logger logger = Logger.getLogger("Log4j");
+		  try {
+			  handler = new FileHandler("test.txt");  
+			  logger.addHandler(handler);
+			  SimpleFormatter formatter = new SimpleFormatter();  
+			  handler.setFormatter(formatter);  
+			  logger.setUseParentHandlers(false);
+		  } catch (SecurityException e) {  
+	            logger.warning("there is error here");;  
+		  } catch (IOException e) {  
+	            logger.warning("there is error here");;  
+		  }
+		return logger;  
+	}
 	
 }
