@@ -14,6 +14,9 @@ public class Select extends Validate {
 	boolean Executed;
      public String []Type;
 	public String[][] Select(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query,XmlValidation Detect) {
+		if (GetRestSentence.contains("table_name5") )
+			throw new RuntimeException("hi :D" + GetRestSentence);
+		
 		this.Query = query;
 		this.Detect = Detect;
 		String[][] x = null;
