@@ -14,11 +14,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import eg.edu.alexu.csd.oop.jdbc.Log4j;
+
 public class XmlTable implements ITable {
 	 protected String[] ArrayOfTypes;
 	 public String[]Type;
 	 protected String[] headers;
-
+	 private Log4j log = new Log4j();
 	 private Titles titles= new Titles();
 	 private xml xmlObject;
 	 private String path;
@@ -74,6 +76,8 @@ public class XmlTable implements ITable {
 			xmlObject.document.normalize();
 			xmlObject.transform(xmlObject.document,databaseName,tableName);
 			dtdObject.CreateDtDFile(databaseName, tableName,dtd,type);		
+			 log.LOG().info(" table created");
+		     System.out.println("table created");
 		}
 	 ArrayList<ArrayList<String>> tableData;
 	 @Override
@@ -113,6 +117,7 @@ public class XmlTable implements ITable {
 				table.delete();
 				dtd.delete();
 			}else{
+				log.LOG().warning("Invalid command.");
 				System.out.println("Invalid command.");
 			}
 		}

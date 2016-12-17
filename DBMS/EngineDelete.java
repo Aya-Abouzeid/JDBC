@@ -2,10 +2,13 @@ package eg.edu.alexu.csd.oop.DBMS;
 
 import java.util.ArrayList;
 
+import eg.edu.alexu.csd.oop.jdbc.Log4j;
+
 public class EngineDelete {
 	private Condition  test = new Condition();
 	private  int counter=0;
 	private compare comparing = new compare();
+	private Log4j log = new Log4j();
 	public ArrayList<ArrayList<String>> deleteTable(ArrayList<ArrayList<String>> tableData,String []headers){
 		ArrayList<String>newRow= new ArrayList<>();
 		counter= tableData.size()-1;
@@ -14,6 +17,8 @@ public class EngineDelete {
 			newRow.add(headers[i]);
 		}
 		tableData.add(newRow);
+		log.LOG().info(" delete done");
+		System.out.println(" delete done");
 		return tableData;
 	}
 	public ArrayList<ArrayList<String>> deleteSubTable(ArrayList<ArrayList<String>> tableData,String[]condition,
@@ -23,6 +28,8 @@ public class EngineDelete {
 		out= test.inspectColumCondition(headers, condition[0],ArrayOfTypes);
 		if (!out) {
 			counter=0;
+			log.LOG().warning(" invalid condition");
+			System.out.println(" invalid condition");
 			return tableData;
 		}
 		String columType= test.getType();
@@ -31,6 +38,8 @@ public class EngineDelete {
 		out= test.inspectType(columType, condition[2]);
 		if (!out) {
 			counter=0;
+			log.LOG().warning(" invalid condition");
+			System.out.println(" invalid condition");
 			return tableData;
 		}
 	  looping(tableData, columType, condition, testing, itemsCounterDeleted);
@@ -39,6 +48,8 @@ public class EngineDelete {
        	tableData.remove(itemsCounterDeleted.get(i)-delete);
        	delete++;}
         counter= itemsCounterDeleted.size();
+        log.LOG().info(" delete done");
+		System.out.println(" delete done");
 		return tableData;
 	}
 	public void adding(String[] condition, ArrayList<Integer>itemsCounterDeleted,int i,int check) {
