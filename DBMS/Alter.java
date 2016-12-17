@@ -108,7 +108,6 @@ this.Detect = Detect;
     			 	String ColumnName = GetFirstWord(GetRest);
     				 if(GetRest == null){
 
-    			 //  UpdateCount = call Queries.alterdrop(tablename,ColumnName);
     					 UpdateCount= Query.deleteAlter(CurrentlyUsedDB, tablename, ColumnName);
     				 Executed= true;
     				 }
