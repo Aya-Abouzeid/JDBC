@@ -237,18 +237,10 @@ public class Statement implements java.sql.Statement {
 		case "create": {
 			counted = true;
 			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
-			System.out.println("has"+CreateObject.Gettable());
-			if (CreateObject.GetDBexist() == true  || CreateObject.Gettableexist() == true) {
+			if (CreateObject.GetExecuted() == false) {
 				OperationNotExecuted = true;
 				throw new SQLException();
 			}
-			else if (CreateObject.GetExecuted() == false && CreateObject.Getdb()){
-				UpdateCount = 0;
-			}
-			else if (CreateObject.GetExecuted() == false && CreateObject.Gettable())
-				{UpdateCount = 0;
-			throw new SQLException();
-				}
 			break;
 		}
 		case "drop": {
