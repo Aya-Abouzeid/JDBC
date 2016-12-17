@@ -10,6 +10,17 @@ public class EngineAlter {
 			String columName) {
 		int out = 0;
 		counter =0;
+		for (int j = 0; j < headers.length; j++) {
+			if (type.equalsIgnoreCase(headers[j])) {
+				System.out.println("invalid colum name");
+				titles = new String[headers.length];
+				titlesType = new String[headers.length];
+				for (int i = 0; i < headers.length; i++) {
+					titles[i]=headers[i];
+					titlesType[i]=ArrayOfTypes[i];}
+				return tableData;
+			}
+		}
 	    out = getOut(out, type);
 		if (out==0) {
 			titles = new String[headers.length];

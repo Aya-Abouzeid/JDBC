@@ -6,7 +6,6 @@ public class Delete extends Validate{
 		return Executed;
 	}
 	 public int Delete(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
-		 
 			this.Query = query;
 			this.Detect = Detect;
 
@@ -21,13 +20,13 @@ public class Delete extends Validate{
 	        String Rest = GetRest;
 	        Rest = TrimCommand(Rest);
 	        if (Rest==null||(GetRest.toLowerCase().contains("where") && GetRest.contains("*"))) {
-	            System.out.println("Invalid Command.check syntax");
+	            System.out.println("Invalid Command.");
 	        } else {
 	            Rest = TrimCommand(Rest.replace("*", " "));
 	            boolean s1 = check_from_state(Rest);
 	            boolean s2 = true;
 	            if (Rest == null) {
-	                System.out.println("Invalid Command.complete the sql");
+	                System.out.println("Invalid Command.");
 	            } else {
 	            	boolean withwhere=false;
 	                if (Rest.toLowerCase().contains("where")) {
@@ -35,7 +34,7 @@ public class Delete extends Validate{
 	                    s2 = check_where_state(Rest);
 	                }
 	                if (s1 == false || s2 == false) {
-	                    System.out.println("Invalid Command.check where or from ");
+	                    System.out.println("Invalid Command.");
 	                }
 	                else {
 	                	if(withwhere){	   

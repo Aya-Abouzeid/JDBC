@@ -3,33 +3,35 @@ import java.sql.SQLException;
 import java.sql.Types;
 public class ResultSetMetaData implements java.sql.ResultSetMetaData{
    private ResultSet resultSet=null; 
+   Log4j logger = new Log4j();
    public ResultSetMetaData(ResultSet resultSet) {
+	   logger.LOG().info("Result Set MetaData Created");
 		this.resultSet=resultSet;
 	} 
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
- 
+	
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 
 	}
  
 	@Override
 	public String getCatalogName(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 
 	}
  
 	@Override
 	public String getColumnClassName(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 
 	}
  
@@ -45,7 +47,7 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 	@Override
 	public int getColumnDisplaySize(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 
 	}
  
@@ -100,25 +102,25 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 	@Override
 	public String getColumnTypeName(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public int getPrecision(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public int getScale(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public String getSchemaName(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
@@ -130,49 +132,49 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData{
 	@Override
 	public boolean isAutoIncrement(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isCaseSensitive(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isCurrency(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isDefinitelyWritable(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public int isNullable(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isReadOnly(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isSearchable(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override
 	public boolean isSigned(int column) throws SQLException {
 		// TODO Auto-generated method stub
-		throw new java.lang.UnsupportedOperationException();
+				logger.LOG().warning("Unsupported Operation !");throw new java.lang.UnsupportedOperationException();
 	}
  
 	@Override

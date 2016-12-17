@@ -37,7 +37,7 @@ public class Statement implements java.sql.Statement {
 	
 	public Statement(Connection connection, Parser parse , Queries query , XmlValidation Detect) {
 		// TODO Auto-generated constructor stub
-		logger.INFO().info("new Statement Created" +"\n");
+		logger.LOG().info("new Statement Created");
 		this.batch = new ArrayList<String>();
 		this.connection = connection;
 		this.parse = parse;
@@ -54,12 +54,16 @@ public class Statement implements java.sql.Statement {
 	@Override
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
@@ -68,11 +72,11 @@ public class Statement implements java.sql.Statement {
 		// TODO Auto-generated method stub
 
 		if (!this.IsClosed) {
-			logger.INFO().info("New command added to batch : "+ sql +"\n");
+			logger.LOG().info("New command added to batch : "+ sql );
 
 			this.batch.add(sql);
 		} else {
-logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
+logger.LOG().warning("Can not add to batch , Connection is Closed !");
 			throw new SQLException();
 
 		}
@@ -81,6 +85,8 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 	@Override
 	public void cancel() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
@@ -88,14 +94,22 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 	public void clearBatch() throws SQLException {
 		// TODO Auto-generated method stub
 		if (!this.IsClosed) {
+			logger.LOG().info("Batch is cleared.");
+
 			this.batch.clear();
-		} else
+		} else{
+			logger.LOG().warning("Cannot clear batch.Statement is closed !");
+
 			throw new SQLException();
+			
+		}
 	}
 
 	@Override
 	public void clearWarnings() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
@@ -116,12 +130,16 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 			this.SelectNotExecuted = false;
 			this.query = null;
 			this.DetectObject = null;
+			logger.LOG().info("Statement is closed");
+
 		}
 	}
 
 	@Override
 	public void closeOnCompletion() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
@@ -130,6 +148,7 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 		// TODO Auto-generated method stub
 
 		if (!this.IsClosed) {
+			logger.LOG().info("Executing"+ sql);
 
 			String FirstWord = parse.Parse(sql);
 			
@@ -142,8 +161,11 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 				return true;
 
 			return false;
-		} else
+		} else{
+			logger.LOG().warning("Cannot execute. statement is closed !");
+
 			throw new SQLException();
+		}
 
 	}
 
@@ -157,8 +179,13 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 				throw new SQLException();
 
 			}
+			else
+				logger.LOG().info("Update count = " + UpdateCount);
+
 			
 		} else{
+			logger.LOG().warning("Cannot execute , no selectd database!");
+
 			System.out.println("Invalid command. Select a Database first.");
 		throw new SQLException();	
 		}
@@ -174,7 +201,11 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 				throw new SQLException();
 	
 			}
+			else
+				logger.LOG().info("Update count = " + UpdateCount);
 		} else{
+			logger.LOG().warning("Cannot execute , no selectd database!");
+
 			System.out.println("Invalid command. Select a Database first.");
 		throw new SQLException();	
 		}
@@ -190,7 +221,11 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 				throw new SQLException();
 	
 			}
+			else
+				logger.LOG().info("Update count = " + UpdateCount);
 		} else{
+			logger.LOG().warning("Cannot execute , no selectd database!");
+
 			System.out.println("Invalid command. Select a Database first.");
 		throw new SQLException();	
 		}
@@ -202,15 +237,19 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 			if(SelectObject.Select(parse.GetDBfound(),parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject) == null)
 				Rset = null;
 			else
-			Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(),parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject));
-			Type=SelectObject.Type;
+			{Rset = new ResultSet(this,SelectObject.Select(parse.GetDBfound(),parse.GetCurrentDB(), parse.GetGetRest() , query,DetectObject));
+			logger.LOG().info("Result Set found");
+			}Type=SelectObject.Type;
             tableName=SelectObject.current_table1;
 			if (SelectObject.GetExecuted() == false ){
 				SelectNotExecuted = true;
 				throw new SQLException();
 	
 			}
+			
 		} else{
+			logger.LOG().warning("Cannot execute , no selectd database!");
+
 			System.out.println("Invalid command. Select a Database first.");
 		throw new SQLException();	
 		}
@@ -220,12 +259,15 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 		if (parse.GetDBfound()) {
 			counted = true;
 			UpdateCount = AlterObject.Alter(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest() ,query,DetectObject);
+			UpdateCount = -1;
 			if (AlterObject.GetExecuted() == false ){
 				OperationNotExecuted = true;
 				throw new SQLException();
 	
 			}
 		} else{
+			logger.LOG().warning("Cannot execute , no selectd database!");
+
 			System.out.println("Invalid command. Select a Database first.");
 		throw new SQLException();	
 		}
@@ -243,6 +285,8 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 		case "create": {
 			counted = true;
 			UpdateCount = CreateObject.Create(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
+			UpdateCount = -1;
+
 			if (CreateObject.GetExecuted() == false) {
 				OperationNotExecuted = true;
 				throw new SQLException();
@@ -253,6 +297,8 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 			counted = true;
 			UpdateCount = DropObject.Drop(parse.GetDBfound(), parse.GetCurrentDB(), parse.GetGetRest(),query,DetectObject);
 			parse.SetDBFound(DropObject.NewDpFound());
+			UpdateCount = -1;
+
 			if (DropObject.GetExecuted() == false) {
 				OperationNotExecuted = true;
 				throw new SQLException();
@@ -279,6 +325,8 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
 			break;
 		default: {
 			System.out.println("Invalid Command.");
+			logger.LOG().warning("Invalid sql command!");
+
 			throw new SQLException();
 		}
 		}
@@ -287,11 +335,14 @@ logger.INFO().warning("Can not add to batch , Connection is Closed !"+"\n");
         String Name = parse.GetGetRest();
  
 if(query.DetectDataBase(Name.toLowerCase())){
-        
+	logger.LOG().info("Using Database : " + Name);
+
             parse.SetCurrentlyUsed(Name.toLowerCase());
             parse.SetDBFound(true);
             System.out.println("database found");
         } else {
+			logger.LOG().warning("Cannot Find Database : "+ Name);
+
             System.out.println("Invalid DataBase Name.");
             parse.SetDBFound(false);
 
@@ -303,18 +354,24 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public boolean execute(String sql, int autoGeneratedKeys) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean execute(String sql, int[] columnIndexes) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean execute(String sql, String[] columnNames) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
@@ -322,22 +379,38 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	public int[] executeBatch() throws SQLException {
 		// TODO Auto-generated method stub
 		if (!this.IsClosed) {
+			logger.LOG().info("Executing Batch.");
+
 			int[] counts = new int[batch.size()];
 			for (int i = 0; i < batch.size(); i++) {
+				logger.LOG().info("Executing sql"+ batch.get(i));
 
 				execute(batch.get(i));
-				if (counted && !OperationNotExecuted)
+				if (counted && !OperationNotExecuted){
 					counts[i] = UpdateCount;
-				else if (!SelectNotExecuted && RsetFound)
+					logger.LOG().info("Update Count"+ UpdateCount);
+
+				}
+				else if (!SelectNotExecuted && RsetFound){
 					counts[i] = SUCCESS_NO_INFO;
-				else if ((SelectNotExecuted && RsetFound) || (counted && OperationNotExecuted))
+					logger.LOG().info("Success no info");
+
+				}
+				else if ((SelectNotExecuted && RsetFound) || (counted && OperationNotExecuted)){
 					counts[i] = EXECUTE_FAILED;
+					logger.LOG().info("EXECUTE_FAILED");
+
+				}
 			}
 			return counts;
 		}
 
-		else
+		else{
+			logger.LOG().warning("Cannot execute , Statement is Closed!");
+
 			throw new SQLException();
+			
+		}
 
 	}
 
@@ -345,15 +418,22 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	public ResultSet executeQuery(String sql) throws SQLException {
 		// TODO Auto-generated method stub
 		if (!IsClosed) {
+			logger.LOG().info("Executing Query");
 
 				execute(sql);
 				
-			if (RsetFound && !SelectNotExecuted)
+			if (RsetFound && !SelectNotExecuted){
+				logger.LOG().info("Select Executed , Result set returned");
 				return Rset;
-			else
-				throw new SQLException();
 
+			}
+			else{
+				logger.LOG().warning("Cannot execute , Select was not chosen for executeQuery");
+
+				throw new SQLException();
+			}
 		} else {
+			logger.LOG().warning("Cannot execute , Statement is Closed!");
 			throw new SQLException();
 		}
 	}
@@ -364,13 +444,20 @@ if(query.DetectDataBase(Name.toLowerCase())){
 		if (!IsClosed) {
 
 			execute(sql);
-			if (counted)
-				return UpdateCount;
-			else
-				throw new SQLException();
+			if (counted){
+				logger.LOG().info("executeUpdate Succeeded");
 
+				return UpdateCount;
+			}
+			else{
+				logger.LOG().warning("Cannot execute , Select was chosen for executeUpdate");
+
+				throw new SQLException();
+			}
 			
 		} else {
+			logger.LOG().warning("Cannot execute , Statement is Closed!");
+
 			throw new SQLException();
 		}
 
@@ -379,6 +466,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int executeUpdate(String sql, int autoGeneratedKeys) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -386,6 +475,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int executeUpdate(String sql, int[] columnIndexes) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -393,6 +484,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int executeUpdate(String sql, String[] columnNames) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -401,15 +494,22 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	public Connection getConnection() throws SQLException {
 		// TODO Auto-generated method stub
 		if (!IsClosed) {
+			logger.LOG().warning("Returning Connection : " + this.connection);
+
 			return this.connection;
-		} else
+		} else {
+			logger.LOG().warning("Connection was not found");
+
 			throw new SQLException();
+		}
 
 	}
 
 	@Override
 	public int getFetchDirection() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -417,6 +517,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getFetchSize() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -424,6 +526,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public ResultSet getGeneratedKeys() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -431,6 +535,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getMaxFieldSize() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -438,6 +544,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getMaxRows() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -445,6 +553,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public boolean getMoreResults() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -452,6 +562,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public boolean getMoreResults(int current) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -459,6 +571,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getQueryTimeout() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -478,6 +592,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getResultSetConcurrency() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -485,6 +601,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getResultSetHoldability() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -492,6 +610,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getResultSetType() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -499,15 +619,23 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public int getUpdateCount() throws SQLException {
 		// TODO Auto-generated method stub
-		if (!IsClosed)
+		if (!IsClosed){
+			logger.LOG().info("returning update count : "+ UpdateCount);
+
 			return UpdateCount;
-		else
+		}
+		else{
+			logger.LOG().warning("Can not execute getUpdateCount");
+
 			throw new SQLException();
+		}
 	}
 
 	@Override
 	public SQLWarning getWarnings() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -515,6 +643,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public boolean isCloseOnCompletion() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -522,12 +652,16 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public boolean isClosed() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean isPoolable() throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -535,6 +669,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setCursorName(String name) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -542,6 +678,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setEscapeProcessing(boolean enable) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -549,6 +687,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setFetchDirection(int direction) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -556,6 +696,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setFetchSize(int rows) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -563,6 +705,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setMaxFieldSize(int max) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -570,6 +714,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setMaxRows(int max) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -577,6 +723,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setPoolable(boolean poolable) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -584,6 +732,8 @@ if(query.DetectDataBase(Name.toLowerCase())){
 	@Override
 	public void setQueryTimeout(int seconds) throws SQLException {
 		// TODO Auto-generated method stub
+		logger.LOG().warning("Unsupported Operation !");
+
 		throw new java.lang.UnsupportedOperationException();
 
 	}

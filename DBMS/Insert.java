@@ -10,7 +10,6 @@ public class Insert extends Validate {
 	}
 
 	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) {
-		
 		this.Query = query;
 		Executed = false;
 		this.Detect = Detect;
@@ -28,9 +27,9 @@ public class Insert extends Validate {
 			} else if (space(GetBeforeValues(GetRest)) && !getf_rest(GetRest).equalsIgnoreCase("values")) {
 				UpdateCount = InsertWithoutColumns();
 			} else
-				System.out.println("Invalid Command.complete the sql");
+				System.out.println("Invalid Command.");
 		} else
-			System.out.println("Invalid Command.check syntax");
+			System.out.println("Invalid Command.");
 
 		return UpdateCount;
 	}
@@ -71,9 +70,9 @@ public class Insert extends Validate {
 				if (CorrectColumns && CorrectValues && Values.size() == Columns.size()) {
 					UpdateCount = CallInsertMethod(TableName);
 				} else
-					System.out.println("Invalid Command check values or columns");
+					System.out.println("Invalid Command");
 			} else {
-				System.out.println("Invalid Command.check syntax");
+				System.out.println("Invalid Command.");
 			}
 		}
 
@@ -99,12 +98,12 @@ public class Insert extends Validate {
 					Executed = true;
 					System.out.println("Inserted.");
 				} else {
-					System.out.println("Invalid Table Name.table is not in the database!");
+					System.out.println("Invalid Table Name.");
 				}
 			} else
-				System.out.println("Invalid Command check values");
+				System.out.println("Invalid Command");
 		} else
-			System.out.println("Invalid Command check syntax");
+			System.out.println("Invalid Command");
 
 		return UpdateCount;
 	}

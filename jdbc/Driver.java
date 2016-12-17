@@ -17,20 +17,21 @@ public class Driver implements java.sql.Driver {
 	@Override
 	public boolean acceptsURL(String url) throws SQLException {
 		if(url==null){
-			logger.INFO().warning("Wrong URL Entered !" +"\n");
+			logger.LOG().warning("Wrong URL Entered !" +"\n");
+			System.out.println("Invalid URL");
          return false;
 		}
 		Validate b=new Validate();
 		url=b.TrimCommand(url);
 		url=b.Trim_end(url);
         if(url.equals("jdbc:xmldb://localhost")){
-			logger.INFO().info("Using XML backend writer");
+			logger.LOG().info("Using XML backend writer");
 
          this.WriterType="xmldb";
 	     return true;
           }	
          if(url.equals("jdbc:altdb://localhost")){
- 			logger.INFO().info("Using JSON backend writer");
+ 			logger.LOG().info("Using JSON backend writer");
 
         this.WriterType="altdb";
 	    return true;
@@ -49,7 +50,8 @@ protected String getpath(){
 		return new Connection(this , WriterType); 
 		}
 		else{
- 			logger.INFO().warning("Invalid URL entered !");
+ 			logger.LOG().warning("Invalid URL entered !");
+			System.out.println("Invalid URL");
 
 			throw new  SQLException();
 	
@@ -59,7 +61,7 @@ protected String getpath(){
 	@Override
 	public int getMajorVersion() {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}
@@ -67,7 +69,7 @@ protected String getpath(){
 	@Override
 	public int getMinorVersion() {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}
@@ -75,7 +77,7 @@ protected String getpath(){
 	@Override
 	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}
@@ -96,7 +98,7 @@ protected String getpath(){
 	@Override
 	public boolean jdbcCompliant() {
 		// TODO Auto-generated method stub
-			logger.INFO().warning("Unsupported Operation !");
+			logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}

@@ -2,20 +2,23 @@ package eg.edu.alexu.csd.oop.DBMS;
 
 import java.util.ArrayList;
 
+import eg.edu.alexu.csd.oop.jdbc.Log4j;
+
 public class Create extends Validate {
 	boolean Executed;
+	Log4j log = new Log4j();
 	public boolean GetExecuted(){
 		return Executed;
 	}
 	 public int Create(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence ,Queries query , XmlValidation Detect) {
-			this.Query = query;
+		 this.Query = query;
 		 int UpdateCount = 0;
 		 this.Detect = Detect;
 
 		 DBfound = IsDBFound;
 		 GetRest = GetRestSentence;
 		 CurrentlyUsedDB = CurrentUsedDB;
-		  Executed = false;
+			boolean Executed = false;
 
 	        if (GetRest != null) {
 	 
@@ -26,10 +29,10 @@ public class Create extends Validate {
 	            } else if (GetRest != null && j.equalsIgnoreCase("table") && GetRest.contains("(") && GetRest.contains(")")) {
 	            	UpdateCount = CreateTable(Rest);
 	            } else {
-	                System.out.println("Invalid Command.complete the sql");
+	                System.out.println("Invalid Command.");
 	            }
 	        } else {
-	            System.out.println("Invalid Command.complete the sql");
+	            System.out.println("Invalid Command.");
 	 
 	        }
 	        return UpdateCount;
@@ -37,20 +40,19 @@ public class Create extends Validate {
 	 private int CreateDataBase(String Rest) {
 		 
 		 int UpdateCount = 0;
-	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest) || Rest.charAt(0) == '_') {
+	        if (!CheckName(Rest) || !check_validname(Rest) || !space(Rest)) {
 	            System.out.println("Invalid Name.");
 	 
-	        } else if (GetFirstWord(GetRest).equals(Rest) && !Detect.DetectDataBase(Rest.toLowerCase())) {
+	        } else if (GetFirstWord(GetRest).equals(Rest) ) {
 
 	            Query.createDatabase(Rest.toLowerCase());
 	            Executed = true;
 	        } else {
-	            System.out.println("Invalid Command.Check database name");
+	            System.out.println("Invalid Command.");
 	        }
 	        return UpdateCount;
 	    }
 	 private int CreateTable(String Rest) {
-
 		int UpdateCount = 0;
 	        if (DBfound) {
 
@@ -63,7 +65,6 @@ public class Create extends Validate {
 	                String l = new String();
 	                if (space(TableName) && CheckName(TableName) && check_validname(TableName)) {
 	 
-	                	
 	                    for (int i = 1; i < Rest.length(); i++) {
 	                        if (Rest.charAt(i) == ',' || Rest.charAt(i) == ')') {
 	                            String iterator1 = new String();
@@ -91,13 +92,13 @@ public class Create extends Validate {
 	                        }
 	 
 	                    } else {
-	                        System.out.println("Invalid command.check Syntax");
+	                        System.out.println("Invalid command.");
 	                    }
 	                } else {
-	                    System.out.println("Invalid Command.complete the sql");
+	                    System.out.println("Invalid Command.");
 	                }
 	            } else {
-	                System.out.println("Invalid Command.complete the sql");
+	                System.out.println("Invalid Command.");
 	            }
 	        } else
 	            System.out.println("Select a Database first.");

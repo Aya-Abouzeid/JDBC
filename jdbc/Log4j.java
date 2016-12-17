@@ -11,7 +11,7 @@ public class Log4j {
 
 	 Properties preferences = new Properties();
      FileHandler handler;
-	public Logger INFO(){
+	public Logger LOG(){
 		Logger logger = Logger.getLogger("Log4j");
 		  try {
 			  handler = new FileHandler("test.txt");  

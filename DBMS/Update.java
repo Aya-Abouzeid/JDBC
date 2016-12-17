@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Update extends Validate {
 	boolean Executed;
-	
 	public boolean GetExecuted(){
 		return Executed;
 	}
-	
 	public int Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query,XmlValidation Detect) {
 		Executed = false;
 		this.Query = query;
 		this.Detect = Detect;
+
 		int UpdateCount = 0;
 		differ=true;
 		 DBfound = IsDBFound;

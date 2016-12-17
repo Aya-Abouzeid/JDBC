@@ -26,7 +26,7 @@ public class Connection implements java.sql.Connection {
 	Log4j logger = new Log4j();
 	public Connection(Driver driver ,String WriterType) {
 		// TODO Auto-generated constructor stub
-		logger.INFO().info("New Connection Created.");
+		logger.LOG().info("New Connection Created.");
 		this.Detect = new XmlValidation(driver.getpath());
 	
 		this.query = new Queries(driver.getpath(), WriterType);
@@ -36,7 +36,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public boolean isWrapperFor(Class<?> arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		return false;
 	}
@@ -44,7 +44,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public <T> T unwrap(Class<T> arg0) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		return null;
 	}
@@ -52,7 +52,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void abort(Executor executor) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -61,7 +61,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void clearWarnings() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -70,7 +70,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void close() throws SQLException {
 		if (!closed) {
-			logger.INFO().info("Connection is Closed.");
+			logger.LOG().info("Connection is Closed.");
 
 			this.closed = true;
 			this.parse = null;
@@ -82,7 +82,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void commit() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -91,7 +91,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -100,7 +100,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Blob createBlob() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -109,7 +109,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Clob createClob() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -118,7 +118,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public NClob createNClob() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}
@@ -126,7 +126,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public SQLXML createSQLXML() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 	}
@@ -140,7 +140,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -150,7 +150,7 @@ public class Connection implements java.sql.Connection {
 	public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability)
 			throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -159,7 +159,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -168,7 +168,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public boolean getAutoCommit() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -177,7 +177,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public String getCatalog() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -186,7 +186,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Properties getClientInfo() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -195,7 +195,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public String getClientInfo(String name) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -204,7 +204,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public int getHoldability() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -213,7 +213,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public DatabaseMetaData getMetaData() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -222,7 +222,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public int getNetworkTimeout() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -231,7 +231,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public String getSchema() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -240,7 +240,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public int getTransactionIsolation() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -249,7 +249,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Map<String, Class<?>> getTypeMap() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -258,7 +258,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public SQLWarning getWarnings() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -267,7 +267,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public boolean isClosed() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -276,7 +276,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public boolean isReadOnly() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -285,7 +285,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public boolean isValid(int timeout) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -294,7 +294,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public String nativeSQL(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -303,7 +303,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public CallableStatement prepareCall(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -312,7 +312,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -322,7 +322,7 @@ public class Connection implements java.sql.Connection {
 	public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency,
 			int resultSetHoldability) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -331,7 +331,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -340,7 +340,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -349,7 +349,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -358,7 +358,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -368,7 +368,7 @@ public class Connection implements java.sql.Connection {
 	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency)
 			throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -378,7 +378,7 @@ public class Connection implements java.sql.Connection {
 	public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency,
 			int resultSetHoldability) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -387,7 +387,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void releaseSavepoint(Savepoint savepoint) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -396,7 +396,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void rollback() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -405,7 +405,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void rollback(Savepoint savepoint) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -414,7 +414,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setAutoCommit(boolean autoCommit) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -423,7 +423,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setCatalog(String catalog) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 		throw new java.lang.UnsupportedOperationException();
 
 	}
@@ -431,7 +431,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setClientInfo(Properties properties) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -440,7 +440,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setClientInfo(String name, String value) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -449,7 +449,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setHoldability(int holdability) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -458,7 +458,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -467,7 +467,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setReadOnly(boolean readOnly) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -476,7 +476,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Savepoint setSavepoint() throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -485,7 +485,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public Savepoint setSavepoint(String name) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -494,7 +494,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setSchema(String schema) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -503,7 +503,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setTransactionIsolation(int level) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 
@@ -512,7 +512,7 @@ public class Connection implements java.sql.Connection {
 	@Override
 	public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
-		logger.INFO().warning("Unsupported Operation !");
+		logger.LOG().warning("Unsupported Operation !");
 
 		throw new java.lang.UnsupportedOperationException();
 

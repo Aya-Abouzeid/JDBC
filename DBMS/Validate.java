@@ -86,7 +86,7 @@ public class Validate  {
 		return true;
 	}
 
-	protected String GetFirstWord(String sql) {
+	public String GetFirstWord(String sql) {
 		space++;
 		if (sql == null) {
 			return null;
@@ -125,7 +125,7 @@ public class Validate  {
 	}
 
 	private boolean ms_firstword(int i) {
-    if (!check_validname(fields2[i][0])||!space(fields2[i][0])||!CheckName(fields2[i][0])){
+    if (!check_validname(fields2[i][0])||!space(fields2[i][0])||!CheckName(fields2[i][0])||!checkCoulumn(fields2)){
     	return false;
     }
 		
@@ -453,7 +453,26 @@ public class Validate  {
 		}
 		return h;
 	}
-
+protected boolean checkCoulumn(String []columnsNames){
+	for (int i=0;i<columnsNames.length-1;i++){
+		for(int j=i+1;j<columnsNames.length;j++){
+			if(columnsNames[i].equalsIgnoreCase(columnsNames[j])){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+protected boolean checkCoulumn(String [][]columnsNames){
+	for (int i=0;i<columnsNames.length-1;i++){
+		for(int j=i+1;j<columnsNames.length;j++){
+			if(columnsNames[i][0].equalsIgnoreCase(columnsNames[j][0])){
+				return false;
+			}
+		}
+	}
+	return true;
+}
 	protected boolean check_from_state(String g) {
 		String n = g;
 		space = 0;
