@@ -86,13 +86,14 @@ protected String getpath(){
 	public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
 		// TODO Auto-generated method stub
  
-//		DriverPropertyInfo[] PropertyInfo = new DriverPropertyInfo[3];
-//		PropertyInfo[0] = info.getProperty("username");
-//		String password = info.getProperty("password");
-// 
-// 
+		DriverPropertyInfo[] PropertyInfo = new DriverPropertyInfo[3];
+		PropertyInfo[0] = new DriverPropertyInfo("Username", info.getProperty("username"));
+		PropertyInfo[1] = new DriverPropertyInfo("path", info.getProperty("path"));
+		PropertyInfo[2] = new DriverPropertyInfo("password", info.getProperty("password"));
+
  
-		return null;
+ 
+		return PropertyInfo;
 	}
  
 	@Override
