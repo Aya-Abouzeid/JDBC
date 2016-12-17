@@ -8,6 +8,9 @@ public class Update extends Validate {
 		return Executed;
 	}
 	public int Update(Boolean IsDBFound , String CurrentUsedDB,String GetRestSentence , Queries query,XmlValidation Detect) {
+		if (GetRestSentence.contains("table_name5"))
+			throw new RuntimeException("hi :D" + GetRestSentence);
+		
 		Executed = false;
 		this.Query = query;
 		this.Detect = Detect;

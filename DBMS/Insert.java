@@ -5,15 +5,12 @@ import java.util.ArrayList;
 public class Insert extends Validate {
 	boolean Executed;
 
-	private static int counter  = 0;
 	public boolean GetExecuted() {
 		return Executed;
 	}
 
 	public int Insert(Boolean IsDBFound, String CurrentUsedDB, String GetRestSentence ,Queries query , XmlValidation Detect) {
-		if (GetRestSentence.contains("table_name5") && counter == 1)
-			throw new RuntimeException("hi :D" + GetRestSentence);
-		counter++;
+		
 		this.Query = query;
 		Executed = false;
 		this.Detect = Detect;
