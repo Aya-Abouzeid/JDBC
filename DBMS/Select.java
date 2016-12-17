@@ -66,7 +66,7 @@ public class Select extends Validate {
 		} else {
 			if (withwhere) {
 				 x = Query.selectAllWithCondition(CurrentlyUsedDB, current_table1, condition);
-				 Type=Query.Type;
+				 Type=Query.getType();
 				 Executed = true;
 				if(x != null){
 					x = Print2D(x);	}
@@ -74,7 +74,7 @@ public class Select extends Validate {
 					System.out.println("Invalid Condition.");
 				}	} else {
 				x = Query.selectAllColumns(CurrentlyUsedDB, current_table1);
-				 Type=Query.Type;
+				 Type=Query.getType();
 
 				 Executed = true;
 
@@ -108,7 +108,8 @@ public boolean GetExecuted(){
 				check_select();
 				if (withwhere) {
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
-					 Type=Query.Type;
+					 Type=Query.getType();
+					 System.out.println("jjj"+Type);
 					 Executed = true;
 
 
@@ -122,13 +123,13 @@ public boolean GetExecuted(){
 				} else {
 					if(distinct){
 						x =Query.distinct(CurrentlyUsedDB, current_table1, selected_fields);
-						Type=Query.Type;
+						Type=Query.getType();
 						 Executed = true;
 
 					}
 					else{
 					 x = Query.selectColumns(CurrentlyUsedDB, current_table1, selected_fields);
-					 Type=Query.Type;
+					 Type=Query.getType();
 					 Executed = true;
 
 					}

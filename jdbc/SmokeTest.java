@@ -73,7 +73,7 @@ public class SmokeTest {
 		Connection connection = createUseDatabase("sfhasfhs");
 		try {
 			Statement statement = connection.createStatement();
-			statement.execute("CREATE TABLE table_name1 ( column_name1 varchar,  column_name1  varchar, column_name3 date)");
+			statement.execute("CREATE TABLE table_name1 ( column_name1 varchar,  column_name2  varchar, column_name3 date)");
 			statement.close();
 		} catch (Throwable e) {
 			TestRunner.fail("Failed to create table", e);
