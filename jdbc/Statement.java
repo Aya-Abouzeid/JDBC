@@ -94,6 +94,7 @@ logger.LOG().warning("Can not add to batch , Connection is Closed !");
 	public void clearBatch() throws SQLException {
 		// TODO Auto-generated method stub
 		if (!this.IsClosed) {
+			System.out.println("Batch is cleared.");
 			logger.LOG().info("Batch is cleared.");
 
 			this.batch.clear();
@@ -120,6 +121,7 @@ logger.LOG().warning("Can not add to batch , Connection is Closed !");
 			if (Rset != null) {
 				this.Rset.close();
 			}
+			System.out.println("Statement is closed");
 			this.RsetFound = false;
 			this.parse = null;
 			this.UpdateCount = -1;
@@ -149,7 +151,7 @@ logger.LOG().warning("Can not add to batch , Connection is Closed !");
 
 		if (!this.IsClosed) {
 			logger.LOG().info("Executing"+ sql);
-
+System.out.println("Executing query");
 			String FirstWord = parse.Parse(sql);
 			
 			if (sql != null){

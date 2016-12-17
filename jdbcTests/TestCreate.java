@@ -1,29 +1,26 @@
-package eg.edu.alexu.csd.oop.jdbc;
+package eg.edu.alexu.csd.oop.jdbcTests;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import eg.edu.alexu.csd.oop.jdbc.Driver;
 import eg.edu.alexu.csd.oop.jdbc.TestRunner;
 
-public class SmokeTestCreateJSON {
+public class TestCreate {
 
-	private String protocol = "altdb";
+	private String protocol = "xmldb";
 	private String tmp = System.getProperty("java.io.tmpdir");
 
-	public static Class<?> getSpecifications() {
-		return Driver.class;
-	}
-
+	
 	private Connection createUseDatabase(String databaseName) throws SQLException {
-		Driver driver = (Driver) TestRunner.getImplementationInstance();
+		Driver driver = new Driver();
 		Properties info = new Properties();
 		File dbDir = new File(tmp + "/jdbc/" + Math.round((((float) Math.random()) * 100000)));
 		info.put("path", dbDir.getAbsoluteFile());
@@ -36,7 +33,7 @@ public class SmokeTestCreateJSON {
 		return connection;
 	}
 	@Test //
-	public void testCreateTableJSON() throws SQLException {
+	public void testCreateTable() throws SQLException {
 		Connection connection = createUseDatabase("School");
 		try {
 			Statement statement = connection.createStatement();

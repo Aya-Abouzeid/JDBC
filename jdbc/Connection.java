@@ -28,7 +28,7 @@ public class Connection implements java.sql.Connection {
 		// TODO Auto-generated constructor stub
 		logger.LOG().info("New Connection Created.");
 		this.Detect = new XmlValidation(driver.getpath());
-	
+	System.out.println("New Connection Created.");
 		this.query = new Queries(driver.getpath(), WriterType);
 		this.parse = new Parser();
 	}
@@ -71,7 +71,7 @@ public class Connection implements java.sql.Connection {
 	public void close() throws SQLException {
 		if (!closed) {
 			logger.LOG().info("Connection is Closed.");
-
+			System.out.println("Connection is Closed.");
 			this.closed = true;
 			this.parse = null;
 			this.query = null;

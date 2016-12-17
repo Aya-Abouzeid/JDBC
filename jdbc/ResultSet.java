@@ -26,8 +26,11 @@ public class ResultSet implements java.sql.ResultSet {
 	private Statement statement = null;
 	private String[]Type;
 	boolean closed = false;
+	Log4j logger = new Log4j();
 
 	public ResultSet(Statement statement, String[][] Rset) {
+		System.out.println("New Result Set Created");
+		logger.LOG().info("New Result Set Created");
 		this.statement = statement;
 		this.resultSet = Rset;
 	}

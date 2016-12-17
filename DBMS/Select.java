@@ -109,7 +109,6 @@ public boolean GetExecuted(){
 				if (withwhere) {
 					x = Query.selectColumnsWithCondition(CurrentlyUsedDB, current_table1, selected_fields,condition);
 					 Type=Query.getType();
-					 System.out.println("jjj"+Type);
 					 Executed = true;
 
 

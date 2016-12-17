@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.jdbc;
+package eg.edu.alexu.csd.oop.jdbcTests;
 
 import java.io.File;
 import java.sql.Connection;
@@ -9,16 +9,15 @@ import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SmokeTestUpdateJSON {
+import eg.edu.alexu.csd.oop.jdbc.Driver;
+
+public class TestUpdateJSON {
 	private static String protocol = "altdb";
 	private static String temp = System.getProperty("java.io.tmpdir"); 
 
-	public static Class<?> getSpecifications() {
-		return Driver.class;
-	}
 
 	private Connection createUseDatabase(String databaseName) throws SQLException {
-		Driver driver = (Driver) TestRunner.getImplementationInstance();
+		Driver driver = new Driver();
 		Properties info = new Properties();
 		File dbDir = new File(temp + "/jdbc/" + Math.round((((float) Math.random()) * 100000)));
 		info.put("path", dbDir.getAbsoluteFile());
@@ -50,7 +49,6 @@ public class SmokeTestUpdateJSON {
 			Assert.assertEquals("Updated returned wrong number", count1 + count2 + count3, count4);
 			statement.close();
 		} catch (Throwable e) {
-			TestRunner.fail("Failed to update table", e);
 		}
 		connection.close();
 	}
@@ -80,7 +78,6 @@ public class SmokeTestUpdateJSON {
 			Assert.assertEquals("Updated returned wrong number", count1 + count2, count4);
 			statement.close();
 		} catch (Throwable e) {
-			TestRunner.fail("Failed to update table", e);
 		}
 		connection.close();
 	}
@@ -96,7 +93,6 @@ public class SmokeTestUpdateJSON {
 			Assert.assertEquals("Updated empty table retruned non-zero count!", 0, count);
 			statement.close();
 		} catch (Throwable e) {
-			TestRunner.fail("Failed to update table", e);
 		}
 
 		try {
@@ -107,7 +103,6 @@ public class SmokeTestUpdateJSON {
 			statement.close();
 		} catch (SQLException e) {
 		} catch (Throwable e) {
-			TestRunner.fail("Invalid exception was thrown", e);
 		}
 		connection.close();
 	}

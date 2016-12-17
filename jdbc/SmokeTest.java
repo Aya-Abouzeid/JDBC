@@ -82,7 +82,7 @@ public class SmokeTest {
 		try {
 			
 			Statement statement = connection.createStatement();
-			statement.execute("CREATE TABLE table_name1(column_name1 varchar, column_name2 int, column_name3 date)");
+			statement.execute("CREATE TABLE table_Name1(column_name1 varchar, column_name2 int, column_name3 date)");
 			Assert.fail("Created existing table successfully!");
 	
 		} catch (SQLException e) {

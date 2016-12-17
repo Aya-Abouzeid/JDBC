@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.jdbc;
+package eg.edu.alexu.csd.oop.jdbcTests;
 
 import java.io.File;
 import java.sql.Connection;
@@ -10,16 +10,16 @@ import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestAlter {
-	private static String protocol = "xmldb";
+import eg.edu.alexu.csd.oop.jdbc.Driver;
+import eg.edu.alexu.csd.oop.jdbc.TestRunner;
+
+public class TestAlterJSON {
+	private static String protocol = "altdb";
 	private static String temp = System.getProperty("java.io.tmpdir"); 
 
-	public static Class<?> getSpecifications() {
-		return Driver.class;
-	}
-
+	
 	private Connection createUseDatabase(String databaseName) throws SQLException {
-		Driver driver = (Driver) TestRunner.getImplementationInstance();
+		Driver driver = new Driver();
 		Properties info = new Properties();
 		File dbDir = new File(temp + "/jdbc/" + Math.round((((float) Math.random()) * 100000)));
 		info.put("path", dbDir.getAbsoluteFile());
@@ -45,7 +45,7 @@ public class TestAlter {
 					"INSERT INTO Employee(name, id, department) VALUES ('ahmed', 4, 'software')");
 			Assert.assertFalse("Wrong return for insert record", result1);
 			int count2 = statement.executeUpdate(
-					"INSERT INTO Employee(name, department, id) VALUES ('aya', 'algorithm', 5)");
+					"INSERT INTO Employee(name, department, id) VALUES ('aya', 'algorithem', 5)");
 			Assert.assertEquals("Insert returned a number != 1", 1, count2);
 			int count3 = statement.executeUpdate(
 					"INSERT INTO Employee(name, department, id) VALUES ('mona', 'report', 6)");

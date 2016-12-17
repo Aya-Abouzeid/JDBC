@@ -1,7 +1,8 @@
-package eg.edu.alexu.csd.oop.jdbc;
+package eg.edu.alexu.csd.oop.jdbcTests;
 
 import java.io.File;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -9,16 +10,15 @@ import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SmokeTestDeleteJSON {
+import eg.edu.alexu.csd.oop.jdbc.Driver;
+import eg.edu.alexu.csd.oop.jdbc.TestRunner;
+
+public class TestDeleteJSON {
 	private static String protocol = "altdb";
 	private static String temp = System.getProperty("java.io.tmpdir"); 
 
-	public static Class<?> getSpecifications() {
-		return Driver.class;
-	}
-
 	private Connection createUseDatabase(String databaseName) throws SQLException {
-		Driver driver = (Driver) TestRunner.getImplementationInstance();
+		Driver driver = new Driver();
 		Properties info = new Properties();
 		File dbDir = new File(temp + "/jdbc/" + Math.round((((float) Math.random()) * 100000)));
 		info.put("path", dbDir.getAbsoluteFile());
